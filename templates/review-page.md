@@ -3,6 +3,7 @@
 
 ## Summary
 <the outcome, in one or two sentences, in the person's words>
+Starts when: <trigger>
 Today: <the current workaround>. This change: <scope in>.
 
 **What we need from you**

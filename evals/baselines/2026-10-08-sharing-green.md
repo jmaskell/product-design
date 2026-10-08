@@ -38,7 +38,7 @@ The failing t6 run lost one-short-pass only. These runs kept no traces (no `--ke
 
 ## Manual runs by the owner (2026-10-08)
 
-Setting: the ntx test worktree, with real Notion and claude.ai.
+Setting: a private test project, with real Notion and claude.ai.
 
 - Artifact path: works. The owner rated the result as working well.
 - Notion path: works. The run found three problems. Task 8 fixed each one:
@@ -61,8 +61,24 @@ Setting: the ntx test worktree, with real Notion and claude.ai.
 - Small never offers sharing. No grader reads the t6 output text, and the t6 runs kept no traces.
 - The no-comments rule in triage.md. t15 and t15b both have comments.
 - The artifact reply on threads sent to Claude. The eval target is a file, and a file has no threads. The owner's artifact run is the only check.
-- The graders `objection-is-finding` (t15, t15b) read the reply only. They do not read a finding in a plan file.
+- The skip rule for threads that end with your reply. No case has an earlier reply.
 - No RED result for t15b. The old "sort each comment" wording was never run against it.
+
+## Final fix wave
+
+The final branch review changed the router (triage at the start of a run), triage.md (skip answered threads; an objection writes a finding to decisions.md), notion.md, artifact.md, the review-page template (`Starts when:`) and three graders. `objection-is-finding` (t15, t15b) now reads decisions.md. The old reply check is now `objection-reported`.
+
+Sonnet judge, both arms, `--keep-temp`, `--json evals/results/final-*.json`.
+
+| Case | With | Without | Runs | Graders (with arm) |
+|---|---|---|---|---|
+| t15-comment-triage | 1.00 | 0.58 | 5 | all 10 graders 5/5 |
+| t15b-mixed-comment | 1.00 | 0.00 | 3 | all 3 graders 3/3 |
+| t10-stops-at-g1 | 1.00 | 0.00 | 3 | both graders 3/3; each run stops at G1 |
+| t1-repeat-action | 1.00 | 1.00 | 3 | both graders 3/3 |
+| t14-review-page | 1.00 | 0.00 | 3 | all 7 graders 3/3 |
+
+Confirmed by the t14 traces: each run wrote a `Starts when:` line from the issue.md trigger. I did not re-run t14b, t14c, t14d and t6 after this wave.
 
 ## Harness notes
 

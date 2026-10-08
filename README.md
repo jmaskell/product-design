@@ -54,7 +54,7 @@ Every claim about people carries an evidence label: `KNOWN (source)`, `INFERRED 
 
 ## Sharing for review
 
-Set `Review space` to a Notion database, a Notion page, or `artifact`. With a page, the first share creates a "Design review" database in it and asks you to put the database URL in the line. The skill rebuilds the review page from the plan files. The journey shows as two swim-lane grids, Today and Proposed: one row per person, one column per stage, and ◆ on each step that changes. In Notion, the text goes up first and the screenshots follow, one per screen. In Notion, each reviewer with an open question is tagged and notified, from the people list in `docs/product/people.md`. Comments come back on the next run. They land in decisions.md, in journey.md, or as findings. A comment never approves a gate.
+Set `Review space` to a Notion database, a Notion page, or `artifact`. With a page, the first share creates a "Design review" database in it and asks you to put the database URL in the line. The skill rebuilds the review page from the plan files. The journey shows as two swim-lane grids, Today and Proposed: one row per person, one column per stage, and ◆ on each step that changes. In Notion, the text goes up first and the screenshots follow, one per screen. In Notion, each reviewer with an open question is tagged and notified, from the people list in `docs/product/people.md`. The next design run triages the comments before anything else, and so does a request to check the comments. The skill skips threads it already answered. An answer lands in decisions.md. A fact correction changes journey.md or issue.md. An objection becomes a finding in decisions.md, and the skill reports it to you. A comment never approves a gate.
 
 ## Adopting in a project
 
@@ -85,7 +85,7 @@ The skills work with nothing set up: they frame from the code and your answers, 
 **Product files:**
 
 - `PRODUCT.md` at the repo root: the product, its users, and any sensitive-domain flag. A sensitive domain raises the work to Large. PRODUCT.md alone is enough to start.
-- `docs/product/actors.md` and `docs/product/journeys/`: the saved actors and journeys. The skills write these files from `templates/`: `actors.md`, `journey.md`, `issue.md`, `design.md` and `decisions.md`. sharing-designs builds the team review page from `templates/review-page.md`, publishes it with `skills/sharing-designs/artifact.md`, and triages the comments with `skills/sharing-designs/triage.md`.
+- `docs/product/actors.md` and `docs/product/journeys/`: the saved actors and journeys. The skills write these files from `templates/`: `actors.md`, `journey.md`, `issue.md`, `design.md` and `decisions.md`. sharing-designs builds the team review page from `templates/review-page.md`, publishes it with `skills/sharing-designs/artifact.md` or `skills/sharing-designs/notion.md`, and triages the comments with `skills/sharing-designs/triage.md`.
 - `docs/product/people.md`: names, roles and Notion user IDs for tagging reviewers; no email addresses. The skill writes it from `templates/people.md`.
 
 **Project rules win.** If your `CLAUDE.md` or `AGENTS.md` names another skill for a step (for example `superpowers:brainstorming` for specs), Claude follows your rule. To use the router there, change the rule or name the skill in your prompt: "Use product-design:designing-products to design …".
