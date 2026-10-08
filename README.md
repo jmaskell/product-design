@@ -23,10 +23,10 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 "Design this…" ─► designing-products: Small, Medium or Large
      │
      ├─ framing-problems ─► mapping-journeys ─► G1: right problem?
-     │                                                   ──► sharing-designs (team comments)
+     │                                          └──► sharing-designs (team comments)
      │
      ├─ designing-interactions ─► reviewing-product-design ─► G2: right design?
-     │                                                   ──► sharing-designs (team comments)
+     │                                                        └──► sharing-designs (team comments)
      │
      └─ filing-issues ─► tracker or plan folder ─► engineering
 ```
