@@ -44,6 +44,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 | `mapping-journeys` | A change touches more than one actor or a hand-off, or risks moving work from one person to another. |
 | `designing-interactions` | The problem and task flow are agreed, and the screens, states or mocks are next. |
 | `reviewing-product-design` | A design is drafted. Fresh agents critique it, one lens each (task walkthrough, service, usability, accessibility, cognitive load, domain risk). The size and the risk pick the lenses. |
+| `sharing-designs` | A design is at a gate and the team must review it, or you ask to share a design or check its comments. |
 | `filing-issues` | An approved design must go to the tracker or a plan folder, work must split into several issues, or a bug skips design. |
 
 Every claim about people carries an evidence label: `KNOWN (source)`, `INFERRED (from what)`, `ASSUMED` or `UNKNOWN`. Every finding has a severity: CRITICAL, SIGNIFICANT, MINOR or UNKNOWN.
@@ -75,7 +76,7 @@ The skills work with nothing set up: they frame from the code and your answers, 
 **Product files:**
 
 - `PRODUCT.md` at the repo root: the product, its users, and any sensitive-domain flag. A sensitive domain raises the work to Large. PRODUCT.md alone is enough to start.
-- `docs/product/actors.md` and `docs/product/journeys/`: the saved actors and journeys. The skills write these files from `templates/`: `actors.md`, `journey.md`, `issue.md`, `design.md` and `decisions.md`.
+- `docs/product/actors.md` and `docs/product/journeys/`: the saved actors and journeys. The skills write these files from `templates/`: `actors.md`, `journey.md`, `issue.md`, `design.md` and `decisions.md`. sharing-designs builds the team review page from `templates/review-page.md`.
 
 **Project rules win.** If your `CLAUDE.md` or `AGENTS.md` names another skill for a step (for example `superpowers:brainstorming` for specs), Claude follows your rule. To use the router there, change the rule or name the skill in your prompt: "Use product-design:designing-products to design …".
 

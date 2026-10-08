@@ -1,0 +1,20 @@
+# Artifact and file targets
+
+## Artifact
+
+1. Write the page as one HTML file, `<plan folder>/review.html`. Embed each mock with an iframe at full width, by its relative path `mocks/<file>`.
+2. Publish with the Artifact tool. Pass each mock that passed the privacy check as a supporting file at the same relative path. The first publish creates the artifact. A later revision republishes to the URL in the last `Review page:` line.
+3. Declare no capabilities. Comments are built in.
+4. Tell the owner to share the link from claude.ai with each reviewer.
+
+Read comments with `ArtifactComments` `read` and the URL. Reply and resolve work only on threads a reviewer sent to Claude. List the other threads for the owner as open.
+
+`Unverified:` a republish keeps comment anchors. Triage before every republish.
+
+## File
+
+Use this when the session has no Artifact tool.
+
+1. Write `<plan folder>/review.html` as one self-contained file: inline CSS, and each mock that passed the privacy check inlined in an iframe `srcdoc`.
+2. Tell the owner: "This session has no Artifact tool. Send review.html by email or chat, and paste the replies here."
+3. Triage pasted comments the same way.
