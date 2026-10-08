@@ -13,7 +13,7 @@ Read `Review space` in the project metadata.
 
 | Value | Target | Detail |
 |---|---|---|
-| `notion <url>` | A new row in that Notion database | notion.md |
+| `notion <url>` | A new row in that Notion database, or in a new database in that Notion page | notion.md |
 | `artifact` | A private Claude artifact | artifact.md |
 | unset | An artifact if the Artifact tool exists, else `<plan folder>/review.html` | artifact.md |
 

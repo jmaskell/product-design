@@ -54,7 +54,7 @@ Every claim about people carries an evidence label: `KNOWN (source)`, `INFERRED 
 
 ## Sharing for review
 
-Set `Review space` to a Notion database or to `artifact`. The skill rebuilds the review page from the plan files. In Notion, each reviewer with an open question is tagged and notified, from the people list in `docs/product/people.md`. Comments come back on the next run. They land in decisions.md, in journey.md, or as findings. A comment never approves a gate.
+Set `Review space` to a Notion database, a Notion page, or `artifact`. With a page, the first share creates a "Design review" database in it and asks you to put the database URL in the line. The skill rebuilds the review page from the plan files. The journey shows as two swim-lane grids, Today and Proposed: one row per person, one column per stage, and ◆ on each step that changes. In Notion, the text goes up first and the screenshots follow, one per screen. In Notion, each reviewer with an open question is tagged and notified, from the people list in `docs/product/people.md`. Comments come back on the next run. They land in decisions.md, in journey.md, or as findings. A comment never approves a gate.
 
 ## Adopting in a project
 
@@ -70,7 +70,7 @@ The skills work with nothing set up: they frame from the code and your answers, 
 - Component source: none        # a gallery route, a registry URL, or none
 - Tier triggers: payment or health data → Large
 - Domain rules: docs/domain-rules.md
-- Review space: notion <database URL>     # or: artifact
+- Review space: notion <database URL>     # or: notion <page URL>, or: artifact
 ```
 
 | Key | Used by |
@@ -80,7 +80,7 @@ The skills work with nothing set up: they frame from the code and your answers, 
 | `Component source` | designing-interactions: what the mocks are built from. |
 | `Tier triggers` | designing-products: extra predicates that raise the size. |
 | `Domain rules` | reviewing-product-design: the file the domain-risk reviewer checks against. |
-| `Review space` | sharing-designs: where the review page goes — a Notion database or a Claude artifact; unset uses an artifact if available, else a local review.html. |
+| `Review space` | sharing-designs: where the review page goes — a Notion database, a Notion page (gets a new database), or a Claude artifact; unset uses an artifact if available, else a local review.html. |
 
 **Product files:**
 

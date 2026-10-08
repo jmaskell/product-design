@@ -12,10 +12,20 @@ Today: <the current workaround>. This change: <scope in>.
 | Who | What they do | What changes for them | Check with |
 |---|---|---|---|
 
-## The journey, stage by stage
-| Stage | Who | Today | Proposed |
-|---|---|---|---|
-Mark each stage this change touches with "(this change)".
+## The journey, today and proposed
+| Today | <stage> | <stage> (this change) |
+|---|---|---|
+| <person> | <what they do at this stage> | <what they do at this stage> |
+| <person> | — | <what they do at this stage> |
+
+| Proposed | <stage> | <stage> (this change) |
+|---|---|---|
+| <person> | <what they do at this stage> | ◆ <what they do now> |
+| <person> | — | <what they do at this stage> |
+
+◆ marks a step that is different from today.
+
+The two grids have the same rows and columns. Add one row for each person in the actors of issue.md and journey.md. Add one column for each stage, in journey order. Add "(this change)" to the header of each stage that this change touches. In each cell, write what that person does at that stage. Write "—" when they do nothing, never "nothing" or a blank cell. Copy each cell that does not change into Proposed word for word. Start each Proposed cell that differs from its Today cell with "◆ ". Keep the evidence labels in the cells where the plan files have them.
 
 ## Screens
 Leave this section out until screens are designed.
