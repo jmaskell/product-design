@@ -1,0 +1,8 @@
+{
+  "name": "product-design",
+  "description": "Product thinking, journey mapping, interaction design and independent design critique, above visual craft.",
+  "version": "0.1.0",
+  "author": { "name": "James Maskell" },
+  "license": "MIT",
+  "experimental": { "evals": "evals" }
+}

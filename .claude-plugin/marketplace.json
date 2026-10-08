@@ -1,0 +1,14 @@
+{
+  "name": "claude-product-workflow",
+  "description": "Product-design skills and workflow commands for Claude Code: frame, map, design and review before engineering starts.",
+  "owner": {
+    "name": "James Maskell"
+  },
+  "plugins": [
+    {
+      "name": "product-design",
+      "source": "./",
+      "description": "Product-design skills"
+    }
+  ]
+}

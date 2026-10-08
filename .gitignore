@@ -1,0 +1,5 @@
+.DS_Store
+evals/results/
+.superpowers/
+docs/superpowers/
+.portability-banned
