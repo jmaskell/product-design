@@ -25,7 +25,7 @@ Today: <the current workaround>. This change: <scope in>.
 
 ◆ marks a step that is different from today.
 
-The two grids have the same rows and columns. Add one row for each person in the actors of issue.md and journey.md. Add one column for each stage, in journey order. Add "(this change)" to the header of each stage that this change touches. In each cell, write what that person does at that stage. Write "—" when they do nothing, never "nothing" or a blank cell. Copy each cell that does not change into Proposed word for word. Start each Proposed cell that differs from its Today cell with "◆ ". Keep the evidence labels in the cells where the plan files have them.
+The two grids have the same rows and columns. Add one row for each person in the actors of issue.md and journey.md. Add one column for each stage, in journey order. Add "(this change)" to the header of each stage that this change touches. In each cell, write what that person does at that stage. Write "—" when they do nothing, never "nothing" or a blank cell. Copy each cell that does not change into Proposed word for word. Start each Proposed cell that differs from its Today cell with "◆ ". Write a step that stops in Proposed as "◆ —". Keep the evidence labels in the cells where the plan files have them.
 
 ## Screens
 Leave this section out until screens are designed.
