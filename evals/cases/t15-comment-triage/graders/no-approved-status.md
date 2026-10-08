@@ -6,4 +6,4 @@ target:
 match: count:0
 flags: im
 ---
-^\s*(?:[-*]\s*)?(?:\*\*)?(?:status|gate|G[12])\b[^\n]*\bapproved\b
+^\s*(?:#+\s*)?(?:\|\s*)?(?:[-*]\s*)?(?:\*\*)?(?:status|gate(?:\s+G[12])?|G[12])(?:\*\*)?\s*[:|]?\s*(?:\*\*)?\s*approved\b
