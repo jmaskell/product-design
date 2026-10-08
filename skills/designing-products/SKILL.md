@@ -22,7 +22,7 @@ In doubt, take the heavier tier. When you find a predicate later, raise the tier
 
 ## 2. Run the phases
 
-Each named skill is a REQUIRED SUB-SKILL. Load it with the Skill tool and follow it. Do not do its work yourself.
+Each named skill is a REQUIRED SUB-SKILL. Load and follow it. Do not do its work yourself.
 
 | Tier | Phases |
 |---|---|
@@ -34,6 +34,7 @@ Each named skill is a REQUIRED SUB-SKILL. Load it with the Skill tool and follow
 
 - **G1 — right problem?** Show the outcome, the journey, the evidence ledger and the questions for the expert. In Large, stop and wait.
 - **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions that need a ruling. A CRITICAL finding blocks approval until it is fixed or the owner accepts it with a reason.
+- For Medium and Large, offer product-design:sharing-designs at each gate.
 - A reply approves only the stage you presented.
 
 ## 4. Missing context
@@ -42,6 +43,6 @@ Use what exists. PRODUCT.md alone is enough to start. With nothing, frame from c
 
 ## 5. Handoff
 
-After G2: REQUIRED SUB-SKILL product-design:filing-issues. Engineering edits product code after the handoff. Do not edit it.
+After G2: REQUIRED SUB-SKILL product-design:filing-issues. Do not edit product code.
 
 Project rules win over this skill.

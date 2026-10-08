@@ -23,8 +23,10 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 "Design this…" ─► designing-products: Small, Medium or Large
      │
      ├─ framing-problems ─► mapping-journeys ─► G1: right problem?
+     │                                                   ──► sharing-designs (team comments)
      │
      ├─ designing-interactions ─► reviewing-product-design ─► G2: right design?
+     │                                                   ──► sharing-designs (team comments)
      │
      └─ filing-issues ─► tracker or plan folder ─► engineering
 ```
@@ -32,6 +34,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 - **G1 (right problem?)** shows the outcome, the journey, the evidence and the questions for your domain expert. Large work stops here until you answer. Medium work shows G1 in one message and goes on.
 - **G2 (right design?)** shows the mocks, the decisions, the dismissed findings and any tension that needs your ruling. A CRITICAL finding blocks approval until it is fixed or you accept it with a reason.
 - **Small** work frames in three lines, makes one mock or none, and skips G1 and the review agents. **Medium** work gets two design options. **Large** work gets three options and a fuller review.
+- Medium and Large work offers a review page at each gate, so your team can comment.
 - The router raises the size, never lowers it, when it finds a trigger later. It says so each time.
 - After G2, engineering edits the product code. The skills do not.
 
