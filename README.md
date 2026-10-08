@@ -51,7 +51,7 @@ Every claim about people carries an evidence label: `KNOWN (source)`, `INFERRED 
 
 ## Sharing for review
 
-Set `Review space` to a Notion database or to `artifact`. The skill rebuilds the review page from the plan files. In Notion, each reviewer with an open question is tagged and notified. Comments come back on the next run. They land in decisions.md, in journey.md, or as findings. A comment never approves a gate.
+Set `Review space` to a Notion database or to `artifact`. The skill rebuilds the review page from the plan files. In Notion, each reviewer with an open question is tagged and notified, from the people list in `docs/product/people.md`. Comments come back on the next run. They land in decisions.md, in journey.md, or as findings. A comment never approves a gate.
 
 ## Adopting in a project
 
