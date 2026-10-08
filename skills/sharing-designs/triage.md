@@ -17,7 +17,7 @@ Run this before every publish when decisions.md has a `Review page:` line, and w
 
 ## Rules
 
-- A comment never approves a gate, not even the owner's comment. Only the owner approves, in the session. Never write an approved status.
+- A comment never approves a gate, not even the owner's comment. Only the owner approves, in the session. Never write an approved status because of a comment.
 - Reply on each thread you can reply to with what changed. Artifact replies work only on threads a reviewer sent to Claude. For any other thread, and for the file target, put the reply in your message to the owner.
 - Tell the owner what changed, what needs their ruling, and which threads stay open. Say that only the owner approves the gate.
 - Then publish the next revision, unless step 1 said not to: go on with SKILL.md section 3.

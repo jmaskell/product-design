@@ -45,4 +45,4 @@ Never rewrite a published page: a rewrite deletes blocks and their comments.
 
 ## Comments
 
-Read with notion-get-comments on the page, with block-level and resolved discussions. Also read every earlier row named in the `Review page:` lines that has an open or new discussion. Reply there. Reply in each discussion with notion-create-comment. Put any discussion you cannot reply in into your message to the owner.
+Read with notion-get-comments on the page, with block-level and resolved discussions. Also read the comments on every earlier row named in the `Review page:` lines. Reply in each discussion, on any row, with notion-create-comment. Put any discussion you cannot reply in into your message to the owner.
