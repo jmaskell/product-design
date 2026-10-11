@@ -220,6 +220,16 @@ def tables(content):
     return out
 
 
+def listed_mocks(design_md):
+    """Distinct mock files in the ## Mocks section, rejected options left out."""
+    section = between(design_md, "## Mocks", "\n## ")
+    found = set()
+    for line in section.splitlines():
+        if "rejected" not in line.lower():
+            found.update(re.findall(r"mocks/[\w.-]+\.html", line))
+    return len(found)
+
+
 def repo_file(work, rel):
     p = os.path.join(work, "repo", rel)
     return open(p).read() if os.path.exists(p) else ""
@@ -358,7 +368,7 @@ def check_share(work):
         else:
             kinds.append(f"{name}: neither")
     # "No mock" is valid only for screens beyond the mocks that design.md lists.
-    mocks = len(re.findall(r"^mocks/\S+", between(repo_file(work, PLAN + "design.md"), "## Mocks", "\n## "), re.M))
+    mocks = listed_mocks(repo_file(work, PLAN + "design.md"))
     no_mock = sum(k.endswith("no mock in the plan") for k in kinds)
     shown = sum(k.endswith(": image") or ": no-screenshot text" in k for k in kinds)
     ok = bool(screens) and not any(k.endswith("neither") for k in kinds) and shown >= 1 and no_mock <= len(screens) - mocks
