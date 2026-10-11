@@ -26,6 +26,6 @@ Requirements:
 
 Warnings:
 - `setup` creates a new child page under the test page for each run and puts its URL in the Review space line. Each run gets its own "Design review" database. Archive the run page by hand after the run.
-- The sessions use your user settings. The sessions allow `Bash(curl https://upload.notion.com/*)`, but a `deny` rule for `Bash(curl *)` still stops the screenshot upload. The page then shows the skill's "No screenshot" text.
+- The sessions use your user settings. The screenshot upload is a curl POST to `https://api.notion.com/v1/mcp/file_uploads/<id>/send`. The sessions allow `Bash(curl *api.notion.com/v1/mcp/file_uploads/*)`, but a `deny` rule for `Bash(curl *)` in your settings wins over it. The narrow rule also does not match a chained command such as `sips …; curl …`. If the upload is stopped, the page shows the skill's "No screenshot" text.
 - The fixture people are fictional. No Notion user matches them, so nobody gets a mention or a notification.
 - The comments come from your own Notion account. Each comment names its author in its text.

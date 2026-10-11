@@ -23,7 +23,7 @@ usage() {
 N="mcp__notion__notion"
 NOTION_READ="${N}-fetch,${N}-search,${N}-get-comments,${N}-query-data-sources"
 NOTION_SKILL="$NOTION_READ,${N}-create-database,${N}-update-data-source,${N}-create-pages,${N}-update-page,${N}-get-users,${N}-create-file-upload,${N}-create-comment"
-SESSION_TOOLS="Read,Write,Edit,Bash,Glob,Grep,Skill,Agent,TodoWrite,$NOTION_SKILL,mcp__playwright,Bash(curl https://upload.notion.com/*)"
+SESSION_TOOLS="Read,Write,Edit,Bash,Glob,Grep,Skill,Agent,TodoWrite,$NOTION_SKILL,mcp__playwright,Bash(curl *api.notion.com/v1/mcp/file_uploads/*)"
 
 HEADLESS="You are running headless. Nobody can answer questions: do not call AskUserQuestion and do not wait for a reply. Where you would ask the owner, use the answers below, state any other assumption, and go on."
 OWNER_ANSWERS="The owner's answers, given in advance:

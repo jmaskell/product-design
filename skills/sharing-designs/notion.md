@@ -70,4 +70,4 @@ Never rewrite a published page: a rewrite deletes blocks and their comments.
 
 ## Comments
 
-Read with notion-get-comments on the page, with block-level and resolved discussions. Also read the comments on every earlier row named in the `Review page:` lines. Skip a discussion whose last comment is your reply. Triage only the comments after it. Match a page-level comment to its grid row by the stage and the person it quotes. Reply in each discussion, on any row, with notion-create-comment. Put any discussion you cannot reply in into your message to the owner.
+Read with notion-get-comments on the page, with block-level and resolved discussions. Also read the comments on every earlier row named in the `Review page:` lines. Skip a discussion whose last comment is your reply. Triage only the comments after it. Match a page-level or row comment to its grid cell by the stage and the person it quotes. Reply in each discussion, on any row, with notion-create-comment. Put any discussion you cannot reply in into your message to the owner.

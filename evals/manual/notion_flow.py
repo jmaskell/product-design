@@ -357,7 +357,12 @@ def check_share(work):
             kinds.append(f"{name}: no mock in the plan")
         else:
             kinds.append(f"{name}: neither")
-    o.r(bool(screens) and not any(k.endswith("neither") for k in kinds), "screen image or no-screenshot text", "; ".join(kinds) or "no screens")
+    # "No mock" is valid only for screens beyond the mocks that design.md lists.
+    mocks = len(re.findall(r"^mocks/\S+", between(repo_file(work, PLAN + "design.md"), "## Mocks", "\n## "), re.M))
+    no_mock = sum(k.endswith("no mock in the plan") for k in kinds)
+    shown = sum(k.endswith(": image") or ": no-screenshot text" in k for k in kinds)
+    ok = bool(screens) and not any(k.endswith("neither") for k in kinds) and shown >= 1 and no_mock <= len(screens) - mocks
+    o.r(ok, "screen image or no-screenshot text", "; ".join(kinds) + f"; design.md lists {mocks} mock(s)" if kinds else "no screens")
     if imgs:
         widths = re.findall(r'width="?(\d+)', between(full, "## Screens", "## Questions"))
         if widths:

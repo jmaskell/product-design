@@ -7,7 +7,7 @@ description: Use when asked to share a design with the team, publish it for feed
 
 Rebuild the page from the plan folder every time. Never edit it by hand.
 
-This skill shares a design and triages its comments. It never designs: it runs no review agents, makes no mock and writes no new design decision. If the owner asks to revise or design, load product-design:designing-products and follow it. It triages first.
+This skill shares a design and triages its comments. It never designs: it runs no review agents, makes no mock and writes no new design decision. If the owner asks to revise or design, load product-design:designing-products and follow it, unless the router loaded this skill. The router runs triage first.
 
 ## 1. Choose the target
 
@@ -25,7 +25,7 @@ The owner's request wins. If the target needs a tool this session lacks, say so,
 
 If decisions.md has a `Review page:` line, or the owner asks you to check the comments, run section 6 first. Go on to section 3 only when triage.md says to publish.
 
-When the router started this triage, stop after section 6.
+When the router started this triage at the start of a design run, stop after section 6.
 
 ## 3. Compose
 

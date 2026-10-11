@@ -23,5 +23,5 @@ Run this before every publish when decisions.md has a `Review page:` line, and w
 ## When to publish
 
 - Publish only when the owner asks to share the design or to check the comments, or at a gate when the owner accepts the router's offer to share. Then go on with SKILL.md section 3.
-- When the owner asks to check the comments, publish the next revision only if step 1 found new comments or a plan file changed after the last publish. Check with git, or compare the plan files with the last published page. Else tell the owner there is nothing new to publish.
+- When the owner asks to check the comments, publish the next revision only if a plan file changed after the last publish, in this triage or before it. A comment that is only out of scope or unclear changes no plan file. Check with git, or compare the plan files with the last published page. Else tell the owner there is nothing new to publish.
 - For any other request, for example to revise or to design, triage, report to the owner, and do not publish. This includes the triage that the router starts at the start of a design run. The next publish happens at a gate or when the owner asks to share.
