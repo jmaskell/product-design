@@ -5,12 +5,10 @@ description: Use when asked to design, define, shape or scope a feature, flow or
 
 # Designing products
 
-Diverge, then converge, twice: on the problem, then the solution.
-
 ## 1. Pick the tier and say it
 
 Size the request alone, before reading files. Write `Tier: <tier> — <the predicate that matched>` as your first text.
-Then read PRODUCT.md and the project metadata `Tier triggers`; raise the tier if one matches.
+Then read PRODUCT.md and the `Tier triggers` metadata; raise the tier if one matches.
 
 | Tier | Any one of |
 |---|---|
@@ -20,11 +18,11 @@ Then read PRODUCT.md and the project metadata `Tier triggers`; raise the tier if
 
 In doubt, take the heavier tier. When you find a predicate later, raise the tier, update the issue.md Phases line, and say so: `Tier: <old> → <new> — <the predicate found>`. Never lower it. Open every gate reply with the tier line, showing each raise.
 
-## 2. Run the phases
+## 2. Phases
 
 If decisions.md has a `Review page:` line, run product-design:sharing-designs triage first.
 
-Each named skill is a REQUIRED SUB-SKILL. Load and follow it. Do not do its work yourself.
+Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourself.
 
 | Tier | Phases |
 |---|---|
@@ -34,17 +32,17 @@ Each named skill is a REQUIRED SUB-SKILL. Load and follow it. Do not do its work
 
 ## 3. Gates
 
-- **G1 — right problem?** Show the outcome, the journey, the evidence ledger and the questions for the expert. In Large, stop and wait.
-- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions that need a ruling. A CRITICAL finding blocks approval until it is fixed or the owner accepts it with a reason.
+- **G1 — right problem?** Show the outcome, journey, evidence ledger and expert questions. In Large, stop and wait.
+- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on. A CRITICAL finding blocks approval until it is fixed or the owner accepts it with a reason.
 - For Medium and Large, offer product-design:sharing-designs at each gate.
 - A reply approves only the stage you presented.
 
 ## 4. Missing context
 
-PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. If PRODUCT.md does not exist, also offer product-design:modelling-products. Never block on a missing model.
+PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. If PRODUCT.md or docs/product/actors.md does not exist, offer product-design:modelling-products. If git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date, offer product-design:auditing-product-models. Name the skill in each offer. Never block on a missing model.
 
 ## 5. Handoff
 
 After G2: REQUIRED SUB-SKILL product-design:filing-issues. Do not edit product code.
 
-Project rules win over this skill.
+Project rules win.

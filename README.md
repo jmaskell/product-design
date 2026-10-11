@@ -36,6 +36,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 - **Small** work frames in three lines, makes one mock or none, and skips G1 and the review agents. **Medium** work gets two design options. **Large** work gets three options and a fuller review.
 - Medium and Large work offers a review page at each gate, so your team can comment.
 - The router raises the size, never lowers it, when it finds a trigger later. It says so each time.
+- The router offers `modelling-products` when `PRODUCT.md` or `docs/product/actors.md` does not exist. It offers `auditing-product-models` when git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date.
 - After G2, engineering edits the product code. The skills do not.
 
 ## The skills
