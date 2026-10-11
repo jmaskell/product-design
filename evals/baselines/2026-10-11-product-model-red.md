@@ -56,3 +56,15 @@ The spec (D2 and the modelling-products modes) asks for two behaviours that no c
 
 - t16e: the skill fires and writes PRODUCT.md and actors.md, and no journey. The reply lists Core and Full as options and does not pick one. It does not show candidate journeys. The without arm fails the same way.
 - t16f: `mapping-journeys` fires, not `modelling-products`. It writes one new journey with a `Code:` line, because `templates/journey.md` now has that line, and it leaves the model alone. The without arm fails only `code-anchored`. The case passes 0.8 with the current text, so it is a guard. No skill text was added for it.
+
+## Final fix wave (rulings R11, R12)
+
+Two t16 graders test spec lines that the review found missing. Three runs, both arms, sonnet judge, run against the modelling-products text at 183b2a9 (unchanged since f716257).
+
+| Case | With | Without | Failing graders (with arm, runs failed of 3) |
+|---|---|---|---|
+| t16-model-from-code | 0.91 | 0.18 | product-sections (3) |
+
+- `product-sections` (A1) is RED. Each with-arm run writes its own PRODUCT.md headings, and none has `## Capabilities and Constraints`. The without arm fails it too.
+- `contradiction-unknown` (A2) is not RED. It passes 3 of 3 with and 0 of 3 without. The with arm writes the £250 / £500 contradiction as `UNKNOWN` in the journey's Open unknowns, for example "Approval threshold: £500 or £250 — UNKNOWN — owner" (Confirmed by a grep of the three with-arm traces). The template's Open unknowns line and the old "List it. Never pick a side." line produce it. The grader stays as a delta grader. The A2 skill line rewords the existing contradiction line. It adds no new behaviour.
+- t17b `verified-updated` became `audited-line` (ruling R11: the audit writes `audited:`, never `verified:`). `verified-kept` checks that `verified: 2026-08-20` stays. t17 gained `journey-unchanged` (no ruling, so the journey keeps "Over £250"). I did not run these graders on the 183b2a9 text. The 183b2a9 audit skill writes `verified: <date> audit`, so `audited-line` and `verified-kept` fail on it by construction.
