@@ -41,7 +41,7 @@ Each named skill is a REQUIRED SUB-SKILL. Load and follow it. Do not do its work
 
 ## 4. Missing context
 
-PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped and, if PRODUCT.md is missing, offer product-design:modelling-products. Never block on a missing model.
+PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. If PRODUCT.md does not exist, also offer product-design:modelling-products. Never block on a missing model.
 
 ## 5. Handoff
 
