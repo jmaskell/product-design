@@ -86,12 +86,9 @@ See the RED record for the grader shapes that work (`flags:` key, `count:0`, `to
 
 ## Residual fix
 
-R1: triage that the router starts reports to the owner and does not publish. R2: triage also skips a comment that decisions.md records by name and date. Sonnet judge, `--keep-temp`, 3 runs each (the case.yaml `runs: 5` label shows in the JSON).
+R1: triage that the router starts reports to the owner and does not publish. SKILL.md section 2 says to stop after section 6. R1 is verified by text only: the harness cannot grade past triage, and a t15d case passed on the old text, so I removed it. R2: triage skips a comment that decisions.md records with the same name, date and content. Sonnet judge, `--keep-temp`, 3 runs each.
 
-| Case | With | Without | Note |
+| Case | With (runs) | Without (runs) | Note |
 |---|---|---|---|
-| t15c-already-triaged | 1.00 | 0.50 mean delta | RED on the old triage.md: 0.67 (runs 0.5, 0.5, 1.0) |
-| t15-comment-triage | 1.00 | 0.50 mean delta | revision-bumped still passes |
-| t15d-router-triage | 1.00 | 0.50 mean delta | does not discriminate R1 |
-
-t15d: the prompt is "Revise the design ... for the next gate" and stops after triage. The `Review page:` count:1 grader also passed on the old triage.md (RED run 1.00). The harness cannot grade past triage, so R1 has no failing-then-passing eval. I checked R1 by reading the text only.
+| t15c-already-triaged | 1.00 (1, 1, 1) | 0.50, 0.83, 1.00 | Graders: KNOWN once, Finding once, correction applied, out of scope. RED on the first fix, before the added graders: 0.67 |
+| t15-comment-triage | 1.00 (1, 1, 1) | 0.33, 0.58, 0.50 | revision-bumped passes |

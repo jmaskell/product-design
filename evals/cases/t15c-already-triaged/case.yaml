@@ -1,6 +1,6 @@
 schema_version: "1.0"
 name: t15c-already-triaged
-runs: 5
+runs: 3
 plugins: ["../../.."]
 context:
   scaffold_script: scaffold.sh

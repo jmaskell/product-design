@@ -23,6 +23,8 @@ The owner's request wins. If the target needs a tool this session lacks, say so,
 
 If decisions.md has a `Review page:` line, or the owner asks you to check the comments, run section 6 first.
 
+When the router started this triage, stop after section 6.
+
 ## 3. Compose
 
 Read templates/review-page.md, two levels above this skill's directory. Fill it from the plan files (issue.md, journey.md, design.md, decisions.md) and mocks/. Keep its headings in order. Write for people outside design work.
