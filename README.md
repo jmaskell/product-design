@@ -50,7 +50,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 | `sharing-designs` | You ask to share a design or check its comments, or you accept the offer to share at a gate. It never designs: a request to revise goes to the router. |
 | `filing-issues` | An approved design must go to the tracker or a plan folder, work must split into several issues, or a bug skips design. |
 | `modelling-products` | The repo has no product model yet, the plugin joins an existing codebase or a new product starts. It reads the code first and asks only what the code cannot tell. You set the depth. |
-| `auditing-product-models` | The product docs may no longer match the code, or you ask to audit or refresh them. It reports drift and gaps with evidence, patches the docs where the code is right, and lists an issue where the code is wrong. It never edits product code. |
+| `auditing-product-models` | The product docs may no longer match the code, or you ask to audit or refresh them. It reports drift and gaps with evidence, patches the docs where the code is right, and lists an issue where the code is wrong. It judges code against the owner's recorded interpretation of a rule, checks Terms, Signals and README or site claims, and runs one lens from `references/lenses.md` on request ("audit for privacy"). It never edits product code. |
 
 Every claim about people carries an evidence label: `KNOWN (source)`, `INFERRED (from what)`, `ASSUMED` or `UNKNOWN`. Every finding has a severity: CRITICAL, SIGNIFICANT, MINOR or UNKNOWN.
 
