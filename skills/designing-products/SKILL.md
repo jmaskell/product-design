@@ -5,12 +5,12 @@ description: Use when asked to design, define, shape or scope a feature, flow or
 
 # Designing products
 
-Diverge, then converge, twice: on the problem, then on the solution.
+Diverge, then converge, twice: on the problem, then the solution.
 
 ## 1. Pick the tier and say it
 
-Size the request alone, before you read any file. Write `Tier: <tier> — <the predicate that matched>` as your first text.
-Then read PRODUCT.md and the project metadata `Tier triggers`, and raise the tier if one matches.
+Size the request alone, before reading files. Write `Tier: <tier> — <the predicate that matched>` as your first text.
+Then read PRODUCT.md and the project metadata `Tier triggers`; raise the tier if one matches.
 
 | Tier | Any one of |
 |---|---|
@@ -18,7 +18,7 @@ Then read PRODUCT.md and the project metadata `Tier triggers`, and raise the tie
 | Medium | A new screen or dialog; a changed task flow for one actor; a new component pattern |
 | Small | Otherwise |
 
-In doubt, take the heavier tier. When you find a predicate later, raise the tier, update the issue.md Phases line, and say so: `Tier: <old> → <new> — <the predicate found>`. Never lower it. Open every gate reply with the tier line, and show each raise in it.
+In doubt, take the heavier tier. When you find a predicate later, raise the tier, update the issue.md Phases line, and say so: `Tier: <old> → <new> — <the predicate found>`. Never lower it. Open every gate reply with the tier line, showing each raise.
 
 ## 2. Run the phases
 
@@ -41,7 +41,7 @@ Each named skill is a REQUIRED SUB-SKILL. Load and follow it. Do not do its work
 
 ## 4. Missing context
 
-PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. Never block on a missing model.
+PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped and, if PRODUCT.md is missing, offer product-design:modelling-products. Never block on a missing model.
 
 ## 5. Handoff
 

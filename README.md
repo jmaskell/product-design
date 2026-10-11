@@ -60,7 +60,7 @@ Set `Review space` to a Notion database, a Notion page, or `artifact`. With a pa
 
 ## Adopting in a project
 
-The skills work with nothing set up: they frame from the code and your answers, then offer to save what they mapped. They do better with these files.
+The skills work with nothing set up: they frame from the code and your answers, then offer to save what they mapped. To set up the whole model at once, ask Claude to set up the product docs (modelling-products). They do better with these files.
 
 **Project metadata**, in `CLAUDE.md` or `AGENTS.md`:
 
