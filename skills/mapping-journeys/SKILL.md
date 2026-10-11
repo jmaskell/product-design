@@ -13,6 +13,7 @@ Reason in this order. Never skip a level (references/journey-mapping.md).
 2. **Task flow.** For this change: steps, decisions, information needed at each decision, failure and recovery.
 3. **Every actor.** For each actor in docs/product/actors.md that the change touches: what they do differently after the change. Write the work that moves, and to whom.
 4. **Backstage.** Where a stage has a hand-off or invisible work, fill the Backstage section (references/service-blueprinting.md).
+5. **Launch audience.** Ask where the issue.md `**Launch:**` audience meets the change. Add a stage only when discovery or adoption changes. For tier 3, also write the customer's stages in journey.md, each marked `new`: from discovery to first value, through the real start path (self-serve sign-up, or a demo, pilot and contract).
 
 Write `docs/plans/<slug>/journey.md` from templates/journey.md, or use the plan directory the project names. Write it as a diff against the canonical journey: changed stages only, each marked `changed` or `new`. For a Small change, write no journey.md. Add two lines to issue.md instead: the previous step and the next step.
 
