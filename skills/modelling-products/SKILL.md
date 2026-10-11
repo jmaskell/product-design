@@ -29,7 +29,7 @@ Tag every entry from code `INFERRED (from <path>)`.
 
 ## 3. From the owner's answers
 
-Tag each owner answer `KNOWN (owner, <date>)` in actors.md and PRODUCT.md.
+Ask in one batch: what it is and for whom; the actors and their jobs; what each must never do; the first outcomes; what is out of scope. Tag each owner answer `KNOWN (owner, <date>)` in actors.md and PRODUCT.md.
 
 ## 4. Depth
 
@@ -38,6 +38,8 @@ Tag each owner answer `KNOWN (owner, <date>)` in actors.md and PRODUCT.md.
 | Sketch | PRODUCT.md and actors.md. No journey file. |
 | Core | Sketch + one journey for each user actor's main job |
 | Full | Core + a journey for each job, 7 at most |
+
+If the owner gave no depth, show the inventory: actors, jobs with IDs, candidate journeys. Recommend one tier, write only Sketch, and ask the owner to confirm the tier.
 
 Use the depth the owner gave. Write nothing past it. A job with no journey file is not yet modelled. Name those jobs in the reply.
 
