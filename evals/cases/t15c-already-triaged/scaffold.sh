@@ -22,3 +22,18 @@ cat >> "$d/decisions.md" <<'EOT'
 
 Finding (Tom Reed, comment, 2026-10-08): SIGNIFICANT · the old date stays on the list — open
 EOT
+# Comment 2 (Tom's correction) is already triaged too. Comment 5 stays Tom's new comment on the same date.
+python3 - "$d" <<'PY'
+import sys
+d = sys.argv[1]
+def rep(p, old, new):
+    s = open(f"{d}/{p}").read()
+    assert old in s, (p, old)
+    open(f"{d}/{p}", "w").write(s.replace(old, new))
+rep("journey.md", "| Agree date | Contractor | Tells the agent a date | — | Tenant availability | Phone or email | Date lives in one inbox | KNOWN (agent interviews) |",
+    "| Agree date | Contractor | Texts the agent a date | — | Tenant availability | Text to the agent's mobile | Date lives on one agent's mobile | KNOWN (Tom Reed, comment, 2026-10-08) |")
+rep("issue.md", "The contractor agrees a visit date with the agent by phone or email. KNOWN (agent interviews)",
+    "The contractor agrees a visit date with the agent by a text to the agent's mobile. KNOWN (Tom Reed, comment, 2026-10-08)")
+rep("decisions.md", "- **Rests on:** UNKNOWN — contractors agree dates by email half the time\n",
+    "- **Rests on:** UNKNOWN — contractors agree dates by email half the time\n\nNeeds review: contractors agree dates by email half the time corrected by Tom Reed, comment, 2026-10-08 — contractors text the agent's mobile\n")
+PY
