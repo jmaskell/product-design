@@ -44,3 +44,15 @@ Scores above are from the fix-round runs (3 runs each, sonnet judge). The `skill
 - t17b gained `verified-updated` (the `verified:` line mentions the audit), `close-unknown` (a Close finding is marked UNKNOWN with an F-number) and `journey-threshold` (the journey no longer says "Over £250"). `old-threshold-gone` uses `(?<!from )£250`, so a "raised from £250 to £500" note passes. The lookbehind loads without a regex error.
 - t17b `reminder-documented` checks a stage table row only (`^\|.*(?:48\s*h|daily|remind|chase).*\|\s*$`, flags `im`). It does not match the unmodified fixture journey (checked by hand with grep -E in a temp copy of `model-with-history.sh`), so the old "did not chase" text in the Trigger line cannot pass it.
 - `no-code-edit` and `no-code-write` use `"file_path"\s*:\s*"(?:[^"]*/)?src/`, so relative paths are caught. In t17b the with arm failed `no-code-edit` in 2 of 3 runs: a run edited a file under `src/` without the skill.
+
+## Added in Task 2 (ruling R7)
+
+The spec (D2 and the modelling-products modes) asks for two behaviours that no case tested: recommend a depth when the owner gives none, and extend the model by one job. Three runs per case, sonnet judge, run against the modelling-products skill at commit e55fbfc.
+
+| Case | With | Without | Failing graders (with arm, runs failed of 3) |
+|---|---|---|---|
+| t16e-depth-not-given | 0.33 | 0.33 | recommends-tier (3) |
+| t16f-extend-one-job (GUARD) | 1.00 | 0.75 | none |
+
+- t16e: the skill fires and writes PRODUCT.md and actors.md, and no journey. The reply lists Core and Full as options and does not pick one. It does not show candidate journeys. The without arm fails the same way.
+- t16f: `mapping-journeys` fires, not `modelling-products`. It writes one new journey with a `Code:` line, because `templates/journey.md` now has that line, and it leaves the model alone. The without arm fails only `code-anchored`. The case passes 0.8 with the current text, so it is a guard. No skill text was added for it.
