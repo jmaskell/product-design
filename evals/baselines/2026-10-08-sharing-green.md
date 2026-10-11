@@ -92,3 +92,18 @@ R1: triage that the router starts reports to the owner and does not publish. SKI
 |---|---|---|---|
 | t15c-already-triaged | 1.00 (1, 1, 1) | 0.50, 0.83, 1.00 | Graders: KNOWN once, Finding once, correction applied, out of scope. RED on the first fix, before the added graders: 0.67 |
 | t15-comment-triage | 1.00 (1, 1, 1) | 0.33, 0.58, 0.50 | revision-bumped passes |
+
+## Live Notion run (2026-10-11)
+
+The first live run of `evals/manual/notion-flow.sh` found three skill faults: a revise request loaded sharing-designs, which designed and then published after its own triage. The fix: sharing-designs publishes only on a share or check-comments request (or an accepted offer at a gate), never designs, and hands revise requests to the router. Reviewers quote the stage and person on a journey grid comment.
+
+Sonnet judge, both arms, `--keep-temp`, 3 runs each, `--json evals/results/live-fix-*.json`.
+
+| Case | With (runs) | Without |
+|---|---|---|
+| t15-comment-triage | 1.00 (1, 1, 1), revision-bumped 3/3 | 0.44 |
+| t15c-already-triaged | 1.00 (1, 1, 1) | 0.78 |
+| t14c-notion-unavailable | 1.00 (1, 1, 1) | 0.50 |
+| t10-stops-at-g1 | 1.00 (1, 1, 1) | 0.00 |
+
+Live re-run, steps 1–5 on a fresh run page: 27 PASS, 0 FAIL, 1 SKIPPED (image width). Confirmed by the revise trace: Skill calls `designing-products`, then `sharing-designs`; one row and one `Review page:` line after it. The check step published revision 2 and superseded row 1. The recheck published nothing. Screenshot upload: SKIPPED, because the user deny rule `Bash(curl *)` blocks the POST to `api.notion.com`. Report: `.superpowers/sdd/2026-10-08-sharing-designs/notion-fix-report.md`.

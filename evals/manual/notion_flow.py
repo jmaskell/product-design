@@ -137,10 +137,19 @@ def cmd_row_url(snap_path, revision):
             return
 
 
+def cmd_created_url(summary):
+    for c in load(summary, {}).get("calls", []):
+        if tool(c) == "notion-create-pages" and not c["error"]:
+            m = re.search(r"https://[^\s\"]*notion[^\s\"]*", c["output"] or "")
+            if m:
+                print(m.group(0).split("?")[0])
+                return
+
+
 def cleanup(work):
     st = load(os.path.join(work, "state.json"), {})
     print("Archive these by hand in Notion (the script deletes nothing):")
-    for k in ("database_url", "row1_url", "row2_url"):
+    for k in ("run_page_url", "database_url", "row1_url", "row2_url"):
         if st.get(k):
             print(f"  {k}: {st[k]}")
     print(f"Scratch repo: {st.get('repo')}")
@@ -344,6 +353,8 @@ def check_share(work):
             imgs += [a or b for a, b in img]
         elif "no screenshot" in sc.lower():
             kinds.append(f"{name}: no-screenshot text ({sc.splitlines()[1][:90]})")
+        elif "no mock" in sc.lower():
+            kinds.append(f"{name}: no mock in the plan")
         else:
             kinds.append(f"{name}: neither")
     o.r(bool(screens) and not any(k.endswith("neither") for k in kinds), "screen image or no-screenshot text", "; ".join(kinds) or "no screens")
@@ -453,6 +464,8 @@ if __name__ == "__main__":
         snapshot(*args)
     elif cmd == "row-url":
         cmd_row_url(*args)
+    elif cmd == "created-url":
+        cmd_created_url(*args)
     elif cmd == "cleanup":
         cleanup(*args)
     elif cmd.startswith("check-"):

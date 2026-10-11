@@ -7,7 +7,7 @@ This script tests the Notion path of `sharing-designs` end to end, in a real Not
 Run one step per call. Each step takes less than 10 minutes:
 
 ```
-evals/manual/notion-flow.sh setup   [workdir]   # scratch repo: lettings fixture + contractor-date at G2
+evals/manual/notion-flow.sh setup   [workdir]   # scratch repo (lettings fixture + contractor-date at G2) and a run page
 evals/manual/notion-flow.sh share   [workdir]   # "Share docs/plans/contractor-date/ with the team."
 evals/manual/notion-flow.sh comment [workdir]   # posts 3 signed comments on the revision 1 row
 evals/manual/notion-flow.sh revise  [workdir]   # "Revise the design ... Stop at the gate."
@@ -25,7 +25,7 @@ Requirements:
 - `npx` for `@playwright/mcp`, with Chromium installed. The script adds `--allow-unrestricted-file-access` so that the browser can open the `file://` mocks.
 
 Warnings:
-- Archive the "Design review" database under the test page before a fresh `setup`. The skill reuses a database it finds there, so old rows break the row-count checks.
+- `setup` creates a new child page under the test page for each run and puts its URL in the Review space line. Each run gets its own "Design review" database. Archive the run page by hand after the run.
 - The sessions use your user settings. The sessions allow `Bash(curl https://upload.notion.com/*)`, but a `deny` rule for `Bash(curl *)` still stops the screenshot upload. The page then shows the skill's "No screenshot" text.
 - The fixture people are fictional. No Notion user matches them, so nobody gets a mention or a notification.
 - The comments come from your own Notion account. Each comment names its author in its text.

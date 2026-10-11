@@ -35,7 +35,7 @@ Keep docs/product/people.md, from templates/people.md two levels above this skil
 
 1. Create the page with notion-create-pages: the parent is the database, with the properties set. Status is Problem review before screens exist, else Design review.
 2. Mention each person in "What we need from you" and on each question they answer. Mention only people with an open question in this revision. Put the same people in Reviewers.
-3. Make each screen and each question its own block, so a comment attaches to it. Write each journey grid as a Notion table. A comment on a grid row does not anchor: it lands on the page. Under each grid, write: "To comment on this grid, quote the stage and the person you mean."
+3. Make each screen and each question its own block, so a comment attaches to it. Write each journey grid as a Notion table. A comment on a grid cannot point to one cell. It anchors to a whole row, or to the page when the text it quotes occurs more than once. Under each grid, write: "To comment on this grid, quote the stage and the person you mean."
 4. If the content is too large for one call, create the page with the Summary. Then add each section as Adding content says.
 
 Confirmed by the owner's run (2026-10-08): mentions in notion-create-pages notify each person. Use the mention form the tool description gives.

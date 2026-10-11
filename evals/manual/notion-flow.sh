@@ -121,14 +121,21 @@ known_urls() {
   grep -ho 'https://[^ ]*notion[^ ]*' "$REPO/AGENTS.md" "$REPO/docs/plans/contractor-date/decisions.md" 2>/dev/null | sort -u | tr '\n' ' '
 }
 
-# Read-only fetch of the test page, the Design review database, each row and each row's comments.
+# The run page: a child of the test page that setup creates, so each run gets its own Design review database.
+run_page() {
+  local u
+  u="$(state_get run_page_url)"
+  echo "${u:-$TEST_PAGE_URL}"
+}
+
+# Read-only fetch of the run page, the Design review database, each row and each row's comments.
 snapshot() {
   local name="snap-$1"
   rm -f "$LOGS/$name.jsonl"
   state_set "${name}_status" ""
   run_claude "$name" 6 "$NOTION_READ" "Read-only task. Do not create, change or comment on anything in Notion. You have few turns: make independent calls in parallel, in one turn.
-Turn 1, all in parallel: notion-fetch on $TEST_PAGE_URL, and notion-fetch on each of these URLs: $(known_urls). For each URL that is a page in a database (not the test page), also call notion-get-comments on it, with block-level discussions and resolved discussions included.
-Turn 2: find the database titled \"Design review\" that is a child of the test page. List all its rows with notion-query-data-sources (SELECT * from its data source). In parallel, for each row you have not fetched yet, call notion-fetch and notion-get-comments on it.
+Turn 1, all in parallel: notion-fetch on $(run_page), and notion-fetch on each of these URLs: $(known_urls). For each URL that is a page in a database (not the run page), also call notion-get-comments on it, with block-level discussions and resolved discussions included.
+Turn 2: find the database titled \"Design review\" that is a child of $(run_page). List all its rows with notion-query-data-sources (SELECT * from its data source). In parallel, for each row you have not fetched yet, call notion-fetch and notion-get-comments on it.
 Then reply with only one JSON object and no other text:
 {\"databases\":[{\"title\":\"\",\"url\":\"\",\"data_source_url\":\"\"}],\"rows\":[{\"title\":\"\",\"url\":\"\"}]}" "$WORK/checks" "$WORK/mcp-notion.json" >/dev/null
   python3 "$HERE/notion_flow.py" snapshot "$LOGS/$name.summary.json" "$WORK/$name.json"
@@ -161,18 +168,26 @@ EOF
     git config commit.gpgsign false
     cp -R "$PLUGIN/evals/fixtures/lettings/." .
     bash "$PLUGIN/evals/fixtures/plan-contractor-date.sh" g2
-    python3 - "$TEST_PAGE_URL" <<'PY'
+    printf '.shots/\n' >> .git/info/exclude
+  ) || { echo "FAIL setup: scratch repo"; exit 1; }
+  state_set repo "$REPO"
+  run_claude newpage 4 "${N}-create-pages" "Create one page with notion-create-pages. Parent: the page $TEST_PAGE_URL. Title: Notion flow $(date '+%Y-%m-%d %H:%M'). Content: Test run of evals/manual/notion-flow.sh. Do nothing else. Reply with only the new page URL." "$WORK/checks" "$WORK/mcp-notion.json"
+  local page
+  page="$(python3 "$HERE/notion_flow.py" created-url "$LOGS/newpage.summary.json")"
+  [ -n "$page" ] || { echo "FAIL setup: no run page created under the test page"; exit 1; }
+  state_set run_page_url "$page"
+  (
+    cd "$REPO" || exit 1
+    python3 - "$page" <<'PY'
 import sys
 p = "AGENTS.md"
 s = open(p).read().rstrip("\n") + f"\n- Review space: notion {sys.argv[1]}\n"
 open(p, "w").write(s)
 PY
-    printf '.shots/\n' >> .git/info/exclude
     git add -A && git commit -qm "fixture: lettings + contractor-date at G2"
   ) || { echo "FAIL setup: scratch repo"; exit 1; }
-  state_set repo "$REPO"
   state_set started "$(date +%s)"
-  echo "setup: scratch repo at $REPO"
+  echo "setup: scratch repo at $REPO; run page $page"
 }
 
 step_share() {
