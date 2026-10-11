@@ -5,4 +5,4 @@ target:
   path: PRODUCT.md
 match: count:0
 ---
-£250
+(?<!from )£250
