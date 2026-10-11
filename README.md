@@ -47,7 +47,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 | `framing-problems` | A request arrives as a solution ("add a button"), or the user outcome is unstated. |
 | `mapping-journeys` | A change touches more than one actor or a hand-off, or risks moving work from one person to another. |
 | `designing-interactions` | The problem and task flow are agreed, and the screens, states or mocks are next. |
-| `reviewing-product-design` | A design is drafted. Fresh agents critique it, one lens each (task walkthrough, service, usability, accessibility, cognitive load, domain risk). The size and the risk pick the lenses. |
+| `reviewing-product-design` | A design is drafted. Fresh agents critique it, one lens each (task walkthrough, service, usability, accessibility, cognitive load, compliance, privacy, marketing). The size and the risk pick the lenses. Compliance runs when PRODUCT.md has a rule or a sensitive domain, privacy when the code stores personal data, and marketing asks the questions of the issue's launch tier. Each compliance or privacy finding gives a fix or the case for the current design, never a verdict. |
 | `sharing-designs` | You ask to share a design or check its comments, or you accept the offer to share at a gate. It never designs: a request to revise goes to the router. |
 | `filing-issues` | An approved design must go to the tracker or a plan folder, work must split into several issues, or a bug skips design. |
 | `modelling-products` | The repo has no product model yet, the plugin joins an existing codebase or a new product starts. It reads the code first and asks only what the code cannot tell. You set the depth. |
@@ -82,7 +82,7 @@ The skills work with nothing set up: they frame from the code and your answers, 
 | `Plan directory` | framing-problems, mapping-journeys, designing-interactions, filing-issues: where `issue.md`, `journey.md`, `design.md`, `decisions.md` and `mocks/` go. The default is `docs/plans/<slug>/`. With `Tracker: none`, filing-issues numbers the folders and the merged folder is the tracker. |
 | `Component source` | designing-interactions: what the mocks are built from. |
 | `Tier triggers` | designing-products: extra predicates that raise the size. |
-| `Domain rules` | reviewing-product-design: the file the domain-risk reviewer checks against. |
+| `Domain rules` | reviewing-product-design: the file the compliance and privacy reviewers check against. |
 | `Review space` | sharing-designs: where the review page goes — a Notion database, a Notion page (gets a new database), or a Claude artifact; unset uses an artifact if available, else a local review.html. |
 
 **Product files:**
