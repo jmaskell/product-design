@@ -9,7 +9,7 @@ Run this before every publish when decisions.md has a `Review page:` line, and w
 | Kind | Do |
 |---|---|
 | Answer to an open question | Add a decisions.md entry: the question, the answer, `KNOWN (<name>, comment, <date>)`. Close the question. |
-| Correction of a fact | Change journey.md or issue.md. Update the evidence label to name the commenter. |
+| Correction of a fact | Change journey.md or issue.md. Update the evidence label to name the commenter. Then find each decisions.md entry whose Evidence or Rests on line uses the old fact. Do not change the decision: add under it `Needs review: <old fact> corrected by <name>, comment, <date> — <new fact>`, and list it for the owner. Only the owner changes a decision. |
 | Objection to the design | Give it a severity, under product-design:reviewing-product-design rules. A stated reason never lowers a severity. Append to decisions.md: `Finding (<name>, comment, <date>): <SEVERITY> · <what> — open`. Report it to the owner. |
 | Out of scope | List it for the owner. |
 | Unclear | Ask the commenter one question. Leave the thread open. |
