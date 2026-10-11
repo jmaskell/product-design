@@ -11,7 +11,7 @@ Evidence: <what in the artifact shows it> (+ evidence tag for any claim about pe
 Consequence: <who is doing what, and what goes wrong for them>
 Recommendation: <optional>
 
-Compliance and Privacy: each finding gives a fix, or the case for the current design, against the owner's recorded interpretation. Never give a verdict. Never send the owner to anyone else for approval.
+Compliance and Privacy: each finding gives a fix, or the case for the current design, against the owner's recorded interpretation. When the rule has `Interpretation: UNKNOWN`, give its open readings as an UNKNOWN finding. Never give a verdict. Never send the owner to anyone else for approval.
 
 Severity: CRITICAL (likely prevents task completion or causes harm), SIGNIFICANT (meaningful friction or risk), MINOR (useful optimisation), UNKNOWN (cannot assess without evidence; write the question).
 

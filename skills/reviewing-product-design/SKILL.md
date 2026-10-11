@@ -18,11 +18,11 @@ The designer never reviews its own work. Each lens runs as a fresh agent with re
 | Usability (flow level) | references/nielsen.md | New screen or new pattern |
 | Accessibility | references/wcag-and-inclusive-design.md | New control or interaction |
 | Cognitive | references/cognitive-principles.md | Dense screens, many choices, recall demands |
-| Compliance | references/lenses.md `## Compliance`; project metadata `Domain rules` | PRODUCT.md has a rule in Capabilities and Constraints, or flags a sensitive domain |
+| Compliance | references/lenses.md `## Compliance`; project metadata `Domain rules` | The work touches a rule that PRODUCT.md or the `Domain rules` file records, or PRODUCT.md flags a sensitive domain |
 | Privacy | references/lenses.md `## Privacy` | The code stores personal data |
-| Marketing | references/lenses.md `## Marketing`, `## Launch tiers` | issue.md has a `Launch:` tier; ask that tier's questions only |
+| Marketing | references/lenses.md `## Marketing`, `## Launch tiers` | issue.md has `Launch:` tier 2 or 3; ask that tier's questions only |
 
-Medium: walkthrough + one lens by risk. Large: walkthrough + service + accessibility + one or two by risk. Compliance and Privacy count as a lens by risk when they apply. Say which lenses run and why, in one line.
+Medium: walkthrough + one lens by risk. Large: walkthrough + service + accessibility + one or two by risk. Compliance, Privacy and Marketing count as lenses by risk. When more apply than there are slots, pick by risk. Say which lenses run and why, in one line, and name each skipped lens.
 
 Screen-level visual and heuristic scoring belongs to the project's visual-design tooling. Do not repeat it.
 
