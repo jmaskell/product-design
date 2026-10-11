@@ -73,3 +73,7 @@ Why each RED grader fails:
 - t20 numeric-unknown (llm now): passes 3/3 in the without arm and 1/3 in the with arm, so it does not separate the arms. Unverified: the judge reads the report differently from run to run. sms-phantom separates them (3/3 vs 0/3). sms-merit passes 3/3 in both arms, so it also does not separate them.
 - t21 launch-tier-0, adoption, reply-merit: `issue.md` has no `Launch:` slot and no adoption text. The with arm stops at G1 ("the process stops here for your approval"), so the reply states no learning plan or spreadsheet exit. no-padding passes 3/3 in both arms.
 - t21b launch-tier-3, start-path, reply-merit: same `Launch:` gap. The journey has no start path for the block management company. The reply stops at G1 and names no buyer alternatives. `alternatives` (issue.md) passes in the with arm only.
+
+## Grader changes
+
+- t18 `offers-model` and t20b `offers-audit` are deleted (ruling R11, Task 5). Both were name-only regex graders: they passed only when the reply named the skill. The without arm cannot know the names `modelling-products` or `auditing-product-models`, so the graders measured the name, not the behaviour (AGENTS.md lesson). GREEN scores t18 and t20b on the merit llm graders (`offers-model-merit`, `offers-audit-merit`) plus `skill-fired`. The RED scores above include the deleted graders. On the merit graders alone, RED was t18 1/3 and t20b 2/3 in the with arm.

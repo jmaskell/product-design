@@ -32,17 +32,17 @@ Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourse
 
 ## 3. Gates
 
-- **G1 — right problem?** Show the outcome, journey, evidence ledger and expert questions. In Large, stop and wait.
+- **G1 — right problem?** Show the outcome, journey, evidence ledger and questions for the expert. In Large, stop and wait.
 - **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on. A CRITICAL finding blocks approval until it is fixed or the owner accepts it with a reason.
 - For Medium and Large, offer product-design:sharing-designs at each gate.
 - A reply approves only the stage you presented.
 
 ## 4. Missing context
 
-PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. If PRODUCT.md or docs/product/actors.md does not exist, offer product-design:modelling-products. If git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date, offer product-design:auditing-product-models. Name the skill in each offer. Never block on a missing model.
+PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. If PRODUCT.md or docs/product/actors.md does not exist, offer product-design:modelling-products. If git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date, offer product-design:auditing-product-models. Never block on a missing model.
 
 ## 5. Handoff
 
 After G2: REQUIRED SUB-SKILL product-design:filing-issues. Do not edit product code.
 
-Project rules win.
+Project rules win over this skill.
