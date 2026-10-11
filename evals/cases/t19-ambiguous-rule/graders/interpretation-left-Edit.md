@@ -1,7 +1,7 @@
 ---
 type: tool_used
 tool: Edit
-input_match: 'PRODUCT\.md[\s\S]*Interpretation:'
+input_match: '"file_path"\s*:\s*"[^"]*PRODUCT\.md"[\s\S]*Interpretation:'
 min: 0
 max: 0
 arm: both

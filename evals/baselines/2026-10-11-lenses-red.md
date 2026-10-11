@@ -9,10 +9,10 @@ Score = mean run score. The `skill-fired` grader counts at weight 1 in both arms
 | t18-actors-missing | 0.56 | 0.00 | offers-model 1/3, offers-model-merit 1/3 | RED |
 | t18b-terms-signals | 0.33 | 0.17 | terms-section 0/3, terms-code-names 0/3, signals 0/3, signal-real-event 0/3 | RED |
 | t19-ambiguous-rule | 0.83 | 0.61 | readings 0/3 | RED on `readings` (score above 0.8 because 5 other graders pass) |
-| t19b-audit-position | 1.00 | 0.72 | none | GUARD (with arm already passes every grader; existing audit skill) |
+| t19b-audit-position | 1.00 | 0.72 | none | PASSES-WITH (current skills) |
 | t19c-no-signoff | 0.50 | 0.25 | compliance-lens 0/3, no-gate-files 0/3 | RED |
-| t19d-privacy-gdpr | 0.95 | 0.71 | basis-left 1/3 fails | GUARD (with arm at 0.95) |
-| t19e-privacy-ccpa | 0.89 | 0.33 | no-lawful-basis 1/3 fails | GUARD (with arm at 0.89) |
+| t19d-privacy-gdpr | 0.95 | 0.71 | basis-left 1/3 fails | PASSES-WITH (current skills) |
+| t19e-privacy-ccpa | 0.89 | 0.33 | no-lawful-basis 1/3 fails | PASSES-WITH (current skills) |
 | t20-claims | 0.73 | 0.33 | numeric-unknown 0/3, valid-not-flagged 1/3 fails | RED |
 | t20b-stale-offer | 0.56 | 0.11 | offers-audit 0/3, offers-audit-merit 1/3 fails | RED |
 | t21-internal-tool | 0.50 | 0.17 | launch-tier-0 0/3, adoption 0/3 | RED |
@@ -42,9 +42,9 @@ Per-grader pass counts (with arm, out of 3):
 - t21 launch-tier-0, adoption: `issue.md` has no `Launch:` slot yet. The with arm writes `Phases: Large` and no adoption section.
 - t21b launch-tier-3, start-path: same, no `Launch:` slot. The journey runs from the fault to the fix and has no start path for the block management company.
 
-## GUARD cases
+## PASSES-WITH cases (current skills)
 
-t19b, t19d, t19e pass in the with arm on current skill text. They are regression guards for the audit skill, not RED evidence for new text. In t19b, `terms-drift` and `signal-missing` pass in both arms. Unverified: the likely cause is that the fixture names `repair_closed` and `tickets.ts` in the appended rows, so any reader finds them.
+t19b, t19d, t19e pass in the with arm on current skill text. They guard the audit skill and are not RED evidence for new text. AGENTS.md reserves GUARD for a case whose without arm scores 0.8 or more; none of these did in round 1. In round 2, t19d scored 0.86 in the without arm, so t19d now also meets the GUARD test. In t19b, `terms-drift` and `signal-missing` pass in both arms. Unverified: the likely cause is that the fixture names `repair_closed` and `tickets.ts` in the appended rows, so any reader finds them.
 
 ## Grader fixes made before this record
 
@@ -53,3 +53,23 @@ t19b, t19d, t19e pass in the with arm on current skill text. They are regression
 - t19: the `interpretation-left` regex is replaced by two `tool_used` graders (Edit, Write) with `input_match: 'PRODUCT\.md[\s\S]*Interpretation:'`, min 0, max 0 (ruling R2).
 - t19c: the prompt adds "This is a Medium change." (ruling R3).
 - No grader was loosened or tightened to move a without-arm score.
+
+## Round 2 (fix round 1): re-run of t19, t19c, t19d, t20, t21, t21b
+
+Command per case: `claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --judge-model sonnet --case <case> --runs 3 -j 6 --json evals/results/lenses-red2-<case>.json` (t19c also `--keep-temp`). These scores replace the round 1 scores for these six cases. t18, t18b, t19b, t19e, t20b are unchanged from round 1.
+
+| Case | With | Without | Failing graders (with arm) | Status |
+|---|---|---|---|---|
+| t19-ambiguous-rule | 0.83 | 0.67 | readings 0/3 | RED on `readings` |
+| t19c-no-signoff | 0.75 | 0.25 | compliance-lens 0/3 | RED on `compliance-lens` |
+| t19d-privacy-gdpr | 0.90 | 0.86 | basis-left 2/3 fail | PASSES-WITH; without arm 0.86 meets the GUARD test |
+| t20-claims | 0.83 | 0.61 | numeric-unknown 2/3 fail, valid-not-flagged 1/3 fails | RED on `sms-phantom` (without 0/3, with 3/3); `numeric-unknown` is weak |
+| t21-internal-tool | 0.40 | 0.27 | launch-tier-0 0/3, adoption 0/3, reply-merit 0/3 | RED |
+| t21b-big-launch | 0.40 | 0.00 | launch-tier-3 0/3, start-path 0/3, reply-merit 0/3 | RED |
+
+Why each RED grader fails:
+- t19 readings: the with arm stops at G1 for a Large change and the reply says "no mocks yet". It sets out no readings of "fair and shown clearly". The without arm writes a plan with no readings. The `interpretation-left` graders (now anchored to the PRODUCT.md path) pass 3/3 in both arms, so they only guard against edits.
+- t19c compliance-lens: with the approved issue.md and journey.md in the scaffold, the with arm now reaches G2 and writes `design.md`, `decisions.md` and three mocks (kept trace). Its decisions.md has no `Reviewed: ... compliance` line. It raised the tier from Medium to Large and ran four review lenses. The without arm writes only `design.md`, so `no-gate-files` fails there by file absence and passes in the with arm.
+- t20 numeric-unknown (llm now): passes 3/3 in the without arm and 1/3 in the with arm, so it does not separate the arms. Unverified: the judge reads the report differently from run to run. sms-phantom separates them (3/3 vs 0/3). sms-merit passes 3/3 in both arms, so it also does not separate them.
+- t21 launch-tier-0, adoption, reply-merit: `issue.md` has no `Launch:` slot and no adoption text. The with arm stops at G1 ("the process stops here for your approval"), so the reply states no learning plan or spreadsheet exit. no-padding passes 3/3 in both arms.
+- t21b launch-tier-3, start-path, reply-merit: same `Launch:` gap. The journey has no start path for the block management company. The reply stops at G1 and names no buyer alternatives. `alternatives` (issue.md) passes in the with arm only.
