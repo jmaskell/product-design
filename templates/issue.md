@@ -30,5 +30,8 @@ After: <what they do just after> <tag>
 ## Scope
 In: … Out: …
 
+## Launch
+- <question of this tier> — <proposed answer> <tag>
+
 ## Acceptance criteria
 - [ ] <independently checkable>
