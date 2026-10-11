@@ -1,6 +1,6 @@
 ---
 name: designing-products
-description: Use when asked to design, define, shape or scope a feature, flow or product change before engineering starts, or when told to "design this properly".
+description: Use when asked to design, define, shape or scope a feature, flow or product change before engineering starts, when asked to revise a design or take it to its next gate, or when told to "design this properly".
 ---
 
 # Designing products

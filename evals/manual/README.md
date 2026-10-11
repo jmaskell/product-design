@@ -26,6 +26,6 @@ Requirements:
 
 Warnings:
 - Archive the "Design review" database under the test page before a fresh `setup`. The skill reuses a database it finds there, so old rows break the row-count checks.
-- The sessions use your user settings. A `deny` rule for `Bash(curl *)` stops the screenshot upload, and the page then shows the skill's "No screenshot" text.
+- The sessions use your user settings. The sessions allow `Bash(curl https://upload.notion.com/*)`, but a `deny` rule for `Bash(curl *)` still stops the screenshot upload. The page then shows the skill's "No screenshot" text.
 - The fixture people are fictional. No Notion user matches them, so nobody gets a mention or a notification.
 - The comments come from your own Notion account. Each comment names its author in its text.

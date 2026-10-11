@@ -387,6 +387,9 @@ def check_revise(work):
     rl = review_lines(work)
     o.r(len(rl) == 1, "no new Review page line", f"{len(rl)} Review page line(s)")
     check_rows(o, rows(snap), 1)
+    s = load(os.path.join(work, "logs", "revise.summary.json"), {})
+    skills = [c["input"].get("skill", "") for c in s.get("calls", []) if c["name"] == "Skill"]
+    o.r(any(k.endswith("designing-products") for k in skills), "router loaded", f"Skill calls: {skills}")
 
 
 def check_check(work):

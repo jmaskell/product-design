@@ -1,11 +1,13 @@
 ---
 name: sharing-designs
-description: Use when a design is at a gate and the team must review it, when asked to share a design, publish it for feedback or get the team's comments, or when asked to check the comments on a shared design.
+description: Use when asked to share a design with the team, publish it for feedback, or get or check the team's comments on a shared design, or when the owner accepts an offer to share at a gate. Not for a request to revise or design: that goes to product-design:designing-products.
 ---
 
 # Sharing designs
 
 Rebuild the page from the plan folder every time. Never edit it by hand.
+
+This skill shares a design and triages its comments. It never designs: it runs no review agents, makes no mock and writes no new design decision. If the owner asks to revise or design, load product-design:designing-products and follow it. It triages first.
 
 ## 1. Choose the target
 
@@ -21,7 +23,7 @@ The owner's request wins. If the target needs a tool this session lacks, say so,
 
 ## 2. Triage first
 
-If decisions.md has a `Review page:` line, or the owner asks you to check the comments, run section 6 first.
+If decisions.md has a `Review page:` line, or the owner asks you to check the comments, run section 6 first. Go on to section 3 only when triage.md says to publish.
 
 When the router started this triage, stop after section 6.
 

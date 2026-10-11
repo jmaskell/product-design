@@ -35,7 +35,7 @@ Keep docs/product/people.md, from templates/people.md two levels above this skil
 
 1. Create the page with notion-create-pages: the parent is the database, with the properties set. Status is Problem review before screens exist, else Design review.
 2. Mention each person in "What we need from you" and on each question they answer. Mention only people with an open question in this revision. Put the same people in Reviewers.
-3. Make each table row, screen and question its own block, so a comment attaches to it. Write each journey grid as a Notion table.
+3. Make each screen and each question its own block, so a comment attaches to it. Write each journey grid as a Notion table. A comment on a grid row does not anchor: it lands on the page. Under each grid, write: "To comment on this grid, quote the stage and the person you mean."
 4. If the content is too large for one call, create the page with the Summary. Then add each section as Adding content says.
 
 Confirmed by the owner's run (2026-10-08): mentions in notion-create-pages notify each person. Use the mention form the tool description gives.
@@ -70,4 +70,4 @@ Never rewrite a published page: a rewrite deletes blocks and their comments.
 
 ## Comments
 
-Read with notion-get-comments on the page, with block-level and resolved discussions. Also read the comments on every earlier row named in the `Review page:` lines. Skip a discussion whose last comment is your reply. Triage only the comments after it. Reply in each discussion, on any row, with notion-create-comment. Put any discussion you cannot reply in into your message to the owner.
+Read with notion-get-comments on the page, with block-level and resolved discussions. Also read the comments on every earlier row named in the `Review page:` lines. Skip a discussion whose last comment is your reply. Triage only the comments after it. Match a page-level comment to its grid row by the stage and the person it quotes. Reply in each discussion, on any row, with notion-create-comment. Put any discussion you cannot reply in into your message to the owner.

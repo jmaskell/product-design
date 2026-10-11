@@ -42,19 +42,19 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 
 | Skill | Starts when |
 |---|---|
-| `designing-products` | You ask to design, define, shape or scope a feature. This is the router. |
+| `designing-products` | You ask to design, define, shape, scope or revise a feature. This is the router. |
 | `framing-problems` | A request arrives as a solution ("add a button"), or the user outcome is unstated. |
 | `mapping-journeys` | A change touches more than one actor or a hand-off, or risks moving work from one person to another. |
 | `designing-interactions` | The problem and task flow are agreed, and the screens, states or mocks are next. |
 | `reviewing-product-design` | A design is drafted. Fresh agents critique it, one lens each (task walkthrough, service, usability, accessibility, cognitive load, domain risk). The size and the risk pick the lenses. |
-| `sharing-designs` | A design is at a gate and the team must review it, or you ask to share a design or check its comments. |
+| `sharing-designs` | You ask to share a design or check its comments, or you accept the offer to share at a gate. It never designs: a request to revise goes to the router. |
 | `filing-issues` | An approved design must go to the tracker or a plan folder, work must split into several issues, or a bug skips design. |
 
 Every claim about people carries an evidence label: `KNOWN (source)`, `INFERRED (from what)`, `ASSUMED` or `UNKNOWN`. Every finding has a severity: CRITICAL, SIGNIFICANT, MINOR or UNKNOWN.
 
 ## Sharing for review
 
-Set `Review space` to a Notion database, a Notion page, or `artifact`. With a page, the first share creates a "Design review" database in it and asks you to put the database URL in the line. The skill rebuilds the review page from the plan files. The journey shows as two swim-lane grids, Today and Proposed: one row per person, one column per stage, and ◆ on each step that changes. In Notion, the text goes up first and the screenshots follow, one per screen. In Notion, each reviewer with an open question is tagged and notified, from the people list in `docs/product/people.md`. The next design run triages the comments before anything else and reports to you without publishing. A request to check the comments triages and then publishes the next revision. The skill skips threads it already answered and comments that decisions.md already records. An answer lands in decisions.md. A fact correction changes journey.md or issue.md. An objection becomes a finding in decisions.md, and the skill reports it to you. A comment never approves a gate.
+Set `Review space` to a Notion database, a Notion page, or `artifact`. With a page, the first share creates a "Design review" database in it and asks you to put the database URL in the line. The skill rebuilds the review page from the plan files. The journey shows as two swim-lane grids, Today and Proposed: one row per person, one column per stage, and ◆ on each step that changes. In Notion, the text goes up first and the screenshots follow, one per screen. In Notion, a comment on a journey grid lands on the page, so the page asks reviewers to quote the stage and person they mean. In Notion, each reviewer with an open question is tagged and notified, from the people list in `docs/product/people.md`. The skill publishes only when you ask to share or to check the comments, or when you accept the offer at a gate. The next design run, or a request to revise, triages the comments before anything else and reports to you without publishing. A request to check the comments triages and then publishes the next revision, if anything changed. The skill skips threads it already answered and comments that decisions.md already records. An answer lands in decisions.md. A fact correction changes journey.md or issue.md. An objection becomes a finding in decisions.md, and the skill reports it to you. A comment never approves a gate.
 
 ## Adopting in a project
 

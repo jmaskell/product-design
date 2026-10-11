@@ -23,7 +23,7 @@ usage() {
 N="mcp__notion__notion"
 NOTION_READ="${N}-fetch,${N}-search,${N}-get-comments,${N}-query-data-sources"
 NOTION_SKILL="$NOTION_READ,${N}-create-database,${N}-update-data-source,${N}-create-pages,${N}-update-page,${N}-get-users,${N}-create-file-upload,${N}-create-comment"
-SESSION_TOOLS="Read,Write,Edit,Bash,Glob,Grep,Skill,Agent,TodoWrite,$NOTION_SKILL,mcp__playwright"
+SESSION_TOOLS="Read,Write,Edit,Bash,Glob,Grep,Skill,Agent,TodoWrite,$NOTION_SKILL,mcp__playwright,Bash(curl https://upload.notion.com/*)"
 
 HEADLESS="You are running headless. Nobody can answer questions: do not call AskUserQuestion and do not wait for a reply. Where you would ask the owner, use the answers below, state any other assumption, and go on."
 OWNER_ANSWERS="The owner's answers, given in advance:
@@ -191,7 +191,7 @@ step_comment() {
   state_set row1_url "$row"
   run_claude comment 20 "${N}-fetch,${N}-create-comment" "Post three comments on the Notion page $row. Read the page first with notion-fetch. Create exactly three new discussions with notion-create-comment, one call each, in markdown. Anchor each one to the block named below with selection_with_ellipsis. If an anchor fails, post that comment on the page itself, with no anchor. Do nothing else.
 1. On question 1 in the Questions section: \"Yes, about one visit in five moves, usually the day before. — Priya Shah\"
-2. On the \"Agree date\" row of the journey table: \"Contractors text the agent's mobile. — Tom Reed\"
+2. On the \"Agree date\" row of the journey table, quoting the stage and the person as the page asks: \"Agree date, Contractor: contractors text the agent's mobile. — Tom Reed\"
 3. On the repair-list screen: \"If the date changes, the old date stays on the list. — Tom Reed\"
 Reply with only this JSON: {\"comments\":[{\"n\":1,\"anchored\":true,\"selection\":\"\",\"discussion_id\":\"\"}]}" "$WORK/checks" "$WORK/mcp-notion.json"
   python3 "$HERE/notion_flow.py" show "$LOGS/comment.summary.json"
