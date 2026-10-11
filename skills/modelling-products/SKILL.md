@@ -11,7 +11,7 @@ The model is PRODUCT.md, docs/product/actors.md and canonical journeys in docs/p
 
 | State | Mode |
 |---|---|
-| actors.md exists | Stop. Write nothing. Say the model exists. Offer product-design:auditing-product-models to check it against the code, or ask which job to add. |
+| actors.md exists | Fill only a missing or empty PRODUCT.md (Edit or new file), then stop. Say the model exists. Offer product-design:auditing-product-models to check it against the code, or product-design:mapping-journeys to add one job's journey. |
 | Application source exists | From code (section 2) |
 | No application source | From the owner's answers (section 3) |
 
@@ -19,17 +19,17 @@ Never Write over an existing PRODUCT.md, actors.md or journey. Use Edit, and fil
 
 ## 2. From code
 
-Read the code before you ask: routes, role checks, emailed links, scheduled jobs, rules, and their comments.
+Read the code before you ask: routes, role checks, links sent by email or message, scheduled jobs, rules, and their comments.
 
 - Actor: each role, each person who acts through email or a link, each scheduled job (kind `system`).
 - Journey: one actor, one outcome, across routes. Note its 1–4 entry-point files for the `Code:` line.
-- Contradiction: code that disagrees with itself, a comment or the docs. List it. Never pick a side.
+- Contradiction: code that disagrees with itself, a comment or the docs. List each contradiction as `UNKNOWN` in the journey's Open unknowns, or in actors.md notes if no journey exists. Never pick a side.
 
 Tag every entry from code `INFERRED (from <path>)`.
 
 ## 3. From the owner's answers
 
-Ask in one batch: what it is and for whom; the actors and their jobs; what each must never do; the first outcomes; what is out of scope. Tag each owner answer `KNOWN (owner, <date>)` in actors.md and PRODUCT.md.
+Ask in one batch: what it is and for whom; the actors and their jobs; what each must never do; the first outcomes; what is out of scope. Tag the owner's intent and constraints `KNOWN (owner, <date>)`. Tag what people do `ASSUMED` unless the owner names a source.
 
 ## 4. Depth
 
@@ -45,9 +45,10 @@ Use the depth the owner gave. Write nothing past it. A job with no journey file 
 
 ## 5. Write
 
+- PRODUCT.md sections: Platform, Users, Product Purpose, Capabilities and Constraints, Evidence on Hand, Product Principles. Never add a section. Ask whether the domain is sensitive.
 - actors.md: Kind is exactly `user`, `internal role`, `external actor` or `system`, one per actor row. Every job has an ID: a letter and a number (T1, A2). Relationship rows use only the template's verbs.
-- Journeys: the template header with a `Code:` line that names the entry-point files.
+- Journeys: the template header with a `Code:` line that names the entry-point files. A journey is 120 lines or less.
 
 ## 6. Ask
 
-End with the questions only the owner can answer. Give each contradiction with both values, and ask which is right.
+End with the questions only the owner can answer. Give each contradiction with both values, and ask which is right. When the owner answers, change the tag to `KNOWN (owner, <date>)`.
