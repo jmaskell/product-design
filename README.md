@@ -88,6 +88,8 @@ The skills work with nothing set up: they frame from the code and your answers, 
 
 - `PRODUCT.md` at the repo root: the product, its users, and any sensitive-domain flag. A sensitive domain raises the work to Large. PRODUCT.md alone is enough to start.
 - `docs/product/actors.md` and `docs/product/journeys/`: the saved actors and journeys. The skills write these files from `templates/`: `actors.md`, `journey.md`, `issue.md`, `design.md` and `decisions.md`. sharing-designs builds the team review page from `templates/review-page.md`, publishes it with `skills/sharing-designs/artifact.md` or `skills/sharing-designs/notion.md`, and triages the comments with `skills/sharing-designs/triage.md`.
+- `actors.md` holds a `Signal:` line per job and the relationship verb `pays for`. `issue.md` holds a `**Launch:**` line: tier, audience and goal, provisional until the owner confirms.
+- `references/lenses.md` holds the question list for each role (PM, Designer, Engineering, Commercial, Marketing, Support and ops, Compliance, Privacy, CEO), the launch tiers, and the readings of a rule. Each question names its home in the model and what Claude can check from code or a site.
 - modelling-products writes the first model. Each canonical journey has a `Code:` line with its entry-point files. auditing-product-models sets the journey's `audited:` line. It never changes `verified:`.
 - `docs/product/people.md`: names, roles and Notion user IDs for tagging reviewers; no email addresses. The skill writes it from `templates/people.md`.
 

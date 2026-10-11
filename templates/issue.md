@@ -2,6 +2,7 @@
 
 **Phases:** <tier> — <one-line reason>
 **Jobs:** <job IDs from docs/product/actors.md, with a clause each>
+**Launch:** <tier> — <audience> — <goal> (provisional until the owner confirms)
 
 ## Outcome
 <what is true for the person when this works, in their words>
