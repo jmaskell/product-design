@@ -96,8 +96,7 @@ A rule with no recorded interpretation gets `## Readings of a rule`.
 |---|---|---|
 | Which rule applies, and what is its source? | Capabilities and Constraints | Nothing: the owner names the rule |
 | What is our interpretation, and why is the risk acceptable? | Capabilities and Constraints | Code against the recorded interpretation |
-| Where does the person give consent? | Journey stages | Consent fields and the screens that set them |
-| What does the audit trail record? | Journey Backstage | Audit tables and log writes |
+| Which steps does the rule touch (notice, consent, disclosure, a record), and where? | Journey stages; Capabilities and Constraints | The screens, fields and writes at those steps |
 | How long do we keep each record? | Capabilities and Constraints | Retention jobs and delete paths |
 
 ## Privacy
@@ -112,18 +111,20 @@ Give readings and build the case for the owner's position. Never give a verdict.
 | Which processors receive it, in which countries? | Platform; actors.md (kind: system) | Third-party SDKs, API clients and their regions |
 | How does a person see their data? | Journey stages | An access or download path |
 | How does a person export it? | Journey stages | An export path |
-| How does a person delete it? | Journey stages; Backstage | A delete path that reaches every store and processor |
+| How does a person delete it? | Journey stages; Backstage | A delete path that reaches every store and processor, or the recorded exception (legal retention, backups) |
+
+A right the regime does not grant is not a gap.
 
 Use the terms of the regime the owner names in Capabilities and Constraints.
-Unverified: the mapping below is a summary. Quote the regime's own text when a reading depends on a term.
+Summary as of 2026-10-11. Check the current law before relying on a cell.
 
 | Concept | GDPR / UK GDPR | CCPA/CPRA | Others |
 |---|---|---|---|
-| Reason to process | Lawful basis | Business purpose; notice at collection | LGPD: legal basis; PIPEDA: consent; Australian Privacy Act: primary purpose (APP 6) |
-| A person sees their data | Right of access | Right to know | LGPD, PIPEDA, Australian Privacy Act: access; HIPAA: right of access |
-| A person deletes their data | Right to erasure | Right to delete | LGPD: deletion; PIPEDA: withdraw consent; HIPAA: no general right |
-| Data goes to another company | Processor; international transfer | Service provider; sale or share, opt-out | LGPD: international transfer; HIPAA: business associate |
-| Sensitive data | Special category data | Sensitive personal information | LGPD: sensitive data; HIPAA: protected health information |
+| Reason to process | Lawful basis | No lawful-basis rule; notice at collection; reasonably necessary and proportionate (§1798.100(c)) | LGPD: legal basis. PIPEDA: consent. Australian Privacy Act: collection reasonably necessary (APP 3); use for the primary purpose (APP 6). HIPAA: permitted uses: treatment, payment, health care operations |
+| A person sees their data | Right of access | Right to know | LGPD, PIPEDA, Australian Privacy Act: access. HIPAA: right of access |
+| A person deletes their data | Right to erasure | Right to delete | LGPD: deletion. PIPEDA: no general right; withdraw consent (4.3.8); destroy when no longer needed (4.5.3). Australian Privacy Act: no general right; destroy or de-identify when no longer needed (APP 11.2). HIPAA: no general right |
+| Data goes to another company | Processor; international transfer | Service provider; sale or share, opt-out | LGPD: international transfer. PIPEDA: transfer for processing; the organisation stays accountable (4.1.3). Australian Privacy Act: cross-border disclosure (APP 8). HIPAA: business associate |
+| Sensitive data | Special category data | Sensitive personal information | LGPD: sensitive data. PIPEDA: no defined sensitive class; sensitivity depends on context. Australian Privacy Act: sensitive information. HIPAA: protected health information (PHI) is the whole regulated data set, not a subset |
 
 ## CEO
 
@@ -136,9 +137,9 @@ A summary of the other lenses: purpose, who, evidence, the 3 biggest risks.
 | 0 Internal | A tool for our own staff | Who uses it and what they use today; how they learn it (training, a walkthrough, a champion); how the old way stops; what shows they adopted it |
 | 1 Quiet | A small change for existing users | Where they meet it at the moment of need; whether support needs to know |
 | 2 Feature | A change existing users must notice, or that drives upgrade | Which segment gains; the one-line message; where they learn of it; adoption signal; who in sales or support needs a brief |
-| 3 Launch | A new product, market or repositioning | Full product level: alternatives incl. "do nothing", category, segment, the four forces (Moesta), promise vs first value, claims vs proof, the path from discovery to first value |
+| 3 Launch | A new product, market or repositioning | Full product level: alternatives incl. "do nothing", category, segment, the four forces (Moesta), promise vs first value, claims vs proof, the path from discovery to first value through the real start path (self-serve, or demo, pilot and contract) |
 
-Channels are examples, not steps. Never ask a lower tier the questions of a higher tier.
+Channels (changelog, in-app, email) are examples, not steps. Never ask a lower tier the questions of a higher tier.
 Tier 3 answers live in the PRODUCT.md `Market` section: alternatives, category, segment traits and losses.
 
 ## Readings of a rule
