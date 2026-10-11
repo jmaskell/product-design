@@ -16,8 +16,8 @@ Neither skill exists. Every case scores below 0.8 in the with arm. Three runs pe
 - t16, t16b: the run writes product docs without the skill, but never calls `modelling-products`. It often omits the four actor kinds, the job IDs or the `KNOWN (owner` tags. The without arm also lacks the relationship verbs and INFERRED tags.
 - t16c: the run writes `actors.md` well enough, but the skill does not fire and the kinds column is sometimes missing.
 - t16d: the run does not overwrite the existing docs. It does not always say that they exist or offer an audit (`offers-audit`).
-- t17: the run audits well without the skill. It finds the threshold drift, the chase-landlord gap, the stale anchor and the Close phantom. It fails only on `skill-fired` and sometimes `asks-ruling`.
-- t17b: the run applies the rulings, except that `PRODUCT.md` keeps £250 in two lines (9 and 16 of the lettings fixture). `old-threshold-gone` fails in every run in both arms.
+- t17: the run audits well without the skill. It finds the threshold drift, the chase-landlord gap, the stale anchor and the Close phantom. It fails `skill-fired` and `severity-set` in every run: it does not use the plugin's CRITICAL, SIGNIFICANT and MINOR set. It fails `likely-intended` in 2 of 3 runs: the threshold finding does not name the code as intended with the commit or its date.
+- t17b: the run applies the rulings. It fails `skill-fired`, `close-unknown` and `verified-updated` in every run: the Close finding gets no `UNKNOWN` Open unknown with its F-number, and the `verified:` line does not mention the audit. It edits a file under `src/` in 2 of 3 runs (`no-code-edit`). In 1 of 3 runs `PRODUCT.md` keeps £250 (`old-threshold-gone`).
 
 ## Tightened after a first pass
 
@@ -35,6 +35,7 @@ Reason: the point of each case is that the named skill fires. Without the skill 
 - `--scaffold` accepts t16b with no scaffold and no `context:` block. R1 was not needed.
 - No case failed to load. All graders in the brief load as written.
 - The `skill-fired` grader (`tool_used: Skill`) counts in the with-arm score even though the harness calls `tool_used: Skill` graders a plugin-fired indicator. A missing skill lowers the score.
+
 ## Fix round 1 (review rulings)
 
 Scores above are from the fix-round runs (3 runs each, sonnet judge). The `skill-fired` weights of 4 are gone; every `skill-fired` grader has weight 1.

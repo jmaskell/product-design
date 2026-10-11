@@ -19,6 +19,8 @@ Commits: e55fbfc (modelling-products), f716257 (modelling-products tier fix), 80
 
 Every case meets the 0.8 threshold in the with arm. Compare the RED record: t16 0.70, t16b 0.56, t16c 0.67, t16e 0.33, t17 0.78, t17b 0.67.
 
+These rows are older than the final fix wave. The section "Final fix wave" below has the scores on the final text.
+
 ## Guard cases
 
 These cases check that the skill does no harm. They are not RED to GREEN evidence.
@@ -74,7 +76,7 @@ All points come from the without-arm failures in the table above.
 - `KNOWN (owner, <date>)` tags on interview answers (0/5 on owner-source in t16b).
 - The depth the owner gave, held (0/5 on depth-held in t16).
 - One recommended tier when the owner gives no depth, with no journey written before the owner agrees (0/5 on recommends-tier in t16e).
-- The `actors.md` path itself. The without arm writes other file names (for example `journeys.md`, `rules.md`). Those graders partly measure a path that only the skill names.
+- The plugin's conventions at the plugin's paths. The without arm writes other file names (for example `journeys.md`, `rules.md`) and no `actors.md`. The actors.md graders partly measure the path, not only the behaviour.
 - The skill does not add the price-threshold question. The without arm asks it as well (threshold-question 5/5 in both arms).
 
 ### auditing-product-models
@@ -82,8 +84,7 @@ All points come from the without-arm failures in the table above.
 Base Claude already finds the seeded faults: the threshold drift, the chase-landlord gap, the stale anchor and the Close phantom (t17 without arm 5/5 on each). The skill adds convention and rulings handling.
 
 - The plugin severity set CRITICAL, SIGNIFICANT, MINOR (severity-set 0/5 without).
-- A likely-intended read that cites the commit (RED: failed in 2 of 3 with-arm runs; the without arm passes in GREEN).
-- The `verified:` line updated after a "code is right" ruling (0/5 without).
+- The `audited:` line set after the rulings, with `verified:` left alone (audited-line 0/5 without, final fix wave). Before ruling R11 the skill set `verified:` instead (verified-updated 0/5 without).
 - An `UNKNOWN` Open unknown with the finding ID after a "model is right" ruling (0/5 without).
 - The old value replaced everywhere in the model (old-threshold-gone 0/5 without).
 - No edit to product code after a "docs are right" ruling. The without arm edited a file under `src/` in 2 of 3 RED runs. In GREEN, no-code-edit scores 4/5 without. Confirmed by a grep of the 10 with-arm traces: no `sed -i`, `perl -pi` or redirect to `src/`.
@@ -94,4 +95,40 @@ Base Claude already finds the seeded faults: the threshold drift, the chase-land
 - The interview batch line in modelling-products has no case. The harness cannot answer questions.
 - The t16f job-cited failure (4/5): Unverified: I did not read that trace.
 - The no-write graders can miss a Bash heredoc or `sed -i` (deferred from Task 1). I did not test that path.
-- Deferred minors: the modelling-products mode row offers "ask which job to add" with no extend mode; the "Unruled contradiction" line says "list it" without `UNKNOWN`; the router has two `-ing` forms.
+- `likely-intended` is not in the list above. It failed in 2 of 3 RED with-arm runs, but the without arm passes it in GREEN, so it shows no skill effect.
+- The router has two `-ing` forms. It is at 400 of 400 words (ruling R12 leaves them).
+
+## Final fix wave (rulings R11, R12)
+
+Text: modelling-products, auditing-product-models, `templates/journey.md` and README at 1fc93e8. Graders at 12fdab3. The router did not change (cbb3436). Sonnet judge, both arms, Claude Code 2.1.287.
+
+| Case | With | Without | Runs | Failing graders (with arm) | Note |
+|---|---|---|---|---|---|
+| t16-model-from-code | 0.98 | 0.18 | 5 | contradiction-unknown 1/5 (grader fault, fixed in 3b4c0bb) | product-sections 5/5 with, 0/5 without |
+| t16b-model-from-interview | 1.00 | 0.27 | 5 | none | owner-source 5/5 with the rule 4 tag line |
+| t16c-model-partial | 1.00 | 0.25 | 5 | none | |
+| t16d-model-exists (GUARD) | 1.00 | 0.73 | 5 | none | new mode row |
+| t16e-depth-not-given | 1.00 | 0.33 | 3 | none | |
+| t17-audit-report (near-guard) | 1.00 | 0.83 | 5 | none | journey-unchanged 5/5 in both arms |
+| t17b-audit-rulings | 1.00 | 0.71 | 5 | none | audited-line 5/5 with, 0/5 without; verified-kept 5/5 both arms |
+| smoke | 1.00 | 0.00 | 3 | none | each with run stops at the case's 4-turn limit after the skill fires |
+| t8b-partial-model (GUARD) | 0.67 | 1.00 | 3 | uses-product-md 1/3 | grader before 12fdab3 |
+| t8b-partial-model (GUARD) | 1.00 | 1.00 | 5 | none | grader at 12fdab3 |
+
+- t16 `contradiction-unknown`: one with-arm run wrote "`APPROVAL_THRESHOLD_GBP = 500` … says \"above £250\". Which is right? — UNKNOWN". The pattern `[^\\]*` stopped at the backslash of the escaped quote. Commit 3b4c0bb lets the pattern cross `\"`. The fixed pattern matches that trace, and matches no without-arm trace (Confirmed by a Python `re.search` over the 1 failed with-arm trace and the 8 without-arm traces of the RED and final runs). I did not re-run t16 after the grader change. The skill text did not change.
+- t8b `uses-product-md`: the failed run said "There's no saved journey or list of actors in `docs/product/` yet" and offered a model. That is true in the t8b fixture: PRODUCT.md exists, actors.md does not. The judge read it as "the product docs are absent". Commit 12fdab3 allows that true statement. The grader still fails a reply that says PRODUCT.md or the product model is missing. 3 of the 5 later runs offer product-design:modelling-products for the missing actors.md. The router offer is keyed to a missing PRODUCT.md, so these offers come from the modelling-products description.
+- t16d and t8b are guards. t8b has delta 0.
+- Not re-run on 1fc93e8: t16f (it reads `templates/journey.md`, which gained the `audited:` line), t8, t10 and t11.
+
+### Spec lines with no eval cover
+
+The harness cannot answer questions, and no case sets up these states. Each line stays because the spec asks for it.
+
+- modelling-products §6: "When the owner answers, change the tag to `KNOWN (owner, <date>)`." (A3)
+- modelling-products §3: "Tag what people do `ASSUMED` unless the owner names a source." (A4; t16b checks only that `KNOWN (owner` stays.)
+- modelling-products §1: "Fill only a missing or empty PRODUCT.md". t16d has a full PRODUCT.md, so it tests only the stop and the offer.
+- modelling-products §5: "Ask whether the domain is sensitive." and "A journey is 120 lines or less."
+- modelling-products §3: the interview batch line.
+- auditing-product-models: "No model (no actors.md and no journeys)? Stop and offer product-design:modelling-products." (B4)
+- auditing-product-models §1: the "since verified" scope with the later of `verified:` and `audited:`. No case asks for that scope.
+- auditing-product-models §4: the Gap part of the batched question. t17b covers the Gap ruling in §5 (`reminder-documented`).
