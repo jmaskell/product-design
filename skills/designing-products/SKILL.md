@@ -1,16 +1,16 @@
 ---
 name: designing-products
-description: Use when asked to design, define, shape or scope a feature, flow or product change before engineering starts, or when told to "design this properly".
+description: Use when asked to design, define, shape or scope a feature, flow or product change before engineering starts, when asked to revise a design or take it to its next gate, or when told to "design this properly".
 ---
 
 # Designing products
 
-Diverge, then converge, twice: first on the problem, then on the solution.
+Diverge, then converge, twice: on the problem, then on the solution.
 
 ## 1. Pick the tier and say it
 
 Size the request alone, before you read any file. Write `Tier: <tier> — <the predicate that matched>` as your first text.
-Then read PRODUCT.md and the project metadata `Tier triggers`, and raise the tier if a predicate matches.
+Then read PRODUCT.md and the project metadata `Tier triggers`, and raise the tier if one matches.
 
 | Tier | Any one of |
 |---|---|
@@ -22,7 +22,9 @@ In doubt, take the heavier tier. When you find a predicate later, raise the tier
 
 ## 2. Run the phases
 
-Each named skill is a REQUIRED SUB-SKILL. Load it with the Skill tool and follow it. Do not do its work yourself.
+If decisions.md has a `Review page:` line, run product-design:sharing-designs triage first.
+
+Each named skill is a REQUIRED SUB-SKILL. Load and follow it. Do not do its work yourself.
 
 | Tier | Phases |
 |---|---|
@@ -34,14 +36,15 @@ Each named skill is a REQUIRED SUB-SKILL. Load it with the Skill tool and follow
 
 - **G1 — right problem?** Show the outcome, the journey, the evidence ledger and the questions for the expert. In Large, stop and wait.
 - **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions that need a ruling. A CRITICAL finding blocks approval until it is fixed or the owner accepts it with a reason.
+- For Medium and Large, offer product-design:sharing-designs at each gate.
 - A reply approves only the stage you presented.
 
 ## 4. Missing context
 
-Use what exists. PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. Never block on a missing model.
+PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. Never block on a missing model.
 
 ## 5. Handoff
 
-After G2: REQUIRED SUB-SKILL product-design:filing-issues. Engineering edits product code after the handoff. Do not edit it.
+After G2: REQUIRED SUB-SKILL product-design:filing-issues. Do not edit product code.
 
 Project rules win over this skill.

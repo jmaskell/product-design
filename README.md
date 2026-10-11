@@ -23,8 +23,10 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 "Design this…" ─► designing-products: Small, Medium or Large
      │
      ├─ framing-problems ─► mapping-journeys ─► G1: right problem?
+     │                                          └──► sharing-designs (team comments)
      │
      ├─ designing-interactions ─► reviewing-product-design ─► G2: right design?
+     │                                                        └──► sharing-designs (team comments)
      │
      └─ filing-issues ─► tracker or plan folder ─► engineering
 ```
@@ -32,6 +34,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 - **G1 (right problem?)** shows the outcome, the journey, the evidence and the questions for your domain expert. Large work stops here until you answer. Medium work shows G1 in one message and goes on.
 - **G2 (right design?)** shows the mocks, the decisions, the dismissed findings and any tension that needs your ruling. A CRITICAL finding blocks approval until it is fixed or you accept it with a reason.
 - **Small** work frames in three lines, makes one mock or none, and skips G1 and the review agents. **Medium** work gets two design options. **Large** work gets three options and a fuller review.
+- Medium and Large work offers a review page at each gate, so your team can comment.
 - The router raises the size, never lowers it, when it finds a trigger later. It says so each time.
 - After G2, engineering edits the product code. The skills do not.
 
@@ -39,14 +42,19 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 
 | Skill | Starts when |
 |---|---|
-| `designing-products` | You ask to design, define, shape or scope a feature. This is the router. |
+| `designing-products` | You ask to design, define, shape, scope or revise a feature. This is the router. |
 | `framing-problems` | A request arrives as a solution ("add a button"), or the user outcome is unstated. |
 | `mapping-journeys` | A change touches more than one actor or a hand-off, or risks moving work from one person to another. |
 | `designing-interactions` | The problem and task flow are agreed, and the screens, states or mocks are next. |
 | `reviewing-product-design` | A design is drafted. Fresh agents critique it, one lens each (task walkthrough, service, usability, accessibility, cognitive load, domain risk). The size and the risk pick the lenses. |
+| `sharing-designs` | You ask to share a design or check its comments, or you accept the offer to share at a gate. It never designs: a request to revise goes to the router. |
 | `filing-issues` | An approved design must go to the tracker or a plan folder, work must split into several issues, or a bug skips design. |
 
 Every claim about people carries an evidence label: `KNOWN (source)`, `INFERRED (from what)`, `ASSUMED` or `UNKNOWN`. Every finding has a severity: CRITICAL, SIGNIFICANT, MINOR or UNKNOWN.
+
+## Sharing for review
+
+Set `Review space` to a Notion database, a Notion page, or `artifact`. With a page, the first share creates a "Design review" database in it and asks you to put the database URL in the line. The skill rebuilds the review page from the plan files. The journey shows as two swim-lane grids, Today and Proposed: one row per person, one column per stage, and ◆ on each step that changes. In Notion, the text goes up first and the screenshots follow, one per screen. In Notion, a comment on a journey grid cannot point to one cell, so the page asks reviewers to quote the stage and person they mean. In Notion, each reviewer with an open question is tagged and notified, from the people list in `docs/product/people.md`. The skill publishes only when you ask to share or to check the comments, or when you accept the offer at a gate. The next design run, or a request to revise, triages the comments before anything else and reports to you without publishing. A request to check the comments triages and then publishes the next revision, but only if a plan file changed after the last publish. The skill skips threads it already answered and comments that decisions.md already records. An answer lands in decisions.md. A fact correction changes journey.md or issue.md, and marks each decision that rests on the old fact `Needs review` for you. An objection becomes a finding in decisions.md, and the skill reports it to you. A comment never approves a gate.
 
 ## Adopting in a project
 
@@ -62,6 +70,7 @@ The skills work with nothing set up: they frame from the code and your answers, 
 - Component source: none        # a gallery route, a registry URL, or none
 - Tier triggers: payment or health data → Large
 - Domain rules: docs/domain-rules.md
+- Review space: notion <database URL>     # or: notion <page URL>, or: artifact
 ```
 
 | Key | Used by |
@@ -71,11 +80,13 @@ The skills work with nothing set up: they frame from the code and your answers, 
 | `Component source` | designing-interactions: what the mocks are built from. |
 | `Tier triggers` | designing-products: extra predicates that raise the size. |
 | `Domain rules` | reviewing-product-design: the file the domain-risk reviewer checks against. |
+| `Review space` | sharing-designs: where the review page goes — a Notion database, a Notion page (gets a new database), or a Claude artifact; unset uses an artifact if available, else a local review.html. |
 
 **Product files:**
 
 - `PRODUCT.md` at the repo root: the product, its users, and any sensitive-domain flag. A sensitive domain raises the work to Large. PRODUCT.md alone is enough to start.
-- `docs/product/actors.md` and `docs/product/journeys/`: the saved actors and journeys. The skills write these files from `templates/`: `actors.md`, `journey.md`, `issue.md`, `design.md` and `decisions.md`.
+- `docs/product/actors.md` and `docs/product/journeys/`: the saved actors and journeys. The skills write these files from `templates/`: `actors.md`, `journey.md`, `issue.md`, `design.md` and `decisions.md`. sharing-designs builds the team review page from `templates/review-page.md`, publishes it with `skills/sharing-designs/artifact.md` or `skills/sharing-designs/notion.md`, and triages the comments with `skills/sharing-designs/triage.md`.
+- `docs/product/people.md`: names, roles and Notion user IDs for tagging reviewers; no email addresses. The skill writes it from `templates/people.md`.
 
 **Project rules win.** If your `CLAUDE.md` or `AGENTS.md` names another skill for a step (for example `superpowers:brainstorming` for specs), Claude follows your rule. To use the router there, change the rule or name the skill in your prompt: "Use product-design:designing-products to design …".
 
