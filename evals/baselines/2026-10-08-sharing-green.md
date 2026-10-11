@@ -83,3 +83,15 @@ Confirmed by the t14 traces: each run wrote a `Starts when:` line from the issue
 ## Harness notes
 
 See the RED record for the grader shapes that work (`flags:` key, `count:0`, `tool_used`). Task 8 added the llm grader `swim-lanes` to t14. RED: it failed before the change. First GREEN pass: 0.97 over 5 runs (4 of 5 on swim-lanes). The failing run copied "Nothing" into a cell. The template now says "never 'nothing' or a blank cell", and the final runs pass 5 of 5.
+
+## Residual fix
+
+R1: triage that the router starts reports to the owner and does not publish. R2: triage also skips a comment that decisions.md records by name and date. Sonnet judge, `--keep-temp`, 3 runs each (the case.yaml `runs: 5` label shows in the JSON).
+
+| Case | With | Without | Note |
+|---|---|---|---|
+| t15c-already-triaged | 1.00 | 0.50 mean delta | RED on the old triage.md: 0.67 (runs 0.5, 0.5, 1.0) |
+| t15-comment-triage | 1.00 | 0.50 mean delta | revision-bumped still passes |
+| t15d-router-triage | 1.00 | 0.50 mean delta | does not discriminate R1 |
+
+t15d: the prompt is "Revise the design ... for the next gate" and stops after triage. The `Review page:` count:1 grader also passed on the old triage.md (RED run 1.00). The harness cannot grade past triage, so R1 has no failing-then-passing eval. I checked R1 by reading the text only.
