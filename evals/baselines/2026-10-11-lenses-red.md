@@ -100,3 +100,27 @@ Why each grader fails:
 - skill-fired fails in every without arm, as expected.
 
 No grader was changed to move an arm's score. The one case change is the t21c prompt, for the harness reason above.
+
+## Reader and lens-audit cases (2026-10-12, Sonnet 5.5)
+
+Two cases for the G-spec lines on reader-aware modelling (t16g) and the Commercial audit (t17c). No skill text changed. Command per case: `claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --model claude-sonnet-5-5 --judge-model sonnet --case <case> --runs 3 -j 6 --keep-temp --json evals/results/red-<case>.json`. Both arms ran in one run. `skill-fired` counts at weight 1 in both arms.
+
+| Case | With | Without | Failing graders (with arm, fails out of 3) | Status |
+|---|---|---|---|---|
+| t16g-reader-cto (first run, prompt without a file path) | 0.87 | 0.20 | data-ownership 2/3 | Replaced: harness fault, see below |
+| t16g-reader-cto | 0.87 | 0.40 | integrations 1/3, data-ownership 1/3 | passes-with (weak RED): with arm is 0.87 and beats without 0.40; the gaps are 1 run in 3 |
+| t17c-audit-commercial | 0.67 | 0.17 | scope 3/3, buyer-payer 1/3 | RED on `scope`; `buyer-payer` weak RED |
+
+No case is GUARD: both without arms score below 0.8. In t17c, `priced-no-check` passes 3/3 with and 2/3 without, so it is a GUARD grader, not RED evidence.
+
+Why each grader fails:
+- t16g first run, harness fault: the prompt named only "PRODUCT.md and docs/product/". The three without runs wrote the docs elsewhere, so the `focus` file `docs/product/actors.md` did not exist and four llm graders threw "path ... does not exist" (score 0.20 for the wrong reason). Fixed once: the prompt now says "Keep the actors and how they relate in docs/product/actors.md". The first JSON is kept as `evals/results/red-t16g-reader-cto-1-pathfail.json`. No grader text changed.
+- t16g integrations (with, 1/3): run 0 (`/private/tmp/e-oTDjLj`) lists "Postmark | external actor | S3: deliver all email" and "Postmark | provides | Agent | Email delivery", but never says the servers are in the United States. Runs 1 and 2 write "US-hosted" or "US servers". The skill records the integration; it does not reliably record where the provider sits, which the CTO needs.
+- t16g data-ownership (with, 1/3 in the rerun, 2/3 in the first run): the relationship tables name who talks to whom ("Postmark | provides | Agent | Email delivery"; "Contractor | provides | Agent | Nothing in code ... UNKNOWN"). They do not say which actor or system owns tenant personal data, repair reports or landlord bank details. Judge votes FAIL FAIL FAIL on `/private/tmp/e-oTDjLj` (rerun) and on the first-run traces `e-1HDdH2`, `e-7bCDKD`.
+- t16g without arm (rerun): `skill-fired` 0/3 by design. `integrations` fails 3/3 and `who-pays` 1/3 on their merits: the docs name no US provider (`/private/tmp/e-o71vGU`, `e-hXo0X8`, `e-QCv5Uq`). `no-journey` passes in all arms; it is a GUARD for Sketch depth.
+- t17c scope (with, 3/3): the audit is a whole-model audit with the Commercial lens added, so it carries unrelated findings. Run 0 (`/private/tmp/e-24tkVp`) F7 "tenant pays rent" phantom, F8 "Book stage is automatic" (flow design), F11 purge job (privacy), F14 `/tickets` dead code. Run 2 (`/private/tmp/e-UcOwl9`) F3 booking is automatic, F6 close stage, Unknowns on retention, Postmark US hosting and the approval link (a GET with side effects). The prompt says "for the commercial lead" and the skill does not narrow to the Commercial rows. The without arm fails 3/3 for the same reason.
+- t17c buyer-payer (with, 1/3): run 2 (`/private/tmp/e-UcOwl9`) names the Plus-gating gap (F4) but never asks who pays or whether the payer is a user. Runs 0 and 1 raise it ("no `pays for` relationship", "Who pays, and is that the user?"). The without arm fails 3/3: its audits cover SMS, the 40% claim and the ungated Plus feature, but not the payer relationship.
+- t17c priced-no-check: passes in every with run (contractor ratings has no `requirePlan`, landlord reports does) and in 2 of 3 without runs. Without run 2 (`/private/tmp/e-rSkQOm`) fails by judge vote PASS/FAIL/FAIL. Not RED evidence.
+- skill-fired fails in every without arm, as expected.
+
+One harness fix: the t16g prompt (above). Judge notes: the harness warns that the 9,000 to 10,000 character audit.md files are long for an llm judge; the `scope` verdicts are FAIL FAIL FAIL on findings that are visibly off-topic, so the failure is not noise.
