@@ -191,3 +191,24 @@ Notes:
 - t5 uses the lettings fixture, which has no Interpretation line. It passes 3/3, so the wider readings key did not break the dead-end review.
 
 Open from the final review (R17): finding 17 is now partly answered by "Write no decisions.md before G1" (t10 8/8 on 81b6b75 and fdf5d7a). Finding 18: t7 is at 0.75 and was not re-run. Finding 19: no case checks that a Medium review still catches usability findings when Compliance or Privacy takes the by-risk slot. Finding 15: only the issue.md `**Phases:**` and `**Launch:**` labels changed. modelling-products still says "recommend one tier" for the model depth.
+
+## Gap cases GREEN (2026-10-12, Sonnet 5.5)
+
+Model: Sonnet 5.5 (`--model claude-sonnet-5-5`), with arm only (`--ablation none`), `--judge-model sonnet`, 3 runs per case, API key billing. The without scores are the RED values in `2026-10-11-lenses-red.md`. The RED runs named no `--model`, so they ran on the session default, not Sonnet 5.5. The without arm was not re-run on Sonnet 5.5.
+
+| Case | With (Sonnet 5.5) | Without (RED) | Result |
+|---|---|---|---|
+| t19f-reading-in-design | 0.80 (3 runs, reply-merit fails 3/3; decisions-points-to-row now 3/3, design-follows-reading 3/3, no-gate 3/3) | 0.60 | Not GREEN: below 0.8 on reply-merit |
+| t21c-tier-1 | 0.11, 0.33, 0.22, 0.11, 0.33 (five 3-run sets, text changed between sets; last set 0.33) | 0.00 | Not GREEN |
+| t21d-tier-2 | 0.44 (first text), 0.56 (final text) | 0.00 | Not GREEN: tier 2 in 2/3 runs, reply-merit 0/3 |
+
+Text commits: designing-products d795092; synthesis.md and reviewer-prompt.md 329ba33; lenses.md 9543d2e; README and t19f timeout 7d1fc0f.
+
+What each score came from:
+- t21d: the first text (a separate line under `## Launch tiers`) gave tier 2 in 1/3 runs. The final text (tier 1 and tier 2 rows of the table) gave `launch-tier-2` 2/3. reply-merit fails 3/3: the best run names segment, message, signal and brief, and omits where landlords learn of it. One run reported it could not read lenses.md.
+- t21c: `skill-fired` passed in 1 to 2 of 3 runs per set on Sonnet 5.5 (RED: 3/3, session default model). When the router did not fire, no Launch line was written. When it fired, the reply still omitted the Launch answers in most runs. Some runs reported that the sandbox blocked `references/` under `/Users`, so lenses.md was unreadable. The set scores in the table come from `evals/results/gapgreen-t21c-tier-1*.json`.
+- t19f: the replies still show a Tension or an option B/C that adds disclosure at approval. The reviewer-prompt.md line in 329ba33 was added after this run and was not tested.
+
+Cost: about $5.0 of the $6 cap (t21d 0.53 + 0.46; t21c 0.27 + 0.34 + 0.36 + 0.28 + 0.34; t19f 2.43). Some per-set costs are summed from the logged values; the first two JSON files were overwritten by re-runs.
+
+Not re-run after the last text change: t19f (before the reviewer-prompt.md line), t21d (before the final router text), t10-stops-at-g1, t11-ratchet and every other router case (budget).
