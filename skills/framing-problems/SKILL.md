@@ -30,7 +30,7 @@ Keep issue.md to 60 lines or less, one sentence per prose slot. Every line in th
 2. **Outcome.** The outcome, the trigger, and the step before and after, each tagged. Then the alternatives.
 3. **Ledger.** Seven or fewer decision-relevant rows. Each row: a claim, then its tag: `KNOWN (source)`, `INFERRED (from what)`, `ASSUMED` or `UNKNOWN`.
 4. **Launch.** The tier line, then one answer per tier question.
-5. **Readings.** Per open rule: the readings, each as `<reading> — because <argument> — lets the product <what>`, per references/lenses.md. Give each reading its strongest case, the assertive one too. Then the blocked decision.
+5. **Readings.** Per open rule: the readings, each as `<reading> — because <argument> — lets the product <what> — risk: <risk>`, per references/lenses.md. Give each its strongest case, the assertive one too. Then the blocked decision.
 6. **Questions for <expert>.** Numbered, each with the decision it blocks. Ask whether a behaviour happens before you ask about it.
 
 ## Red flags — go back to step 1

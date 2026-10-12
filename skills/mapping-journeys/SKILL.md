@@ -31,4 +31,4 @@ If the table has a row, stop at the table. Write no spec, plan or design until t
 | "This only changes one screen" | Name the stage before and after. One screen can move work to another actor. |
 | "My safeguard means nothing is lost" | Map the change as asked first. Its displacement rows are its cost. The safeguard is an alternative. |
 
-At the end, if no canonical journey existed, offer to save this one to docs/product/journeys/. Do not write it without the owner's yes.
+At the end, if no canonical journey existed, ask in the reply: save this journey to docs/product/journeys/? Do not write it without the owner's yes.
