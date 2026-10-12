@@ -121,8 +121,8 @@ A summary of the other lenses: purpose, who, evidence, the 3 biggest risks.
 | Tier | When | Questions |
 |---|---|---|
 | 0 Internal | A tool for our own staff | Who uses it and what they use today; how they learn it (training, a walkthrough, a champion); how the old way stops; what shows they adopted it |
-| 1 Quiet | A small change for existing users | Where they meet it at the moment of need; whether support needs to know |
-| 2 Feature | A change existing users must notice, or that drives upgrade | Which segment gains; the one-line message; where they learn of it; adoption signal; who in sales or support needs a brief |
+| 1 Quiet | A small change for existing users, who need to learn nothing new | Where they meet it at the moment of need; whether support needs to know |
+| 2 Feature | A change existing users must notice, or that drives upgrade. A change that helps only after people learn to do something new is tier 2, even when it is small | Which segment gains; the one-line message; where they learn of it; adoption signal; who in sales or support needs a brief |
 | 3 Launch | A new product, market or repositioning | Full product level: alternatives incl. "do nothing", category, segment, the four forces (Moesta), promise vs first value, claims vs proof, the path from discovery to first value through the real start path (self-serve, or demo, pilot and contract) |
 
 Channels (changelog, in-app, email) are examples, not steps. Never ask a lower tier the questions of a higher tier.
