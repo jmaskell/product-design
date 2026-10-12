@@ -22,7 +22,7 @@ Keep issue.md to 60 lines or less, one sentence per prose slot. Every line in th
 7. **Alternatives to the request.** At least one other way to reach the outcome. Keep the request if it wins, and say why.
 8. **Questions for the expert.** Each ASSUMED or UNKNOWN claim a decision needs, as a question for the expert, with the decision it blocks.
 9. **Launch.** Propose the tier, audience and goal (references/lenses.md `## Launch tiers`), provisional. In `## Launch`, one bullet per tier question; no higher tier's.
-10. **Rules for the owner.** For each PRODUCT.md constraint touched with no recorded interpretation (`Interpretation: UNKNOWN` or no line), add its readings (references/lenses.md `## Readings of a rule`) as one question. No verdict. No approval from anyone else. After the owner picks, update that row; then decisions.md points to it. An open reading goes to the next gate.
+10. **Rules for the owner.** For each PRODUCT.md constraint touched with no recorded interpretation (`Interpretation: UNKNOWN` or no line), add its readings (references/lenses.md `## Readings of a rule`) as one question. No verdict. No approval from anyone else. Write no decisions.md before G1. After the owner picks, update that row and point decisions.md to it. An open reading goes to the next gate.
 
 ## The reply, in this order
 
