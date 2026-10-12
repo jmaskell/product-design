@@ -12,7 +12,7 @@ Run the three check scripts before you commit:
 
 ## Adding or changing a skill
 
-Every new skill, and every behaviour change to a skill, follows this process. It is test-driven: no skill text without a failing eval first. Harness facts and grader shapes are in `evals/README.md`.
+Every new skill, and every behaviour change to a skill, follows this process. It is test-driven: no skill text without a failing eval first. Harness facts and grader shapes are in `evals/README.md`. Run evals on Sonnet 5.5 (`--model claude-sonnet-5-5`); run the changed cases once on Opus 5.5 before a merge.
 
 1. **Decide with the owner.** Batch the open decisions into one question, recommendation first. Read the core spec and the existing skills first, so the new skill reuses the product model, templates, evidence tags and severities.
 2. **Spec.** Write `docs/superpowers/specs/<date>-<name>-design.md`: outcome, what exists, scope, owner decisions, skill shape, eval cases, open points. The owner approves it before the plan.

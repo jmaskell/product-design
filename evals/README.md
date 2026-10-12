@@ -1,6 +1,6 @@
 # Evals
 
-Run all: `claude plugin eval . --trust-plugin --no-publish --runs 5 --threshold 0.8`
+Run all: `claude plugin eval . --trust-plugin --no-publish --model claude-sonnet-5-5 --runs 5 --threshold 0.8`
 Run one: add `--case <name>`.
 
 Harness facts (confirmed by `evals/results/smoke.json`, 2026-10-07, Claude Code 2.1.285):
@@ -37,4 +37,17 @@ Judge anomalies (2026-10-07, Task 5). Cause unverified; do not rely on one run:
 - The harness warns that llm judges are noisy on long inputs and suggests a regex grader for large artifacts. An "every sentence" llm check over a 6,000-character issue.md failed in almost every with-arm run.
 
 Run one behavioural case (both arms, about 1 to 3 minutes):
-`claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --judge-model sonnet --case <case> --runs 3 -j 6 --json evals/results/<name>.json`
+`claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --model claude-sonnet-5-5 --judge-model sonnet --case <case> --runs 3 -j 6 --json evals/results/<name>.json`
+
+Model under test (2026-10-12, 12 core cases, one run each, plugin arm only):
+
+| Model | Mean cost per run | Mean score | Mean turns |
+|---|---|---|---|
+| Opus 5.5 | $0.53 | 0.98 | 11 |
+| Sonnet 5.5 | $0.17 | 0.92 | 10 |
+| Haiku 5.5 | $0.62 | 0.42 | 12 |
+
+- Use Sonnet 5.5 (`--model claude-sonnet-5-5`) for RED, GREEN and regression runs. Without `--model`, the run uses the session's default model.
+- Before a merge, run the changed cases once on Opus 5.5 (`--model claude-opus-5-5`) and record both in the GREEN record.
+- Haiku 5.5 lists the plugin's skills but does not call them, even when a request matches a skill description (smoke and t10 traces, 2026-10-12). Its scores measure skill selection, not skill text. A plugin hook could force the call, but it breaks the skills-only rule, so the plugin does not use one.
+- This CLI (2.1.287) prints `unrecognized_model` for `claude-haiku-5-5`. That is a warning only: `modelUsage` in `--output-format json` confirms the model ran.
