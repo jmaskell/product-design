@@ -5,50 +5,47 @@ description: Use when a repo has no product model (PRODUCT.md, docs/product/acto
 
 # Modelling products
 
-The model is PRODUCT.md, docs/product/actors.md and canonical journeys in docs/product/journeys/. The templates sit two levels above this skill's directory: templates/actors.md and templates/journey.md. Evidence tags: references/evidence-ledger.md.
+The model: PRODUCT.md, docs/product/actors.md, docs/product/journeys/. Plugin files, two levels up: templates/actors.md, templates/journey.md, references/evidence-ledger.md, references/lenses.md.
 
 ## 1. Pick the mode
 
-| State | Mode |
-|---|---|
-| actors.md exists | Fill only a missing or empty PRODUCT.md (Edit or new file), then stop. Say the model exists. Offer product-design:auditing-product-models to check it against the code, or product-design:mapping-journeys to add one job's journey. |
-| Application source exists | From code (section 2) |
-| No application source | From the owner's answers (section 3) |
+- actors.md exists: fill only a missing or empty PRODUCT.md, then stop. To a full one, add only a missing `## Terms` or `## Market`. Say the model exists. Offer product-design:auditing-product-models to check it against the code, or product-design:mapping-journeys to add one job's journey.
+- Application source exists: from code (section 2).
+- No application source: from the owner's answers (section 3).
 
-Never Write over an existing PRODUCT.md, actors.md or journey. Use Edit, and fill only empty sections.
+Write new files with the Write tool, never Bash. Never overwrite an existing PRODUCT.md, actors.md or journey; Edit only empty or missing sections.
 
 ## 2. From code
 
-Read the code before you ask: routes, role checks, links sent by email or message, scheduled jobs, rules, and their comments.
+Read the code first: routes, role checks, email or message links, scheduled jobs, rules, analytics events, comments.
 
 - Actor: each role, each person who acts through email or a link, each scheduled job (kind `system`).
-- Journey: one actor, one outcome, across routes. Note its 1–4 entry-point files for the `Code:` line.
-- Contradiction: code that disagrees with itself, a comment or the docs. List each contradiction as `UNKNOWN` in the journey's Open unknowns, or in actors.md notes if no journey exists. Never pick a side.
+- Journey: one actor, one outcome, across routes. Note 1–4 entry-point files for its `Code:` line.
+- Contradiction: code that disagrees with itself, a comment or the docs. List each as `UNKNOWN` in the journey's Open unknowns, else in actors.md notes. Never pick a side.
 
-Tag every entry from code `INFERRED (from <path>)`.
+Tag code entries `INFERRED (from <path>)`.
 
 ## 3. From the owner's answers
 
-Ask in one batch: what it is and for whom; the actors and their jobs; what each must never do; the first outcomes; what is out of scope. Tag the owner's intent and constraints `KNOWN (owner, <date>)`. Tag what people do `ASSUMED` unless the owner names a source.
+Ask in one batch: what it is, for whom; actors and jobs; what each must never do; first outcomes; scope limits. Tag the owner's intent and constraints `KNOWN (owner, <date>)`. Tag what people do `ASSUMED` unless the owner names a source.
 
 ## 4. Depth
 
-| Tier | Writes |
-|---|---|
-| Sketch | PRODUCT.md and actors.md. No journey file. |
-| Core | Sketch + one journey for each user actor's main job |
-| Full | Core + a journey for each job, 7 at most |
+- Sketch: PRODUCT.md and actors.md. No journey file.
+- Core: Sketch + one journey per user actor's main job.
+- Full: Core + a journey per job, 7 at most.
 
-If the owner gave no depth, show the inventory: actors, jobs with IDs, candidate journeys. Recommend one tier, write only Sketch, and ask the owner to confirm the tier.
+No depth given: show the inventory (actors, jobs with IDs, candidate journeys), recommend one tier, write only Sketch, ask the owner to confirm it. Otherwise write nothing past the owner's depth. A job with no journey file is not yet modelled. Name those jobs in the reply.
 
-Use the depth the owner gave. Write nothing past it. A job with no journey file is not yet modelled. Name those jobs in the reply.
+Ask who reads the model. The answer picks lens questions (references/lenses.md) inside the tier; no new file. Default: PM and Designer.
 
 ## 5. Write
 
-- PRODUCT.md sections: Platform, Users, Product Purpose, Capabilities and Constraints, Evidence on Hand, Product Principles. Never add a section. Ask whether the domain is sensitive.
-- actors.md: Kind is exactly `user`, `internal role`, `external actor` or `system`, one per actor row. Every job has an ID: a letter and a number (T1, A2). Relationship rows use only the template's verbs.
-- Journeys: the template header with a `Code:` line that names the entry-point files. A journey is 120 lines or less.
+- PRODUCT.md sections: Platform, Users, Product Purpose, Capabilities and Constraints, Evidence on Hand, Product Principles, `## Terms` (Term | Meaning | Avoid | Code name: the identifier in code), `## Market` (alternatives with "do nothing", category, segment traits, losses). No other section. Ask whether the domain is sensitive.
+- Each rule in Capabilities and Constraints: rule + source, `Interpretation: UNKNOWN` until the owner picks a reading (references/lenses.md).
+- actors.md: Kind: exactly one of `user`, `internal role`, `external actor`, `system`. Every job has an ID (letter and number: T1, A2) and one `Signal:` with its source in the Signals block; prefer an event in code. Relationship rows use only the template's verbs.
+- Journeys: the template header, a `Code:` line naming entry-point files, 120 lines at most.
 
 ## 6. Ask
 
-End with the questions only the owner can answer. Give each contradiction with both values, and ask which is right. When the owner answers, change the tag to `KNOWN (owner, <date>)`.
+End with questions only the owner can answer. Give each contradiction with both values; ask which holds. Retag each answer `KNOWN (owner, <date>)`.

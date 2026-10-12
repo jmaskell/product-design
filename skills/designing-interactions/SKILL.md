@@ -5,14 +5,14 @@ description: Use when a framed problem and its task flow are agreed and the inte
 
 # Designing interactions
 
-`templates/` and `references/` sit two levels above this skill's directory.
+`templates/` and `references/` sit two levels up; open them with Read.
 
 Input: issue.md and journey.md. Small: issue.md's previous/next step is the task flow. If the task flow is missing, stop and run product-design:mapping-journeys.
 
 ## Recipe
 
-1. **Interface flow.** Map each task-flow step to a screen, a control or a state. A step with no interface stays in the system (no decision, no button).
-2. **Options.** Medium: two genuinely different structures. Large: three. Small: one. Differ in structure (where the decision happens, what is shown), not in styling.
+1. **Interface flow.** Map each task-flow step to a screen, a control or a state. A step with no interface stays in the system (no decision, no button). Build the chosen reading of each rule in issue.md, or each open reading that changes the design, into the flow as a design problem: where consent sits, how a check feels, an audit trail as a Backstage stage. Every option keeps each reading the owner recorded as KNOWN; no option tests a stricter one. Its decisions.md entry points to the PRODUCT.md row and adds no reading of its own.
+2. **Options.** Take the tier from the issue.md `Phases:` line. With no issue.md, a new screen or pattern is Medium. Medium: two genuinely different structures. Large: three. Small: one. Differ in structure (where the decision happens, what is shown), not in styling.
 3. **Mocks.** Build each option as a mock (references/mocks.md). Reuse the component source. Flag every uncovered region as a new pattern.
 4. **States.** For each screen: default, empty, loading, error, partial, and any domain state. Write "N/A — <reason>" for a state that cannot happen.
 5. **Accessibility decisions.** Focus destination after each transition, live announcements, meaning not carried by colour alone. Full checks: references/wcag-and-inclusive-design.md.

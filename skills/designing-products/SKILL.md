@@ -5,12 +5,10 @@ description: Use when asked to design, define, shape or scope a feature, flow or
 
 # Designing products
 
-Diverge, then converge, twice: on the problem, then the solution.
-
 ## 1. Pick the tier and say it
 
-Size the request alone, before reading files. Write `Tier: <tier> — <the predicate that matched>` as your first text.
-Then read PRODUCT.md and the project metadata `Tier triggers`; raise the tier if one matches.
+Size the request before reading files. Write `Tier: <tier> — <the predicate that matched>` as your first text.
+Then read PRODUCT.md and the `Tier triggers` metadata; raise the tier if one matches.
 
 | Tier | Any one of |
 |---|---|
@@ -18,30 +16,30 @@ Then read PRODUCT.md and the project metadata `Tier triggers`; raise the tier if
 | Medium | A new screen or dialog; a changed task flow for one actor; a new component pattern |
 | Small | Otherwise |
 
-In doubt, take the heavier tier. When you find a predicate later, raise the tier, update the issue.md Phases line, and say so: `Tier: <old> → <new> — <the predicate found>`. Never lower it. Open every gate reply with the tier line, showing each raise.
+In doubt, take the heavier tier. Before each gate, check where each new value comes from; if another actor must enter it, raise the tier and update the issue.md Phases line. Never lower it. Open every gate reply with the tier line, showing each raise: `Tier: <old> → <new> — <the predicate found>`.
 
-## 2. Run the phases
+## 2. Phases
 
 If decisions.md has a `Review page:` line, run product-design:sharing-designs triage first.
 
-Each named skill is a REQUIRED SUB-SKILL. Load and follow it. Do not do its work yourself.
+Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourself.
 
 | Tier | Phases |
 |---|---|
-| Small | Frame in three lines (outcome, previous and next step, job) → product-design:designing-interactions (one mock or none) → G2 as one approval question. No reviewer agents. |
+| Small | Frame in three lines (outcome, previous and next step, job) and the issue.md Launch line → product-design:designing-interactions (one mock or none) → G2: one approval question, launch answers, readings (references/lenses.md) for each open rule. No reviewers. |
 | Medium | product-design:framing-problems → product-design:mapping-journeys → G1 in one message → product-design:designing-interactions (2 options) → product-design:reviewing-product-design → G2 |
 | Large | product-design:framing-problems → product-design:mapping-journeys → **G1, stop** → product-design:designing-interactions (3 options) → product-design:reviewing-product-design → G2 |
 
 ## 3. Gates
 
-- **G1 — right problem?** Show the outcome, the journey, the evidence ledger and the questions for the expert. In Large, stop and wait.
-- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions that need a ruling. A CRITICAL finding blocks approval until it is fixed or the owner accepts it with a reason.
-- For Medium and Large, offer product-design:sharing-designs at each gate.
-- A reply approves only the stage you presented.
+- **G1 — right problem?** Once journey.md exists, show the framing-problems reply in its order, each launch answer and reading in full, the journey and its save offer.
+- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on.
+- Medium and Large: offer product-design:sharing-designs at each gate.
+- A reply approves only the presented stage.
 
 ## 4. Missing context
 
-PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. If PRODUCT.md does not exist, also offer product-design:modelling-products. Never block on a missing model.
+With no model, frame from code and owner answers; offer to save the mapped journey. If PRODUCT.md or docs/product/actors.md is missing, offer product-design:modelling-products. If git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date, offer product-design:auditing-product-models.
 
 ## 5. Handoff
 
