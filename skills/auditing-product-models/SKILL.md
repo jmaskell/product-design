@@ -7,7 +7,7 @@ description: Use when the product docs (PRODUCT.md, docs/product/actors.md, cano
 
 Each finding cites a model quote, a file:line, or both. The owner decides. Never edit product code. Never send the owner to anyone else for approval.
 
-No actors.md or journeys? Stop and offer product-design:modelling-products.
+No actors.md and no journeys? Stop and offer product-design:modelling-products.
 
 ## 1. Scope
 
@@ -19,11 +19,11 @@ No actors.md or journeys? Stop and offer product-design:modelling-products.
 ## 2. Check
 
 1. Anchors: each `Code:` path exists. `git log --follow --name-status -- <old path>` finds a rename.
-2. Journeys: each stage's actor, action, decision and system against the code.
-3. actors.md: actors and relationships against role checks, links sent by email or message, and hand-offs.
-4. PRODUCT.md Capabilities and Constraints: each capability and rule against its code, value for value (`git log -S<value>` shows why). Judge by the owner's quoted interpretation, never a stricter one. An `UNKNOWN` one goes under Unknowns with readings (`references/lenses.md`).
+2. Journeys: each stage's actor, action, decision and system against code.
+3. actors.md: actors and relationships against role checks, emailed or messaged links, and hand-offs.
+4. PRODUCT.md Capabilities and Constraints: each capability and rule against its code, value for value (`git log -S<value>` shows why). Judge by the owner's quoted interpretation, never a stricter one. A rule with no recorded interpretation (`UNKNOWN` or no line) goes under Unknowns with readings (`references/lenses.md`).
 5. Terms: code names against the Code name column in PRODUCT.md `## Terms`. Drift, MINOR unless it hides a permission.
-6. Signals: a `Signal:` whose source is an event with no code: Phantom, MINOR.
+6. Signals: a `Signal:` event with no code: Phantom, MINOR.
 7. README and site claims: no code path, Phantom; a priced feature with no entitlement check, Drift; an outcome or numeric claim with no named proof, Unknowns.
 8. Gaps: roles, routes, scheduled jobs and integrations with no actor, job or stage. A job without a journey is not a gap.
 
@@ -37,7 +37,7 @@ No actors.md or journeys? Stop and offer product-design:modelling-products.
 
 ## 4. Report
 
-Overwrite docs/product/audit.md.
+Overwrite docs/product/audit.md. Set `audited:` to today on each journey you checked. Never write `verified:`.
 
 ```
 # Product model audit — <date>
@@ -58,7 +58,7 @@ Proposed fix: <model patch> | <issue for product-design:designing-products>
 - F<n>: <one-line problem>
 ```
 
-Reply with the verdict, counts, then one batched question, your read first: per Drift and Phantom, is model or code right; per Gap, add it?
+Reply with the verdict, counts, then one batched question, your read first: per Drift and Phantom, model or code; per Gap, add it?
 
 ## 5. Apply the rulings
 
@@ -67,5 +67,3 @@ Without a ruling, patch only Stale anchors.
 - Code is right: patch the model, replacing the old value everywhere.
 - Model is right: keep it. Add an `UNKNOWN` with the finding ID to the journey's Open unknowns, and the issue under Next issues.
 - A wanted Gap: a stage into its journey, a new actor into actors.md.
-
-Then set each changed journey's `audited:` to today. Never write `verified:`.

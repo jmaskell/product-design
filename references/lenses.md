@@ -5,7 +5,7 @@
 A lens is a list of questions that one role brings to the product model. It is not a persona.
 Each row has three parts: the question, its home in the model, and what Claude can check from code or a site.
 Ask only the rows inside the agreed model depth or launch tier.
-A question with no answer in the model is `UNKNOWN`. It is not a finding.
+A question with no answer in the model is `UNKNOWN`: a question for the owner, not a defect.
 Code shows what the system does. It never shows what people do. Tag behaviour from code `INFERRED`.
 Code proves a capability, not a result. An outcome or numeric claim with no named proof is `UNKNOWN`.
 
@@ -63,21 +63,6 @@ Code and site checks for tier 2 and up:
 - An integration that the site names needs a client, webhook or connector in code.
 - Count the steps from sign-up to the first action that gives the headline promise. An activation milestone with no event is a gap.
 
-Consumer and B2B differ:
-
-| Topic | Consumer | B2B |
-|---|---|---|
-| Who decides | One person, often the user | A buying group of 6–10; buyer, user, champion and blocker differ |
-| Segment unit | Situation, motivation, moment | Account (ICP) then persona |
-| Main alternative | Another app, a habit, a free tool, "do nothing" | Spreadsheet, manual process, incumbent vendor, homegrown tool, "do nothing" |
-| Trigger | Category entry point: a need, time or place | A business event: growth, a new rule, a failure, a new leader |
-| Positioning output | One line on a store page or ad; brand memory | A sales pitch and a comparison; proof for validation |
-| Proof | Ratings, reviews, social proof, a free try | Named customers, security docs, analyst and review sites, pilots |
-| Path to value | Minutes, in one session, self-serve | Days to months; setup, integration, team invite |
-| Activation unit | One user | A team or an account |
-| Key failure | Lost in the first session; no habit forms | No decision; the champion cannot build consensus |
-| Core metrics | D1/D7/D30 retention, conversion to paid, share of search | Win rate, no-decision rate, cycle length, net revenue retention |
-
 ## Support and ops
 
 | Question | Home in the model | What Claude can check |
@@ -90,7 +75,7 @@ Consumer and B2B differ:
 ## Compliance
 
 Give readings and build the case for the owner's position. Never give a verdict. Never send the owner to get approval from someone else.
-A rule with no recorded interpretation gets `## Readings of a rule`.
+A rule with no recorded interpretation (`Interpretation: UNKNOWN`, or no `Interpretation:` line) gets `## Readings of a rule`.
 
 | Question | Home in the model | What Claude can check |
 |---|---|---|
@@ -102,6 +87,7 @@ A rule with no recorded interpretation gets `## Readings of a rule`.
 ## Privacy
 
 Give readings and build the case for the owner's position. Never give a verdict. Never send the owner to get approval from someone else.
+A rule with no recorded interpretation gets `## Readings of a rule`.
 
 | Question | Home in the model | What Claude can check |
 |---|---|---|
@@ -115,7 +101,7 @@ Give readings and build the case for the owner's position. Never give a verdict.
 
 A right the regime does not grant is not a gap.
 
-Use the terms of the regime the owner names in Capabilities and Constraints.
+Use the terms of the regime the owner names in Capabilities and Constraints. If none is named, keep the neutral questions and ask which regime applies.
 Summary as of 2026-10-11. Check the current law before relying on a cell.
 
 | Concept | GDPR / UK GDPR | CCPA/CPRA | Others |
@@ -140,12 +126,13 @@ A summary of the other lenses: purpose, who, evidence, the 3 biggest risks.
 | 3 Launch | A new product, market or repositioning | Full product level: alternatives incl. "do nothing", category, segment, the four forces (Moesta), promise vs first value, claims vs proof, the path from discovery to first value through the real start path (self-serve, or demo, pilot and contract) |
 
 Channels (changelog, in-app, email) are examples, not steps. Never ask a lower tier the questions of a higher tier.
-Tier 3 answers live in the PRODUCT.md `Market` section: alternatives, category, segment traits and losses.
+The PRODUCT.md `Market` section holds the product-level tier 3 answers: alternatives, category, segment traits and losses. issue.md `## Launch` holds the answers for one change.
 
 ## Readings of a rule
 
-For a rule with no recorded interpretation, give 2–3 readings, from cautious to assertive.
+For a rule with no recorded interpretation (`Interpretation: UNKNOWN`, or no `Interpretation:` line), give 2–3 readings, from cautious to assertive.
 For each reading, give the argument and what it lets the product do.
-The owner picks. Claude never picks a reading silently.
+Give each reading its strongest case, the assertive one too. You may name a lean with its argument; the owner picks.
+Claude never picks a reading silently.
 Record the pick in the PRODUCT.md Capabilities and Constraints row: rule + source; interpretation; why the risk is acceptable; `KNOWN (owner, <date>)`.
 Until the owner picks, write `Interpretation: UNKNOWN` with the readings.

@@ -26,20 +26,20 @@ Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourse
 
 | Tier | Phases |
 |---|---|
-| Small | Frame in three lines (outcome, previous and next step, job) → product-design:designing-interactions (one mock or none) → G2 as one approval question. No reviewer agents. |
+| Small | Frame in three lines (outcome, previous and next step, job) → product-design:designing-interactions (one mock or none) → G2 as one approval question, plus readings (references/lenses.md) for each touched rule with no recorded interpretation. No reviewer agents. |
 | Medium | product-design:framing-problems → product-design:mapping-journeys → G1 in one message → product-design:designing-interactions (2 options) → product-design:reviewing-product-design → G2 |
 | Large | product-design:framing-problems → product-design:mapping-journeys → **G1, stop** → product-design:designing-interactions (3 options) → product-design:reviewing-product-design → G2 |
 
 ## 3. Gates
 
 - **G1 — right problem?** Show the outcome, journey, evidence ledger and questions for the expert. In Large, stop and wait.
-- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on. A CRITICAL finding blocks approval until it is fixed or the owner accepts it with a reason.
-- For Medium and Large, offer product-design:sharing-designs at each gate.
+- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on. A CRITICAL finding blocks approval until fixed or the owner accepts it with a reason.
+- Medium and Large: offer product-design:sharing-designs at each gate.
 - A reply approves only the stage you presented.
 
 ## 4. Missing context
 
-PRODUCT.md alone is enough to start. With nothing, frame from code and the owner's answers, then offer to save the journey you mapped. If PRODUCT.md or docs/product/actors.md does not exist, offer product-design:modelling-products. If git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date, offer product-design:auditing-product-models. Never block on a missing model.
+With nothing, frame from code and the owner's answers; offer to save the mapped journey. If PRODUCT.md or docs/product/actors.md does not exist, offer product-design:modelling-products. If git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date, offer product-design:auditing-product-models. Never block on a missing model.
 
 ## 5. Handoff
 

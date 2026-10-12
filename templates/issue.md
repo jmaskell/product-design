@@ -1,8 +1,8 @@
 # <id> — <title>
 
-**Phases:** <tier> — <one-line reason>
+**Phases:** <Small | Medium | Large> — <one-line reason>
 **Jobs:** <job IDs from docs/product/actors.md, with a clause each>
-**Launch:** <tier> — <audience> — <goal> (provisional until the owner confirms)
+**Launch:** tier <0–3> — <audience> — <goal> (provisional until the owner confirms)
 
 ## Outcome
 <what is true for the person when this works, in their words>
@@ -26,6 +26,9 @@ After: <what they do just after> <tag>
 
 ## Questions for <expert>
 1. <question> — blocks <decision>
+
+## Rules for the owner
+- <rule>: <reading> — because <argument> — lets the product <what>; … — blocks <decision>
 
 ## Scope
 In: … Out: …
