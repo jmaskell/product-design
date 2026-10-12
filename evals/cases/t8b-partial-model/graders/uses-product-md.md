@@ -7,4 +7,4 @@ PRODUCT.md in this repo holds these facts: landlord approval is required for rep
 
 Pass only if both hold:
 1. The output uses at least one of the PRODUCT.md facts above. It does not need to name PRODUCT.md.
-2. The output does not say that the product model, PRODUCT.md or the product docs are absent or missing. A statement that research or data is missing is allowed.
+2. The output does not say that the product model, PRODUCT.md or the product docs are absent or missing. A statement that research or data is missing is allowed. A statement that `docs/product/actors.md` or saved journeys do not exist yet is true here, and is allowed.

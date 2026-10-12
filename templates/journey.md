@@ -3,6 +3,8 @@
 Trigger: … Outcome: … Starts: … Ends: …
 Actors: …
 verified: not verified (set by verifying-journeys after a build passes)
+Code: <1–4 entry-point paths> (canonical journeys only)
+audited: <date> (set by auditing-product-models)
 
 ## Experience journey (changed stages only)
 | Stage | Actor | Action | Decision | Information needed | System | Friction | Evidence |
