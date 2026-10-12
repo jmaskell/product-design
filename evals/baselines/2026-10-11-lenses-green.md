@@ -7,7 +7,8 @@ Last text commit per skill:
 - modelling-products: da614bb.
 - auditing-product-models: 4c2e494.
 - router (designing-products): dfd0960.
-- framing-problems, mapping-journeys, designing-interactions: 66af2ea (2dc83e2 changed a grader only).
+- framing-problems: 66af2ea (2dc83e2 changed a grader only).
+- mapping-journeys and designing-interactions: a310f27.
 - reviewing-product-design: ed09e16.
 
 ## Scores: new cases
@@ -20,7 +21,7 @@ Last text commit per skill:
 | t19b-audit-position (PASSES-WITH) | 1.00 | 0.78 | 3 | none | 4c2e494 | yes |
 | t19c-no-signoff | 0.90 | 0.25 | 5 | compliance-lens 3/5 (2 timeouts before the Reviewed line) | ed09e16 | yes |
 | t19d-privacy-gdpr (GUARD) | 1.00 | 0.74 | 5 | none | 4c2e494 | yes |
-| t19e-privacy-ccpa (GUARD) | 0.87 | 0.40 | 5 | ccpa-terms 1, no-lawful-basis 1 | 43dc02a | no |
+| t19e-privacy-ccpa (PASSES-WITH) | 0.87 | 0.40 | 5 | ccpa-terms 1, no-lawful-basis 1 | 43dc02a | no |
 | t20-claims | 0.97 | 0.63 | 5 | valid-not-flagged 1 | 4c2e494 | yes |
 | t20b-stale-offer | 0.80 | 0.00 | 5 | offers-audit-merit 3/5 | dfd0960 | yes (router) |
 | t21-internal-tool | 1.00 | 0.20 | 3 | none | 66af2ea | yes |
@@ -29,8 +30,8 @@ Last text commit per skill:
 RED for comparison: t18 0.56/0.00, t18b 0.33/0.17, t19 0.83/0.67, t19b 1.00/0.72, t19c 0.75/0.25, t19d 0.90/0.86, t19e 0.89/0.33, t20 0.83/0.61, t20b 0.56/0.11, t21 0.40/0.27, t21b 0.40/0.00 (round 2 where the RED record has one).
 
 Notes per case:
-- t19: the 5/5 run before the grader change (a310f27 text, old grader) scored 1.00/0.67. After the lean text (66af2ea) the old-grader score fell to 0.90/0.67 (readings 2/5). A local re-judge passed the 4 failing replies. R14 named the reading in the grader. The R14 run is the number in the table. Without arm: readings 0/5.
-- t19c: 4 of 5 with-arm runs hit the 600 s timeout. The files and the Reviewed line were on disk in the 3 runs that reached the write. On ed09e16 alone: 0.90/0.25. The earlier batch on 293838f scored 1.00/0.25 (5 runs; 4/5 timeouts). The earlier fix-round batch lost its timing to a session limit, and its 5 runs scored 1.00/0.25. In all 10 with-arm runs on the two reviewing texts, 8 wrote a Reviewed line that names compliance. Without arm 0/10. The without arm also fails `no-gate-files` by file absence.
+- t19: the 5-run result before the lean text (a310f27 text, first `readings` grader) scored 1.00/0.67. After the lean text (66af2ea) the R12 grader scored 0.90/0.67 (readings 2/5). A local re-judge passed the 4 failing replies. R14 named the reading in the grader. The R14 run is the number in the table. Without arm: readings 0/5.
+- t19c: 4 of 5 with-arm runs hit the 600 s timeout. The files and the Reviewed line were on disk in the 3 runs that reached the write. On ed09e16 alone: 0.90/0.25. The earlier batch on 293838f scored 1.00/0.25 (5 runs; 4/5 timeouts). The ed09e16 fix1 batch lost its timing to a session limit (5 runs, 1.00/0.25). The fix2 batch is the 0.90/0.25 row. The two batches on ed09e16 (fix1 and fix2, 10 with-arm runs) gave 8 Reviewed lines that name compliance; the other 2 timed out before the write. Without arm 0/10. The 293838f batch (5 runs, compliance-lens 5/5) is separate. The without arm also fails `no-gate-files` by file absence.
 - t19d: GUARD. The without arm scored 0.86 in RED round 2 and 0.71 to 0.77 in GREEN.
 - t19e: not re-run after the auditing-product-models fix round (4c2e494). The 0.87/0.40 run is from 43dc02a. An earlier 3-run result on the first text was 0.78/0.56. The with arm lost skill-fired once on t19d (0.90/0.71, 3 runs, 43dc02a) and once on t19e. Unverified: the cause is description noise.
 - t20: sms-phantom separates the arms (RED 3/3 v 0/3). The 3-run result on 43dc02a was 1.00/0.61. t20 `numeric-unknown` and `sms-merit` do not separate arms (judge noise).
@@ -46,26 +47,26 @@ Notes per case:
 | t16-model-from-code | 1.00 | 0.18 | 5 | b9d9525 (v3) | no, modelling-products changed in da614bb |
 | t16b-model-from-interview | 1.00 | 0.28 | 3 | b9d9525 (v3) | no |
 | t16c-model-partial | 1.00 | 0.25 | 3 | b9d9525 (v3) | no |
-| t16d-model-exists (GUARD) | 1.00 | 0.80 | 5 | 1a3db20 (grader R10; skill da614bb) | yes. A later 3-run result on dfd0960 was 1.00/0.78 |
+| t16d-model-exists (GUARD) | 1.00 | 0.80 | 5 | 1a3db20 (grader R10; skill da614bb) | yes for modelling-products; no for the router (dfd0960). A router-regression 3-run result on 58e93b6 was 1.00/0.78, before dfd0960 |
 | t16e-depth-not-given | 1.00 | 0.33 | 3 | b9d9525 (v3) | no |
 | t17-audit-report (near-guard) | 1.00 | 0.85 | 3 | 4c2e494 | yes |
 | t17b-audit-rulings | 1.00 | 0.69 | 5 | 4c2e494 | yes |
 | t1-repeat-action | 0.83 | 0.83 | 3 | 66af2ea | yes. Delta 0 |
 | t3-no-evidence | 1.00 | 0.25 | 3 | 66af2ea | yes |
-| t4-novice-vs-expert | 0.80 | 0.00 | 5 | 293838f (3 runs) and ed09e16 (2 runs) | yes (pooled) |
+| t4-novice-vs-expert | 0.80 | 0.00 | 5 | 293838f (3 runs) and ed09e16 (2 runs) | yes (pooled; the 3 runs on 293838f are on an earlier text) |
 | t5-dead-end | 1.00 | 0.00 | 3 | ed09e16 | yes. Task 7's first batch on 293838f was 0.80 (5 runs) |
-| t7-component-reuse | 0.75 | 0.00 | 4 clean | 293838f (2) and ed09e16 (2) | yes (pooled). 2 of 4 timeouts |
+| t7-component-reuse | 0.75 | 0.00 | 4 clean | ed09e16 (fix1 runs 1 and 3, fix2 runs 1 and 2) | yes. 2 of 4 timeouts |
 | t9-rationale-pressure | 1.00 | 0.00 | 3 | ed09e16 | yes |
 | t10-stops-at-g1 | 1.00 | 0.00 | 2 | ed09e16 | yes. On 66af2ea: 1.00/0.00 (5). On ed09e16 fix round 1: 0.83/0.00 (3; no-design-before-g1 2/3) |
-| t11-ratchet | 0.80 | 0.50 | 5 | 66af2ea | yes (framing). tier-goes-up 3/5, the same as the 2026-10-07 GREEN. dfd0960 3-run: 0.83/0.33 |
+| t11-ratchet | 0.80 | 0.50 | 5 | 66af2ea | yes (framing). tier-goes-up 3/5, the same as the 2026-10-07 GREEN. 58e93b6 3-run: 0.83/0.33; that run is before dfd0960 |
 | t12-project-rule-wins | 1.00 | 1.00 | 3 | ed09e16 | yes. NO RED, as on 2026-10-07 (0.87 v 1.00) |
-| t8-no-model | 1.00 | 0.00 | 3 | dfd0960 | yes (router) |
+| t8-no-model | 1.00 | 0.00 | 3 | 58e93b6 | no, router changed in dfd0960 |
 | t8b-partial-model (GUARD) | 1.00 | 1.00 | 5 | dfd0960 | yes (router). Delta 0 |
 | smoke | 1.00 | 0.00 | 3 | dfd0960 | no, not re-run after the framing, mapping and reviewing changes |
 
 Notes:
 - t16, t16b, t16c, t16e: Task 3 called round 3 the "final text". Its fix round 1 (da614bb) then changed the mode line, the missing-section line and trims. t16d and t18b ran after that. The four cases did not. Earlier (v2) results: t16 0.97/0.18 (3), t16b 1.00/0.28, t16c 1.00/0.25, t16e 1.00/0.33.
-- t4: the fail in the 5-run set is the judge on `names-tension`. No compliance lens ran in t4. The 2026-10-07 GREEN had 4/5. Assumption: judge variance.
+- t4: the fail in the 5-run set is the judge on `names-tension`. Compliance ran in one t4 run, not in the first batch. The 2026-10-07 GREEN had 4/5. Assumption: judge variance.
 - t5: one 293838f failure cited "Service" and not "Good Services 10". Assumption: judge reading.
 - t7: options-named fails in each timed-out run because the reply is cut. The 2026-10-07 GREEN had 3 of 5 timeouts at 570 s.
 - t11: In one run the router wrote decisions.md before G1 for an open rule (e-4riUg2). Unverified: whether step 10 caused it. t10 passed 5/5.
@@ -90,7 +91,8 @@ Each change has a ruling in the ledger. No grader was changed to move a without-
 - R1: Launch regexes are `Launch:\**\s*(tier\s*)?<n>`, because the template slot is bold.
 - R2 (t19): the `interpretation-left` regex asserted nothing, because the scaffold already wrote `Interpretation: UNKNOWN`. It is now two `tool_used` graders (Edit and Write) with `input_match` `PRODUCT\.md[\s\S]*Interpretation:`, max 0.
 - R3 and R4 (t19c): the prompt says "This is a Medium change." and "G1 is approved. Continue the design to G2." The scaffold supplies an approved issue.md and journey.md. The router sizes deposit handling Large and stops at G1, so the review lens can only be tested past G1.
-- R6 (t20, t21, t21b): `sms-phantom`, and the t21 and t21b path graders measure vocabulary or paths. Each case got a merit llm grader the without arm can pass or fail (`sms-merit`, `reply-merit`). t20 `numeric-unknown` is now llm. t19d `processor-transfer` is case-sensitive. t19 `interpretation-left` is anchored on the PRODUCT.md path.
+- R6 (t20, t21, t21b): `sms-phantom`, and the t21 and t21b path graders measure vocabulary or paths. Each case got a merit llm grader the without arm can pass or fail (`sms-merit`, `reply-merit`).
+- Task 1 fix round items 5 to 7 (not R6): t19d `processor-transfer` is case-sensitive. The t19 `interpretation-left` input_match is anchored on the PRODUCT.md path. t20 `numeric-unknown` is now llm.
 - R7 (t21): `no-padding` is a reply-only check. A count:0 on an absent file fails by harness, so file-level padding is not graded.
 - R10 (t16d): `offers-audit` allows an added missing Terms or Market section, and accepts an audit offer "once code exists". It predates owner decision O3. It still fails a rewrite of existing sections or a reply that does not say the docs exist.
 - R11 (t18, t20b): the name-only regex graders `offers-model` and `offers-audit` are deleted. The without arm cannot know the skill names, so they measured the name. GREEN scores on `offers-model-merit`, `offers-audit-merit` and `skill-fired`. The router sentence "Name the skill in each offer." was removed with them.
@@ -121,14 +123,22 @@ The harness cannot answer questions, and no case sets up these states or grades 
 
 ## Cases not re-run after the last change to the skill they cover
 
-- t16f-extend-one-job: routes to mapping-journeys. Not re-run after the mapping-journeys change (66af2ea) or the `templates/journey.md` change. No run this round.
-- t19e-privacy-ccpa: last run on 43dc02a. auditing-product-models changed in 4c2e494 (the lens path moved into parentheses; check 4, 5, 6, 8 wording and the Open unknowns line).
-- t16, t16b, t16c, t16e: last run on b9d9525. modelling-products changed in da614bb.
-- t2, t2b, t8 (mapping-journeys): mapping-journeys gained step 5 text in a310f27. Not re-run.
-- smoke: last run on dfd0960. The framing, mapping and reviewing skills changed after it.
-- t6, t13, t14 to t14d, t15 to t15c: cases for other skills or the review path. Task 7 lists them as not re-run after ed09e16. I did not check their skill coverage again.
-- t17 and t17b ran on 4c2e494, with 3 and 5 runs. t19b ran 3 runs.
-- Every case outside t4, t5, t7, t9, t10, t12 and t19c is not re-run on ed09e16 (reviewing-product-design).
+Built from `git log a8f7dbb..HEAD -- skills/<skill>` and the last run of each case. "Final" means the run used the last text of that skill. Cases are mapped to the skills their prompts and graders exercise. Router cases also load framing-problems.
+
+| Skill | Last change | Case: commit of last run |
+|---|---|---|
+| modelling-products | da614bb | t16d: da614bb, final. t18b: da614bb, final. t16, t16b, t16c, t16e: b9d9525, NOT final. t16f routes to mapping-journeys and is listed there. |
+| auditing-product-models | 4c2e494 | t17, t17b, t19b, t19d, t20: 4c2e494, final. t19e: 43dc02a, NOT final. |
+| designing-products (router) | dfd0960 | t8b, smoke: dfd0960, final. t18, t20b: dfd0960, final. t8-no-model: 58e93b6, NOT final. t16d (router regression): 58e93b6, NOT final. t10, t11: 66af2ea (t10 also ed09e16), final, because the router has not changed since dfd0960. t6-trivial: never run this round, NOT final. |
+| framing-problems | 66af2ea | t19, t21, t21b, t1, t3, t10, t11: 66af2ea, final. t10 also on ed09e16. t6-trivial: never run this round, NOT final. smoke: dfd0960, NOT final. |
+| mapping-journeys | a310f27 | t21b: 66af2ea, final. t2, t2b (displaced work): never run this round, NOT final. t16f-extend-one-job: never run this round, NOT final. |
+| designing-interactions | a310f27 | t5, t7, t9: ed09e16, final. t12-project-rule-wins: ed09e16, final. |
+| reviewing-product-design | ed09e16 | t19c, t4, t5, t7, t9, t12: ed09e16, final. t14-style review cases are not in this list. |
+| references/lenses.md, templates | 6e7d474 (lenses.md), 66af2ea (templates) | No case reads them alone. t16f reads `templates/journey.md` and was not re-run. |
+
+Skills with no change on this branch (`git log a8f7dbb..HEAD -- skills/<skill>` is empty): filing-issues, sharing-designs and the comment-triage skill. Their cases t13, t14 to t14d and t15 to t15c need no re-run.
+
+Not re-run after the last change to the skill they cover: t16, t16b, t16c, t16e, t16f, t19e, t2, t2b, t6, t8-no-model, t16d (router), smoke (after the framing, mapping and reviewing changes).
 
 ## What the new text adds over the base model
 
