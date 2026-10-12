@@ -130,3 +130,9 @@ Cost of these three re-runs: $22.55.
 
 33 changed cases (the ade3a79 re-run list plus t5). 32 score 1.0, including t21c and t21d. t7-component-reuse 0.67 (`options-named` fails in the one run). Cost: $24.42.
 The Sonnet-driven wording did not lower Opus on any other case.
+
+## Launch reply slot (801df50), reverted
+
+framing-problems reply item 4 as `<question>: <answer>` per tier question. Sonnet, plugin arm: t21d 0.40 (5 runs; skill loads 3 of 5, tier 2 picked 2 of 5), t21 1.0, t10 1.0, t21b 0.73 (3 runs). A probe of t21c with the skill named in the prompt (temporary case, deleted): 0.67, 1 of 3 runs fully pass. No gain on t21d, so the line is reverted; the Opus check stays valid for the shipped text.
+
+Open after this round (Sonnet): t21d 0.40–0.53 and t21c (skill loading; Opus passes both at 1.0). Untested on Sonnet: the tier 2 reply content.
