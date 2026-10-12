@@ -64,3 +64,48 @@ Below 0.8 with the plugin (Sonnet gaps; all but t19f, t21c and t21d passed on Op
 - t19f, t21c, t21d: the gap cases of this round (reply reopens the reading; tier 1 and tier 2 reply content; t21c also loads the skill 1 of 3).
 
 Not in this sweep: lenses-next 1b96a89 ("No reading waits on sign-off…", t19 sign-off mentions 0/5 on Sonnet).
+
+## Re-run after ade3a79 (Sonnet 5.5, plugin arm only)
+
+32 cases: the 11 below 0.8 at 5 runs, 21 regression cases at 3 runs. Without-arm scores are from the bc0c036 sweep (the without arm reads no skill text). Cost: $32.46 (API-equivalent, subscription).
+
+| Case | With, bc0c036 | With, ade3a79 | Without | Failing graders, ade3a79 (per run) |
+|---|---|---|---|---|
+| smoke | 1 | 1 | 0 | — / — / — |
+| t1-repeat-action | 0.33 | 0.8 | 0.17 | — / — / — / non-button-option, why-and-journey / — |
+| t10-stops-at-g1 | 1 | 1 | 0 | — / — / — |
+| t11-ratchet | 0.33 | 0.3 | 0.5 | tier-goes-up, tier-raise-line / tier-goes-up, tier-raise-line / tier-goes-up, tier-raise-line / — / tier-raise-line |
+| t14b-review-page-g1 | 1 | 1 | 0 | — / — / — |
+| t16-model-from-code | 0.82 | 0.85 | 0.27 | depth-held / depth-held / depth-held, threshold-question |
+| t16b-model-from-interview | 1 | 1 | 0.33 | — / — / — |
+| t16c-model-partial | 0.75 | 0.9 | 0.25 | — / — / actors-written / — / actor-kinds |
+| t16d-model-exists | 1 | 0.89 | 1 | — / — / offers-audit |
+| t16e-depth-not-given | 1 | 1 | 0.33 | — / — / — |
+| t18-actors-missing | 1 | 1 | 0 | — / — / — |
+| t19-ambiguous-rule | 0.89 | 0.83 | 0.67 | readings / readings / readings / readings / readings |
+| t19b-audit-position | 0.89 | 0.94 | 0.72 | — / match-not-flagged / — |
+| t19c-no-signoff | 1 | 0.93 | 0.2 | — / — / decisions-merit |
+| t19d-privacy-gdpr | 0.95 | 0.95 | 0.71 | skill-fired / — / — |
+| t19e-privacy-ccpa | 0.89 | 1 | 0.56 | — / — / — |
+| t19f-reading-in-design | 0.73 | 0.92 | 0.47 | — / reply-merit / — / — / reply-merit |
+| t2-displaced-work | 0.67 | 1 | 0.17 | — / — / — / — / — |
+| t20-claims | 1 | 0.94 | 0.61 | — / — / valid-not-flagged |
+| t20b-stale-offer | 0.83 | 1 | 0 | — / — / — |
+| t21-internal-tool | 0.93 | 1 | 0.2 | — / — / — |
+| t21b-big-launch | 0.87 | 0.73 | 0 | start-path / launch-tier-3, reply-merit, start-path / — |
+| t21c-tier-1 | 0.33 | 0.13 | 0 | reply-merit / launch-tier-1, reply-merit, skill-fired / launch-tier-1, reply-merit, skill-fired / launch-tier-1, reply-merit, skill-fired / launch-tier-1, reply-merit, skill-fired |
+| t21d-tier-2 | 0.44 | 0.53 | 0 | launch-tier-2, reply-merit / launch-tier-2, reply-merit / reply-merit / reply-merit / reply-merit |
+| t2b-displaced-work-paraphrase | 1 | 0.67 | 0.17 | — / displaced-work, no-design-before-answers / — |
+| t3-no-evidence | 0.83 | 1 | 0.17 | — / — / — |
+| t4-novice-vs-expert | 0.67 | 1 | 0 | — / — / — / — / — |
+| t6-trivial | 1 | 1 | 0.5 | — / — / — |
+| t7-component-reuse | 0.78 | 0.93 | 0 | — / — / — / — / options-named |
+| t8-no-model | 0.67 | 0.6 | 0 | proceeds-and-offers-save / — / — / — / proceeds-and-offers-save |
+| t8b-partial-model | 1 | 1 | 0.67 | — / — / — |
+| t9-rationale-pressure | 1 | 1 | 0 | — / — / — |
+
+Now passing (were below 0.8): t1 0.80, t2 1.0, t4 1.0, t7 0.93, t16c 0.90, t19f 0.92.
+Still below 0.8: t8 0.60, t11 0.30, t21c 0.13 (skill loads 1 of 5), t21d 0.53.
+Dropped below 0.8: t21b 0.87 → 0.73, t2b 1.0 → 0.67 (one run each). Unverified: change or noise.
+t19 scores 0.83, but its key grader `readings` fails 5/5.
+Not re-run after ade3a79: the 13 cases not listed above (they read no changed line, or the sweep had them at 1.0 with no changed path), and every without arm.
