@@ -10,4 +10,4 @@
 7. Revise once. Re-run only the lenses whose findings changed.
 8. Append the review-record line to decisions.md.
 
-Write no review file. Findings, dismissals and the dimension table go in the G2 reply. From the review, decisions.md gets only the Tension entries and the review-record line.
+Write no review file. Findings, dismissals and the dimension table go in the G2 reply. A CRITICAL finding blocks approval until it is fixed or the owner accepts it with a reason. From the review, decisions.md gets only the Tension entries and the review-record line.

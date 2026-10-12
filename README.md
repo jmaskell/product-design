@@ -35,7 +35,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 - **G2 (right design?)** shows the mocks, the decisions, the dismissed findings and any tension that needs your ruling. A CRITICAL finding blocks approval until it is fixed or you accept it with a reason.
 - **Small** work frames in three lines with a launch tier, makes one mock or none, and skips G1 and the review agents. Its G2 question carries the launch answers and the readings of any open rule. **Medium** work gets two design options. **Large** work gets three options and a fuller review.
 - Medium and Large work offers a review page at each gate, so your team can comment.
-- The router checks the size again before each gate. It raises the size, never lowers it, and says so each time.
+- Before each gate, the router checks where each new value comes from. If another person must enter it, the router raises the size. It never lowers the size, and says so each time. G1 carries the offer to save a newly mapped journey.
 - The router offers `modelling-products` when `PRODUCT.md` or `docs/product/actors.md` does not exist. It offers `auditing-product-models` when git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date.
 - After G2, engineering edits the product code. The skills do not.
 

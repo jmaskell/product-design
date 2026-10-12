@@ -16,7 +16,7 @@ Then read PRODUCT.md and the `Tier triggers` metadata; raise the tier if one mat
 | Medium | A new screen or dialog; a changed task flow for one actor; a new component pattern |
 | Small | Otherwise |
 
-In doubt, take the heavier tier. Recheck the tier before each gate, counting other actors' new work; on a match, raise it and update the issue.md Phases line. Never lower it. Open every gate reply with the tier line, showing each raise: `Tier: <old> → <new> — <the predicate found>`.
+In doubt, take the heavier tier. Before each gate, check where each new value comes from; if another actor must enter it, raise the tier and update the issue.md Phases line. Never lower it. Open every gate reply with the tier line, showing each raise: `Tier: <old> → <new> — <the predicate found>`.
 
 ## 2. Phases
 
@@ -32,8 +32,8 @@ Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourse
 
 ## 3. Gates
 
-- **G1 — right problem?** Once journey.md exists, show the framing-problems reply in its order, each launch answer and reading in full, and the journey.
-- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on. A CRITICAL finding blocks approval until fixed or the owner accepts it with a reason.
+- **G1 — right problem?** Once journey.md exists, show the framing-problems reply in its order, each launch answer and reading in full, the journey and its save offer.
+- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on.
 - Medium and Large: offer product-design:sharing-designs at each gate.
 - A reply approves only the presented stage.
 
