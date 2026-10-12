@@ -125,3 +125,8 @@ t21b `start-path`: journey.md holds the start path as one line (e-IcdQCX: "Disco
 Unverified: whether t20b and t19e dips are noise. Both read no line changed in these commits except the router (t20b).
 Still below 0.8: t21c (skill loads 1 of 5; the workflow names the skill), t21d 0.44.
 Cost of these three re-runs: $22.55.
+
+## Opus 5.5 check on 5bdbfcf (plugin arm, 1 run each)
+
+33 changed cases (the ade3a79 re-run list plus t5). 32 score 1.0, including t21c and t21d. t7-component-reuse 0.67 (`options-named` fails in the one run). Cost: $24.42.
+The Sonnet-driven wording did not lower Opus on any other case.
