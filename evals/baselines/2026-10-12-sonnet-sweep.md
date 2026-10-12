@@ -109,3 +109,19 @@ Still below 0.8: t8 0.60, t11 0.30, t21c 0.13 (skill loads 1 of 5), t21d 0.53.
 Dropped below 0.8: t21b 0.87 → 0.73, t2b 1.0 → 0.67 (one run each). Unverified: change or noise.
 t19 scores 0.83, but its key grader `readings` fails 5/5.
 Not re-run after ade3a79: the 13 cases not listed above (they read no changed line, or the sweep had them at 1.0 with no changed path), and every without arm.
+
+## Re-runs after 09dfe57, 296eeed and c17f084 (Sonnet 5.5, plugin arm only)
+
+| Commit | Change | Case (runs) | Before | After |
+|---|---|---|---|---|
+| 09dfe57 | Router: check where each new value comes from before each gate; G1 carries the journey save offer; CRITICAL-blocks-approval moves to synthesis.md | t11 (5) | 0.30 | 0.80 |
+| 296eeed | mapping-journeys asks the save question in the reply; readings have a fixed slot, argument before risk | t8 (5) | 0.60 | 1.0 |
+| 296eeed | same | t19 (5) | 0.83, `readings` 0/5 | 0.87, `readings` 1/5 |
+| c17f084 | A lean has a slot with its argument | t19 (5) | 0.87, `readings` 1/5 | 0.93, `readings` 3/5 |
+
+Regression, 3 runs each, after 09dfe57: smoke 1.0, t10 1.0, t14b 1.0, t18 1.0, t2b 1.0, t5 1.0, t8b 1.0, t9 1.0, t6 0.83, t20b 0.67 (offers-audit-merit 2/3; sweep 0.83, ade3a79 1.0), t21b 0.73, t21d 0.44.
+After 296eeed: t16 1.0, t19b 1.0, t19c 0.93, t19d 1.0, t19e 0.78 (ccpa-terms 2/3; sweep 0.89), t21b 0.80. After c17f084: t19c 1.0.
+t21b `start-path`: journey.md holds the start path as one line (e-IcdQCX: "Discover → Demo → Pilot … → First job closed"); the judge splits on it. The sweep failed it 2/3 too.
+Unverified: whether t20b and t19e dips are noise. Both read no line changed in these commits except the router (t20b).
+Still below 0.8: t21c (skill loads 1 of 5; the workflow names the skill), t21d 0.44.
+Cost of these three re-runs: $22.55.
