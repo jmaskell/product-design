@@ -133,7 +133,7 @@ The PRODUCT.md `Market` section holds the product-level tier 3 answers: alternat
 
 For a rule with no recorded interpretation (`Interpretation: UNKNOWN`, or no `Interpretation:` line), give 2–3 readings, from cautious to assertive.
 Write each reading as `<reading> — because <argument> — lets the product <what> — risk: <risk>`.
-The argument is the strongest case for that reading, the assertive one too. The risk of the cautious reading is what the product gives up. You may name a lean with its argument; the owner picks.
+The argument is the strongest case for that reading, the assertive one too. The risk of the cautious reading is what the product gives up. You may name a lean, as `Lean: <reading> — because <argument>`; the owner picks.
 No reading waits on sign-off or a ruling from legal, an expert or anyone else. The owner's pick decides.
 Claude never picks a reading silently.
 Record the pick in the PRODUCT.md Capabilities and Constraints row: rule + source; interpretation; why the risk is acceptable; `KNOWN (owner, <date>)`.
