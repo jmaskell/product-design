@@ -5,7 +5,7 @@ description: Use when a framed problem and its task flow are agreed and the inte
 
 # Designing interactions
 
-`templates/` and `references/` sit two levels above this skill's directory.
+`templates/` and `references/` sit two levels up; open them with Read.
 
 Input: issue.md and journey.md. Small: issue.md's previous/next step is the task flow. If the task flow is missing, stop and run product-design:mapping-journeys.
 

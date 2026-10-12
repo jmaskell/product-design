@@ -5,7 +5,7 @@ description: Use when an issue, request or idea arrives as a solution ("add a bu
 
 # Framing problems
 
-`templates/` and `references/` sit two levels above this skill's directory.
+`templates/` and `references/` sit two levels up; open them with Read.
 
 ## Recipe — fill every slot in templates/issue.md, in order
 

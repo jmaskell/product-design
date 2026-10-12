@@ -5,7 +5,7 @@ description: Use when a framed problem needs its place in the person's whole jou
 
 # Mapping journeys
 
-`templates/` and `references/` sit two levels above this skill's directory.
+`templates/` and `references/` sit two levels up; open them with Read.
 
 Reason in this order. Never skip a level (references/journey-mapping.md).
 

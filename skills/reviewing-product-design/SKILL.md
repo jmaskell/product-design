@@ -5,7 +5,7 @@ description: Use when a journey, flow or interaction design is drafted and needs
 
 # Reviewing product design
 
-`templates/` and `references/` sit two levels above this skill's directory. reviewer-prompt.md and synthesis.md sit in this skill's directory.
+`templates/` and `references/` sit two levels up; open them with Read. reviewer-prompt.md and synthesis.md sit in this skill's directory.
 
 The designer never reviews its own work. Each lens runs as a fresh agent with reviewer-prompt.md.
 

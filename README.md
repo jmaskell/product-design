@@ -31,7 +31,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
      └─ filing-issues ─► tracker or plan folder ─► engineering
 ```
 
-- **G1 (right problem?)** shows the outcome, the journey, the evidence and the questions for your domain expert. Large work stops here until you answer. Medium work shows G1 in one message and goes on.
+- **G1 (right problem?)** shows the outcome, the journey, the evidence, the launch tier with its answers, the readings of any open rule and the questions for your domain expert. Large work stops here until you answer. Medium work shows G1 in one message and goes on.
 - **G2 (right design?)** shows the mocks, the decisions, the dismissed findings and any tension that needs your ruling. A CRITICAL finding blocks approval until it is fixed or you accept it with a reason.
 - **Small** work frames in three lines, makes one mock or none, and skips G1 and the review agents. **Medium** work gets two design options. **Large** work gets three options and a fuller review.
 - Medium and Large work offers a review page at each gate, so your team can comment.

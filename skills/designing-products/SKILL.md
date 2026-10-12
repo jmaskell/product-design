@@ -32,7 +32,7 @@ Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourse
 
 ## 3. Gates
 
-- **G1 — right problem?** Show the outcome, journey, evidence ledger and questions for the expert. In Large, stop and wait.
+- **G1 — right problem?** Show the framing-problems reply, in its order, and the journey. In Large, stop and wait.
 - **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on. A CRITICAL finding blocks approval until fixed or the owner accepts it with a reason.
 - Medium and Large: offer product-design:sharing-designs at each gate.
 - A reply approves only the stage you presented.
