@@ -18,22 +18,22 @@ Keep issue.md to 60 lines or less, one sentence per prose slot. Every line in th
 3. **Job.** Cite the job ID from docs/product/actors.md. If none fits, propose a candidate; do not stretch one. Formulations: references/jobs-to-be-done.md.
 4. **Current workaround.** What they do today.
 5. **Previous and next step.** What the person does just before and after.
-6. **Evidence ledger.** Tag every claim about people (references/evidence-ledger.md). Untagged behaviour is a defect.
-7. **Alternatives to the request.** At least one other way to reach the outcome. Keep the request if it wins, and say why.
-8. **Questions for the expert.** Each ASSUMED or UNKNOWN claim a decision needs, as a question for the expert, with the decision it blocks.
+6. **Evidence ledger.** Tag every claim about people (references/evidence-ledger.md).
+7. **Alternatives to the request.** At least one other way to reach the outcome or remove the trigger. Keep the request if it wins, and say why.
+8. **Questions for the expert.** Each ASSUMED or UNKNOWN claim a decision needs, as a question, with the decision it blocks.
 9. **Launch.** Propose the tier, audience and goal (references/lenses.md `## Launch tiers`), provisional. In `## Launch`, one bullet per tier question; no higher tier's.
 10. **Rules for the owner.** For each PRODUCT.md constraint touched with no recorded interpretation (`Interpretation: UNKNOWN` or no line), add its readings (references/lenses.md `## Readings of a rule`) as one question. No verdict. No approval from anyone else. Write no decisions.md before G1. After the owner picks, update that row and point decisions.md to it. An open reading goes to the next gate.
 
 ## The reply, in this order
 
 1. **File.** The path.
-2. **Outcome.** The outcome, the step before and after, each tagged.
-3. **Ledger.** Seven or fewer decision-relevant rows. Each row: a claim, then its tag in capitals: `KNOWN (source)`, `INFERRED (from what)`, `ASSUMED` or `UNKNOWN`.
+2. **Outcome.** The outcome, the trigger, and the step before and after, each tagged. Then the alternatives.
+3. **Ledger.** Seven or fewer decision-relevant rows. Each row: a claim, then its tag: `KNOWN (source)`, `INFERRED (from what)`, `ASSUMED` or `UNKNOWN`.
 4. **Launch.** The tier line, then one answer per tier question.
 5. **Readings.** Per open rule: the readings, each as `<reading> — because <argument> — lets the product <what>`, per references/lenses.md. Give each reading its strongest case, the assertive one too. Then the blocked decision.
 6. **Questions for <expert>.** Numbered, each with the decision it blocks. Ask whether a behaviour happens before you ask about it.
 
-## Red flags — stop and go back to step 1
+## Red flags — go back to step 1
 
 | Thought | Reality |
 |---|---|

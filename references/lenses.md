@@ -125,6 +125,7 @@ A summary of the other lenses: purpose, who, evidence, the 3 biggest risks.
 | 2 Feature | A change existing users must notice, or that drives upgrade. A change that helps only after people learn to do something new is tier 2, even when it is small | Which segment gains; the one-line message; where they learn of it; adoption signal; who in sales or support needs a brief |
 | 3 Launch | A new product, market or repositioning | Full product level: alternatives incl. "do nothing", category, segment, the four forces (Moesta), promise vs first value, claims vs proof, the path from discovery to first value through the real start path (self-serve, or demo, pilot and contract) |
 
+Tier 1 test: people do what they did before and see more. If they must act in a new way, or the product must tell them how, it is tier 2.
 Channels (changelog, in-app, email) are examples, not steps. Never ask a lower tier the questions of a higher tier.
 The PRODUCT.md `Market` section holds the product-level tier 3 answers: alternatives, category, segment traits and losses. issue.md `## Launch` holds the answers for one change.
 
@@ -132,8 +133,8 @@ The PRODUCT.md `Market` section holds the product-level tier 3 answers: alternat
 
 For a rule with no recorded interpretation (`Interpretation: UNKNOWN`, or no `Interpretation:` line), give 2–3 readings, from cautious to assertive.
 For each reading, give the argument and what it lets the product do.
-Give each reading its strongest case, the assertive one too. You may name a lean with its argument; the owner picks.
-No reading waits on sign-off from legal or anyone else. Name its risk instead; the owner's pick decides.
+Give each reading its strongest case and its risk, the assertive one too. The risk of the cautious reading is what the product gives up. You may name a lean with its argument; the owner picks.
+No reading waits on sign-off or a ruling from legal, an expert or anyone else. The owner's pick decides.
 Claude never picks a reading silently.
 Record the pick in the PRODUCT.md Capabilities and Constraints row: rule + source; interpretation; why the risk is acceptable; `KNOWN (owner, <date>)`.
 Until the owner picks, write `Interpretation: UNKNOWN` with the readings.

@@ -5,15 +5,15 @@ description: Use when a repo has no product model (PRODUCT.md, docs/product/acto
 
 # Modelling products
 
-The model: PRODUCT.md, docs/product/actors.md, journeys in docs/product/journeys/. Plugin files, two levels up: templates/actors.md, templates/journey.md, references/evidence-ledger.md, references/lenses.md.
+The model: PRODUCT.md, docs/product/actors.md, docs/product/journeys/. Plugin files, two levels up: templates/actors.md, templates/journey.md, references/evidence-ledger.md, references/lenses.md.
 
 ## 1. Pick the mode
 
-- actors.md exists: fill only a missing or empty PRODUCT.md (Edit or new file), then stop. To a full one, add only a missing `## Terms` or `## Market` (Edit). Say the model exists. Offer product-design:auditing-product-models to check it against the code, or product-design:mapping-journeys to add one job's journey.
+- actors.md exists: fill only a missing or empty PRODUCT.md, then stop. To a full one, add only a missing `## Terms` or `## Market`. Say the model exists. Offer product-design:auditing-product-models to check it against the code, or product-design:mapping-journeys to add one job's journey.
 - Application source exists: from code (section 2).
 - No application source: from the owner's answers (section 3).
 
-Never Write over an existing PRODUCT.md, actors.md or journey; Edit only empty or missing sections.
+Write new files with the Write tool, never Bash. Never overwrite an existing PRODUCT.md, actors.md or journey; Edit only empty or missing sections.
 
 ## 2. From code
 

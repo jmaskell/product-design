@@ -22,7 +22,7 @@ Write `docs/plans/<slug>/journey.md` from templates/journey.md, or use the plan 
 | Removed or simplified for | Work now done by | Stage | Cost |
 |---|---|---|---|
 
-If the table has a row, the framing must answer it before design starts. The owner answers it, so the reply shows each row with all four columns. Name the stage as the journey names it.
+If the table has a row, stop at the table. Write no spec, plan or design until the owner answers each row. The reply shows each row with all four columns. Name the stage as the journey names it.
 
 ## Red flags
 
