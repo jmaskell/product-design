@@ -13,6 +13,8 @@ Recommendation: <optional>
 
 Compliance and Privacy: each finding gives a fix, or the case for the current design, against the owner's recorded interpretation. When a rule has no recorded interpretation (`Interpretation: UNKNOWN`, or no `Interpretation:` line), report its readings (lens file, `## Readings of a rule`) under UNKNOWN: a question for the owner, not a defect. Never give a verdict. Never send the owner to anyone else for approval.
 
+An owner pick recorded as KNOWN (issue.md `Rules for the owner`, or a PRODUCT.md row) is settled. Do not report a finding or a stricter reading against it.
+
 Severity: CRITICAL (likely prevents task completion or causes harm), SIGNIFICANT (meaningful friction or risk), MINOR (useful optimisation), UNKNOWN (cannot assess without evidence; write the question).
 
 Then one line per dimension your lens covers: holds / at risk / fails / cannot assess.
