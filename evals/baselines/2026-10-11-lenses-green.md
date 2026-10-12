@@ -15,17 +15,17 @@ Last text commit per skill (after the final fix wave):
 
 | Case | With | Without | Runs | Failing graders (with arm) | Text the run used | On final text? |
 |---|---|---|---|---|---|---|
-| t18-actors-missing | 1.00 | 0.00 | 5 | none (skill-fired 5/5, offers-model-merit 5/5) | dfd0960 | yes (router) |
+| t18-actors-missing | 1.00 | 0.00 | 5 | none (skill-fired 5/5, offers-model-merit 5/5) | dfd0960 | superseded, see Final fix wave |
 | t18b-terms-signals | 1.00 | 0.17 | 5 | none (signals 5/5) | da614bb | yes |
-| t19-ambiguous-rule | 1.00 | 0.63 | 5 | none (readings 5/5 v 0/5) | 66af2ea, grader at 2dc83e2 | yes |
-| t19b-audit-position (PASSES-WITH) | 1.00 | 0.78 | 3 | none | 4c2e494 | yes |
-| t19c-no-signoff | 0.90 | 0.25 | 5 | compliance-lens 3/5 (2 timeouts before the Reviewed line) | ed09e16 | yes |
-| t19d-privacy-gdpr (GUARD) | 1.00 | 0.74 | 5 | none | 4c2e494 | yes |
+| t19-ambiguous-rule | 1.00 | 0.63 | 5 | none (readings 5/5 v 0/5) | 66af2ea, grader at 2dc83e2 | superseded, see Final fix wave |
+| t19b-audit-position (PASSES-WITH) | 1.00 | 0.78 | 3 | none | 4c2e494 | no |
+| t19c-no-signoff | 0.90 | 0.25 | 5 | compliance-lens 3/5 (2 timeouts before the Reviewed line) | ed09e16 | superseded, see Final fix wave |
+| t19d-privacy-gdpr (GUARD) | 1.00 | 0.74 | 5 | none | 4c2e494 | no |
 | t19e-privacy-ccpa (PASSES-WITH) | 0.87 | 0.40 | 5 | ccpa-terms 1, no-lawful-basis 1 | 43dc02a | no |
-| t20-claims | 0.97 | 0.63 | 5 | valid-not-flagged 1 | 4c2e494 | yes |
+| t20-claims | 0.97 | 0.63 | 5 | valid-not-flagged 1 | 4c2e494 | no |
 | t20b-stale-offer | 0.80 | 0.00 | 5 | offers-audit-merit 3/5 (merit only: 3/5 GREEN v 2/3 RED, no measured lift; the 0.80 total includes skill-fired 5/5) | dfd0960 | superseded, see Final fix wave |
-| t21-internal-tool | 1.00 | 0.20 | 3 | none | 66af2ea | yes |
-| t21b-big-launch | 1.00 | 0.00 | 3 | none | 66af2ea | yes |
+| t21-internal-tool | 1.00 | 0.20 | 3 | none | 66af2ea | no |
+| t21b-big-launch | 1.00 | 0.00 | 3 | none | 66af2ea | no |
 
 RED for comparison: t18 0.56/0.00, t18b 0.33/0.17, t19 0.83/0.67, t19b 1.00/0.72, t19c 0.75/0.25, t19d 0.90/0.86, t19e 0.89/0.33, t20 0.83/0.61, t20b 0.56/0.11, t21 0.40/0.27, t21b 0.40/0.00 (round 2 where the RED record has one).
 
@@ -145,7 +145,7 @@ Not re-run after the last change to the skill they cover: t16, t16b, t16c, t16e,
 All points come from the without-arm failures above.
 
 - Terms with code names, `Signal:` lines with real events, and a `## Market` section in the product model (t18b, without 0/5 on four graders).
-- Readings of a rule as one owner question, no verdict, no interpretation written for the owner (t19 readings 5/5 v 0/5).
+- Readings of a rule as one owner question, no verdict, no interpretation written for the owner (t19 readings 4/5 v 0/5 on the final text, fdf5d7a; 5/5 on 2dc83e2).
 - Correction (final review finding 5): the earlier claim here, "a `Compliance` lens named in the `Reviewed:` line (t19c: 8 of 10 v 0 of 10)", is vocabulary, not added value: the grader matches the skill's lens name in the skill's file. See the Final fix wave for the `decisions-merit` result.
 - An UNKNOWN for a numeric claim with no proof, and an SMS phantom found (t20; sms-phantom 3/3 v 0/3 in RED).
 - A tier line and one answer per tier question in `issue.md ## Launch`, and the customer's start path at tier 3 (t21, t21b: adoption, launch-tier-0, launch-tier-3, start-path all 0/5 or 0/3 without).
