@@ -77,3 +77,26 @@ Why each RED grader fails:
 ## Grader changes
 
 - t18 `offers-model` and t20b `offers-audit` are deleted (ruling R11, Task 5). Both were name-only regex graders: they passed only when the reply named the skill. The without arm cannot know the names `modelling-products` or `auditing-product-models`, so the graders measured the name, not the behaviour (AGENTS.md lesson). GREEN scores t18 and t20b on the merit llm graders (`offers-model-merit`, `offers-audit-merit`) plus `skill-fired`. The RED scores above include the deleted graders. On the merit graders alone, RED was t18 1/3 and t20b 2/3 in the with arm.
+
+## Gap cases (2026-10-12)
+
+Three cases for spec lines with no case: designing-interactions builds the owner's chosen reading into the flow (t19f), and launch tiers 1 and 2 (t21c, t21d). No skill text changed. Command per case: `claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --judge-model sonnet --case <case> --runs 3 -j 6 --keep-temp --json evals/results/lenses-gap-<case>.json`. Both arms ran in one run. `skill-fired` counts at weight 1 in both arms.
+
+| Case | With | Without | Failing graders (with arm, fails out of 3) | Status |
+|---|---|---|---|---|
+| t19f-reading-in-design | 0.73 | 0.60 | reply-merit 3/3, decisions-points-to-row 1/3 | RED on `reply-merit` |
+| t21c-tier-1 (tenant prompt) | 0.67 | 0.00 | reply-merit 3/3 | RED on `reply-merit` |
+| t21c-tier-1 (first prompt, agents) | 0.44 | 0.00 | launch-tier-1 3/3, reply-merit 2/3 | Replaced: case design fault, see below |
+| t21d-tier-2 | 0.33 | 0.00 | launch-tier-2 3/3, reply-merit 3/3 | RED |
+
+No case is GUARD: every without arm scores below 0.8.
+
+Why each grader fails:
+- t19f reply-merit (with): the design follows the recorded reading, and `design-follows-reading` passes 3/3. But the review lenses re-raise the settled reading, and the skill turns it into a tension for the owner. Run 0 (`/private/tmp/e-3nYiLF`) decisions.md: "Tension: disclosure at approval vs the recorded 'one total' interpretation … Ruling: open — for the owner at G2", from a Walkthrough and a Usability finding. Its reply asks "Showing the fee at approval: keep 'one total' as it is, or allow the rate only?". Run 2 (`/private/tmp/e-WLwKyx`) has "Tension 2 — say 'fee' at approval?", from a SIGNIFICANT Walkthrough + Service + Accessibility finding, although its decisions.md says "Not reopened". Run 1 (`/private/tmp/e-vYv25z`) timed out at 600 s, so its reply is only the tier line. The without arm passes reply-merit 3/3: it follows the G1 decision and asks nothing about it.
+- t19f decisions-points-to-row: passes 2/3 in the with arm. Run 2's decisions.md entry 2 cites "PRODUCT.md interpretation, KNOWN owner 2026-10-01. Not reopened", but the judge failed it 2 votes to 1 on a 15,371-character file. Unverified: judge noise on a long file. The without arm fails it by absence (no decisions.md). This is a path only the skill names (AGENTS.md lesson), so the grader is not RED evidence; `reply-merit` is the merit pair.
+- t21c, first prompt ("filter the agent's repairs inbox"): the with arm writes `Launch: tier 0 — letting agents (internal staff)` in all three runs. The fixture's actors.md marks Letting agent as an "internal role", and references/lenses.md tier 0 is "A tool for our own staff". So tier 0 is a valid reading, and the regex cannot match valid output. The prompt changed to a change for tenants (external users): "On the tenant's repairs list, show the date each repair was reported next to its status." The graders kept their checks; only the path and the actor word changed. The first run's JSON is kept as `evals/results/lenses-gap-t21c-tier-1-agents.json`.
+- t21c reply-merit (with, tenant prompt): issue.md has `Launch: tier 1` in 3/3 runs, and run 1 (`/private/tmp/e-CCtQgO`) writes both tier 1 answers in `## Launch` ("on /repairs, right after reporting … Does support need to know? — no"). The router sizes it Small, and the Small G2 reply carries no launch answers. Run 0 (`/private/tmp/e-5J1wTP`) reply names `issue.md — … launch` and nothing more. Run 1 says only "I've treated this as a quiet release with no announcement". The without arm writes no issue.md and no launch content.
+- t21d launch-tier-2, reply-merit (with): all three runs write `Launch: tier 1` for landlords ("tier 1 — existing landlords — faster approvals", `/private/tmp/e-eRv4nG`, `e-DVGzAf`, `e-9VGWpl`). A reply-to-approve only helps a landlord who knows about it, so this is a tier 2 change. The replies answer only tier 1 questions ("Does support need to know? Yes. Agents need a short brief", run 2). They name no gaining segment, no one-line message, no channel and no adoption signal. All runs size it Large and stop at G1. The without arm writes `brief.md` with no launch content.
+- skill-fired fails in every without arm, as expected.
+
+No grader was changed to move an arm's score. The one case change is the t21c prompt, for the harness reason above.
