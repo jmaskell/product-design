@@ -8,7 +8,7 @@ description: Use when asked to design, define, shape or scope a feature, flow or
 ## 1. Pick the tier and say it
 
 Size the request alone, before reading files. Write `Tier: <tier> — <the predicate that matched>` as your first text.
-Then read PRODUCT.md and the `Tier triggers` metadata; raise the tier on a match.
+Then read PRODUCT.md and the `Tier triggers` metadata; raise the tier if one matches.
 
 | Tier | Any one of |
 |---|---|
@@ -16,7 +16,7 @@ Then read PRODUCT.md and the `Tier triggers` metadata; raise the tier on a match
 | Medium | A new screen or dialog; a changed task flow for one actor; a new component pattern |
 | Small | Otherwise |
 
-In doubt, take the heavier tier. On a later predicate, raise the tier, update the issue.md Phases line, and say so: `Tier: <old> → <new> — <the predicate found>`. Never lower it. Open every gate reply with the tier line.
+In doubt, take the heavier tier. When you find a predicate later, raise the tier, update the issue.md Phases line, and say so: `Tier: <old> → <new> — <the predicate found>`. Never lower it. Open every gate reply with the tier line, showing each raise.
 
 ## 2. Phases
 
@@ -26,20 +26,20 @@ Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourse
 
 | Tier | Phases |
 |---|---|
-| Small | Frame in three lines (outcome, steps around it, job) and a Launch line: the tier, then one answer per tier question (references/lenses.md) → product-design:designing-interactions (one mock or none) → G2 as one approval question that shows them, plus readings for each touched rule with no recorded interpretation. No reviewer agents. |
+| Small | Frame in three lines (outcome, previous and next step, job) → product-design:designing-interactions (one mock or none) → G2 as one approval question, plus readings (references/lenses.md) for each touched rule with no recorded interpretation. No reviewer agents. |
 | Medium | product-design:framing-problems → product-design:mapping-journeys → G1 in one message → product-design:designing-interactions (2 options) → product-design:reviewing-product-design → G2 |
 | Large | product-design:framing-problems → product-design:mapping-journeys → **G1, stop** → product-design:designing-interactions (3 options) → product-design:reviewing-product-design → G2 |
 
 ## 3. Gates
 
 - **G1 — right problem?** Show the outcome, journey, evidence ledger and questions for the expert. In Large, stop and wait.
-- **G2 — right design?** Show the mocks, decisions.md, dismissals and tensions. A CRITICAL finding blocks approval until fixed or the owner accepts it with a reason.
+- **G2 — right design?** Show the mocks, decisions.md, dismissals, and tensions to rule on. A CRITICAL finding blocks approval until fixed or the owner accepts it with a reason.
 - Medium and Large: offer product-design:sharing-designs at each gate.
 - A reply approves only the stage you presented.
 
 ## 4. Missing context
 
-With nothing, frame from code and the owner's answers. If PRODUCT.md or docs/product/actors.md does not exist, offer product-design:modelling-products. If git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date, offer product-design:auditing-product-models. Never block on a missing model.
+With nothing, frame from code and the owner's answers; offer to save the mapped journey. If PRODUCT.md or docs/product/actors.md does not exist, offer product-design:modelling-products. If git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date, offer product-design:auditing-product-models. Never block on a missing model.
 
 ## 5. Handoff
 
