@@ -1,4 +1,4 @@
 ---
 type: llm
 ---
-PASS when the reply adds no element beyond the seven listed, or adds only elements a tenant needs to act. FAIL when it adds a status pill or badge, a subtitle that restates the heading, a helper line, an explainer line under a button, or a caption saying who made or can see something.
+PASS when none of the elements the reply adds is one of these: a status pill or badge; a subtitle or line that restates the page heading; helper text under a field or button whose label already says it; an explainer line under a button; a caption saying who made, chose or can see something. Navigation, loading states, success or error messages, and dates do not count against it. FAIL when the reply adds any element in the listed categories, and quote it.
