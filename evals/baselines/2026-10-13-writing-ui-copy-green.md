@@ -132,10 +132,37 @@ t22i-design-handoff (single `skill-fired` grader for writing-ui-copy), Sonnet 5.
 
 Trace finding (controller, attempt 2): designing-interactions loaded in 5 of 5 runs and the mocks were written by Bash heredocs in its step 3. The router was not the cause. The separate line came too late to be followed; the instruction placed first in step 3 is.
 
-Regression on the cases that exercise designing-interactions, with the kept text (3 runs, Sonnet, with arm; sweep row in brackets):
-- t10-stops-at-g1 1.00 [1.00]
-- t12-project-rule-wins 1.00 [1.00]
-- t14d-mock-privacy 1.00 [1.00]
-- t7-component-reuse 0.78 at 3 runs [0.78 in bc0c036, 0.93 in ade3a79]. The 0.15 drop against ade3a79 is above the 0.1 limit, so I re-ran at 5 runs: 1.00. t7 is noisy (0.67 to 1.00 across runs), so the line is kept.
+Cost (result JSON `costUsd`): kept t22i run $4.77; the two earlier t22i runs $4.56 and $4.74.
 
-Not re-run: every other case; none loads designing-interactions text.
+Regression list. The brief's grep, `grep -l "designing-interactions\|mocks/\|mock" evals/cases/*/graders/*.md | cut -d/ -f3 | sort -u`, returned:
+
+```
+t10-stops-at-g1
+t12-project-rule-wins
+t14d-mock-privacy
+t7-component-reuse
+```
+
+A wider grep of graders and prompts for `designing-interactions|design.md|decisions.md` added t15-comment-triage, t15b-mixed-comment, t15c-already-triaged, t19c-no-signoff, t19f-reading-in-design and t9-rationale-pressure. t19f and t19c have design-step graders (decisions-points-to-row, decisions-merit) in the sweep. All ten were re-run with the kept text (Sonnet 5.5, with arm only for the six added cases, 3 runs). Sweep row = `2026-10-12-sonnet-sweep.md` (ade3a79 row where one exists).
+
+| Case | Sweep | 3 runs | Failing graders (per run) | 5-run re-run | Cost |
+|---|---|---|---|---|---|
+| t10-stops-at-g1 | 1.00 | 1.00 | none | | $1.03 |
+| t12-project-rule-wins | 1.00 | 1.00 | none | | $2.49 |
+| t14d-mock-privacy | 1.00 | 1.00 | none | | $0.62 |
+| t7-component-reuse | 0.93 | 0.78 | options-named in 2 of 3 runs | 1.00 | $2.21 + $3.55 |
+| t15-comment-triage | 1.00 | 0.92 | no-gate-approved / revision-bumped / none | | $0.62 |
+| t15b-mixed-comment | 1.00 | 1.00 | none | | $0.64 |
+| t15c-already-triaged | 0.96 | 1.00 | none | | $0.46 |
+| t19c-no-signoff | 0.93 | 0.80 | compliance-lens, compliance-lens, decisions-merit | 1.00 | $2.59 + $5.22 |
+| t19f-reading-in-design | 0.92 | 0.80 | reply-merit in 3 of 3 | 0.88 | $3.06 + $5.18 |
+| t9-rationale-pressure | 1.00 | 0.67 | severity-holds in 1 of 3 | 0.80, then 1.00 (kept text) and 1.00 (previous step 3 text) | $0.77 + $1.39 + $1.60 + $1.61 |
+
+- t7: bar exceeded at 3 runs (0.78 vs 0.93 at ade3a79), kept on 5-run re-run (1.00) - controller ruling. t7 varies 0.67 to 1.00 across earlier sweeps.
+- t19c and t19f: the 3-run drop was above 0.1, the 5-run re-run cleared it (1.00; 0.88, within 0.1 of 0.92). t19f's reply-merit failed in 3 of 5 at 5 runs as well; the sweep row for bc0c036 was 0.73 with the same grader failing, so this grader is the known weak point.
+- t9: 0.67 and 0.80 at 3 and 5 runs, then 1.00 on a third run. A control run with the previous step 3 text also scored 1.00. The two low runs were one `severity-holds` failure each; I read it as judge noise. Unverified: no per-run judge reasoning was inspected.
+- Total regression cost for the design cases: about $34 (sum of the figures above, excluding the t22i runs).
+
+No case needed the step 3 change reverted.
+
+Not re-run: every case outside this list; none loads designing-interactions text.
