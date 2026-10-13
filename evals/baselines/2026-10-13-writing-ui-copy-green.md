@@ -119,3 +119,16 @@ The harness records only the votes, so it is Unverified which line the judge cou
 - Rule 1 (name the thing, give the action, stop), rule 4 (no hedging or disclaimers) and rule 9 (conventions): no grader tests them alone.
 - The "After writing" self-check: no grader isolates it.
 - Icon-only buttons and links get an accessible name (rule 5, second sentence): no case has an icon-only control.
+
+## Design handoff (Task 3)
+
+t22i-design-handoff (single `skill-fired` grader for writing-ui-copy), Sonnet 5.5, 5 runs, with-without. Skill text d67f3ae lineage (head acea11b).
+
+| Text | With | Without | Cost |
+|---|---|---|---|
+| designing-interactions unchanged | 0.40 (2 of 5 fired) | 0 | $4.56 |
+| plus "Write every string in a mock with `writing-ui-copy`." (after mocks step 3) | 0.40 (2 of 5 fired) | 0 | $4.74 |
+
+The with arm is below 0.8 in both runs. The handoff line gave no gain (2 of 5 both times), so it is reverted and `designing-interactions` is unchanged. Unverified: why 3 of 5 runs do not fire. The kept traces are sealed; from the trace list, several runs end after designing-products and framing-problems and never load `designing-interactions`, where the line lives. Hypothesis, not tested: the miss is upstream of the line, in the router chain.
+
+Regression: not run. No skill text changed, so the design cases (t7, t10, t12, t14d) keep their sweep rows. t22i stays below 0.8 and is an open item.
