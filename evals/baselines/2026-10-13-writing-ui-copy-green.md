@@ -122,13 +122,20 @@ The harness records only the votes, so it is Unverified which line the judge cou
 
 ## Design handoff (Task 3)
 
-t22i-design-handoff (single `skill-fired` grader for writing-ui-copy), Sonnet 5.5, 5 runs, with-without. Skill text d67f3ae lineage (head acea11b).
+t22i-design-handoff (single `skill-fired` grader for writing-ui-copy), Sonnet 5.5, 5 runs, with-without.
 
-| Text | With | Without | Cost |
+| Text of designing-interactions step 3 | With | Without | Cost |
 |---|---|---|---|
-| designing-interactions unchanged | 0.40 (2 of 5 fired) | 0 | $4.56 |
-| plus "Write every string in a mock with `writing-ui-copy`." (after mocks step 3) | 0.40 (2 of 5 fired) | 0 | $4.74 |
+| unchanged | 0.40 (2 of 5 fired) | 0 | $4.56 |
+| plus a separate line "Write every string in a mock with `writing-ui-copy`." | 0.40 (2 of 5 fired) | 0 | $4.74 |
+| "Load `writing-ui-copy` first, then build each option as a mock ..." (kept) | 1.00 (5 of 5) | 0 | not recorded |
 
-The with arm is below 0.8 in both runs. The handoff line gave no gain (2 of 5 both times), so it is reverted and `designing-interactions` is unchanged. Unverified: why 3 of 5 runs do not fire. The kept traces are sealed; from the trace list, several runs end after designing-products and framing-problems and never load `designing-interactions`, where the line lives. Hypothesis, not tested: the miss is upstream of the line, in the router chain.
+Trace finding (controller, attempt 2): designing-interactions loaded in 5 of 5 runs and the mocks were written by Bash heredocs in its step 3. The router was not the cause. The separate line came too late to be followed; the instruction placed first in step 3 is.
 
-Regression: not run. No skill text changed, so the design cases (t7, t10, t12, t14d) keep their sweep rows. t22i stays below 0.8 and is an open item.
+Regression on the cases that exercise designing-interactions, with the kept text (3 runs, Sonnet, with arm; sweep row in brackets):
+- t10-stops-at-g1 1.00 [1.00]
+- t12-project-rule-wins 1.00 [1.00]
+- t14d-mock-privacy 1.00 [1.00]
+- t7-component-reuse 0.78 at 3 runs [0.78 in bc0c036, 0.93 in ade3a79]. The 0.15 drop against ade3a79 is above the 0.1 limit, so I re-ran at 5 runs: 1.00. t7 is noisy (0.67 to 1.00 across runs), so the line is kept.
+
+Not re-run: every other case; none loads designing-interactions text.
