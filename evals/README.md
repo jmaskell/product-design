@@ -50,4 +50,5 @@ Model under test (2026-10-12, 12 core cases, one run each, plugin arm only):
 - Use Sonnet 5.5 (`--model claude-sonnet-5-5`) for RED, GREEN and regression runs. Without `--model`, the run uses the session's default model.
 - Before a merge, run the changed cases once on Opus 5.5 (`--model claude-opus-5-5`) and record both in the GREEN record.
 - Haiku 5.5 lists the plugin's skills but does not call them, even when a request matches a skill description (smoke and t10 traces, 2026-10-12). Its scores measure skill selection, not skill text. A plugin hook could force the call, but it breaks the skills-only rule, so the plugin does not use one.
+- Haiku 5.5 calls a skill the prompt names (t22g, 2026-10-13: skill-fired 5/5, counted from the traces) and does not call one it is not told about (t22, t22b, t22c, t22d, t22e, t22j, t22h: 0 of 11 runs). t22h, which names no skill, scored 0.40 on Haiku (skill-fired 0/5).
 - This CLI (2.1.287) prints `unrecognized_model` for `claude-haiku-5-5`. That is a warning only: `modelUsage` in `--output-format json` confirms the model ran.

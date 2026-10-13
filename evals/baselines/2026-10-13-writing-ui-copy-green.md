@@ -1,6 +1,6 @@
 # GREEN record: writing-ui-copy (cases t22 to t22k)
 
-Date: 2026-10-13. Claude Code 2.1.287. Judge: sonnet. 5 runs per arm. t22i is excluded (Task 3 owns it). Task 4 finishes this record (t22i, the Opus pass).
+Date: 2026-10-13. Claude Code 2.1.287. Judge: sonnet. 5 runs per arm. The wave tables below exclude t22i (see Design handoff); the Opus and Haiku sections at the end finish this record.
 
 Command per behavioural case: `claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --model claude-sonnet-5-5 --judge-model sonnet --case <case> --runs 5 -j 6 --keep-temp --json evals/results/<wave>/<case>-green.json`. t22g runs the same command without `--scaffold --allow-tools Bash Write Edit`.
 
@@ -21,7 +21,7 @@ Text the numbers came from: `skills/writing-ui-copy/SKILL.md` blob `d67f3ae280b1
 | t22j-plain-prompt | 1.00 | 0.00 | 5 | none | sending-label 5/0; skill-fired 5/0 | GREEN (new during GREEN, see New cases) |
 | t22k-guard-styling | 1.00 | 1.00 | 5 | none | skill-not-fired 5/5 | GUARD holds (new during GREEN) |
 
-Skill load, from the traces: `writing-ui-copy` fired in 40 of 40 with-arm runs across the 8 build cases (t22, t22b, t22c, t22d, t22e, t22h, t22j and t22g). It fired in 0 of 10 with-arm runs of the two GUARD cases. The t22g count was checked in the traces with `grep '"skill"\s*:\s*"product-design:writing-ui-copy"'`, since t22g has no skill-fired grader. t22g loaded the skill in 5 of 5 with-arm runs in every wave (1 to 8). Its without arm also calls `writing-ui-copy`, which returns "Unknown skill".
+Skill load, from the traces: `writing-ui-copy` fired in 40 of 40 with-arm runs across the 8 build cases (t22, t22b, t22c, t22d, t22e, t22h, t22j and t22g). It fired in 0 of 10 with-arm runs of the two GUARD cases. The t22g count was checked in the traces with `grep '"skill"\s*:\s*"product-design:writing-ui-copy"'`, since t22g has no skill-fired grader. t22g loaded the skill in 5 of 5 with-arm runs in every wave (1 to 8), and in wave 9 (checked in the kept wave-9 traces: 5 of 5, each returning "Launching skill", not "Unknown skill"). Its without arm also calls `writing-ui-copy`, which returns "Unknown skill".
 
 ## New cases added during GREEN
 
@@ -143,7 +143,7 @@ t14d-mock-privacy
 t7-component-reuse
 ```
 
-A wider grep of graders and prompts for `designing-interactions|design.md|decisions.md` added t15-comment-triage, t15b-mixed-comment, t15c-already-triaged, t19c-no-signoff, t19f-reading-in-design and t9-rationale-pressure. t19f and t19c have design-step graders (decisions-points-to-row, decisions-merit) in the sweep. All ten were re-run with the kept text (Sonnet 5.5, with arm only for the six added cases, 3 runs). Sweep row = `2026-10-12-sonnet-sweep.md` (ade3a79 row where one exists).
+A wider grep of graders and prompts for `designing-interactions|design.md|decisions.md` added t15-comment-triage, t15b-mixed-comment, t15c-already-triaged, t19c-no-signoff, t19f-reading-in-design and t9-rationale-pressure. t19f and t19c have design-step graders (decisions-points-to-row, decisions-merit) in the sweep. All ten were re-run with the kept text (Sonnet 5.5, 3 runs each; the four cases from the brief's grep ran both arms, the six cases added by the wider grep ran the with arm only). Sweep row = `2026-10-12-sonnet-sweep.md` (ade3a79 row where one exists).
 
 | Case | Sweep | 3 runs | Failing graders (per run) | 5-run re-run | Cost |
 |---|---|---|---|---|---|
@@ -156,13 +156,58 @@ A wider grep of graders and prompts for `designing-interactions|design.md|decisi
 | t15c-already-triaged | 0.96 | 1.00 | none | | $0.46 |
 | t19c-no-signoff | 0.93 | 0.80 | compliance-lens, compliance-lens, decisions-merit | 1.00 | $2.59 + $5.22 |
 | t19f-reading-in-design | 0.92 | 0.80 | reply-merit in 3 of 3 | 0.88 | $3.06 + $5.18 |
-| t9-rationale-pressure | 1.00 | 0.67 | severity-holds in 1 of 3 | 0.80, then 1.00 (kept text) and 1.00 (previous step 3 text) | $0.77 + $1.39 + $1.60 + $1.61 |
+| t9-rationale-pressure | 1.00 | 0.67 | severity-holds in 1 of 3 | 0.80, then 1.00 (kept text, 5 runs) and 1.00 (previous step 3 text, 5 runs) | $0.77 + $1.39 + $1.60 + $1.61 |
 
 - t7: bar exceeded at 3 runs (0.78 vs 0.93 at ade3a79), kept on 5-run re-run (1.00) - controller ruling. t7 varies 0.67 to 1.00 across earlier sweeps.
 - t19c and t19f: the 3-run drop was above 0.1, the 5-run re-run cleared it (1.00; 0.88, within 0.1 of 0.92). t19f's reply-merit failed in 3 of 5 at 5 runs as well; the sweep row for bc0c036 was 0.73 with the same grader failing, so this grader is the known weak point.
-- t9: 0.67 and 0.80 at 3 and 5 runs, then 1.00 on a third run. A control run with the previous step 3 text also scored 1.00. The two low runs were one `severity-holds` failure each; I read it as judge noise. Unverified: no per-run judge reasoning was inspected.
-- Total regression cost for the design cases: about $34 (sum of the figures above, excluding the t22i runs).
+- t9: 0.67 and 0.80 at 3 and 5 runs, then 1.00 on a third run of 5 runs (reg4-t9). A control run of 5 with the previous step 3 text also scored 1.00 (reg5-t9-old). The two low runs were one `severity-holds` failure each; I read it as judge noise. Unverified: no per-run judge reasoning was inspected.
+- Total regression cost for the design cases: $33.04 (sum of the cost column above, excluding the t22i runs).
 
 No case needed the step 3 change reverted.
 
 Not re-run: every case outside this list; none loads designing-interactions text.
+
+## Opus 5.5 (Task 4)
+
+One run per case, with arm only, `--model claude-opus-5-5 --ablation none`, skill text blob d67f3ae. `modelUsage`/model names in each JSON: `claude-opus-5-5`. Results are in `evals/results/<case>-opus.json` (gitignored).
+
+| Case | Score | Cost |
+|---|---|---|
+| t22-validation | 1.00 | $0.20 |
+| t22b-empty-state | 1.00 | $0.15 |
+| t22c-cancel | 1.00 | $0.22 |
+| t22d-pill-creep | 1.00 | $0.17 |
+| t22e-bugfix | 1.00 | $0.18 |
+| t22f-guard-rename | 1.00 | $0.15 |
+| t22g-compliance | 1.00 | $0.08 |
+| t22h-project-rule | 1.00 | $0.15 |
+| t22i-design-handoff | 1.00 | $2.83 |
+| t22j-plain-prompt | 1.00 | $0.15 |
+| t22k-guard-styling | 1.00 | $0.13 |
+
+Mean 1.00 over 11 cases; total $4.41. No grader failed in any run. One run per case is a sample of one: it shows no Opus regression, not a rate.
+
+## Haiku 5.5 (Task 4)
+
+With arm only, `--model claude-haiku-5-5 --ablation none --keep-temp`. Every JSON names `claude-haiku-5-5` only. Skill load counted from the kept traces: `Skill` calls for `writing-ui-copy` that returned "Launching skill" (not "Unknown skill").
+
+| Case | Runs | Score | Skill loaded (traces) | Failing graders |
+|---|---|---|---|---|
+| t22g-compliance (prompt names the skill) | 5 | 1.00 | 5 of 5 | none |
+| t22h-project-rule | 5 | 0.40 | 0 of 5 | skill-fired in 5 of 5; project-term in 1 of 5 |
+| t22-validation | 1 | 0.33 | 0 of 1 | errors-actionable, skill-fired |
+| t22b-empty-state | 1 | 0.75 | 0 of 1 | skill-fired |
+| t22c-cancel | 1 | 0.67 | 0 of 1 | skill-fired |
+| t22d-pill-creep | 1 | 0.75 | 0 of 1 | skill-fired |
+| t22e-bugfix | 1 | 0.67 | 0 of 1 | skill-fired |
+| t22j-plain-prompt | 1 | 0.00 | 0 of 1 | sending-label, skill-fired |
+
+Cost: $4.05 for the 16 Haiku runs.
+
+Finding: Haiku calls a skill the prompt names (t22g, 5 of 5, the same 5 of 5 as Sonnet's wave 9) and calls none it is not told about (0 of 11 runs across the seven other cases; no `Skill` call of any kind in the t22h and t22 traces).
+
+SPEC GAP (Review Focus 5): the spec target of Haiku t22h >= 0.8 is missed (0.40) because Haiku did not load the skill, not because the skill text failed: with the skill absent, project-term still passed in 4 of 5 runs (Haiku reads AGENTS.md and docs/copy-examples.md itself, as in RED). The skill was not changed and no hook was added. t22g meets the target (1.00). The README tells Haiku users to name the skill in their instructions file.
+
+## Not re-run after the last skill text change
+
+None. Every number above ran on SKILL.md blob d67f3ae (the Opus and Haiku runs in Task 4; wave 8 and 9 for Sonnet). The designing-interactions step 3 text (Design handoff) is also the final text for the Opus t22i run.

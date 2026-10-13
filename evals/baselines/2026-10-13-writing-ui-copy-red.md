@@ -2,7 +2,7 @@
 
 Date: 2026-10-13. Claude Code 2.1.287. `skills/writing-ui-copy/` does not exist yet. Judge: sonnet. 3 runs per arm. Rows for t22c, t22d, t22f, t22g (Sonnet and Haiku) are from the fix-round re-run; see Changes after first run.
 
-Sonnet 5.5 command per behavioural case: `claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --model claude-sonnet-5-5 --judge-model sonnet --case <case> --runs 3 -j 6 --keep-temp --json evals/results/<case>-red.json`. t22g runs the same without `--scaffold --allow-tools Bash Write Edit`. Haiku runs swap in `--model claude-haiku-5-5` (t22g, t22h only). Total eval cost across the 11 RED runs: $11.59 (Haiku runs $4.18 of it).
+Sonnet 5.5 command per behavioural case: `claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --model claude-sonnet-5-5 --judge-model sonnet --case <case> --runs 3 -j 6 --keep-temp --json evals/results/<case>-red.json`. t22g runs the same without `--scaffold --allow-tools Bash Write Edit`. Haiku runs swap in `--model claude-haiku-5-5` (t22g, t22h only). Eval cost: $11.59 was the first-run batch only (11 runs, Haiku $4.18 of it). After the re-runs, the 11 result files behind the tables cost $10.69 (Haiku $3.56 of it); the superseded first-run and round-1 files, kept in `evals/results/first/`, cost $6.80 more.
 
 Score = mean run score. `skill-fired` counts at weight 1 and fails in both arms by construction, so a case whose merit graders all pass still scores 0.5 to 0.75.
 
@@ -57,7 +57,7 @@ Per-grader (with / without): t22g buttons 2/1; empty-and-confirm 0/0; error-shap
 
 ## Merit graders that pass without the skill
 
-t22b, t22c, t22d, t22e: every merit grader passes 3/3 in the without arm. Strings the without arm wrote: t22b "You have no repairs. When you report one, it will appear here."; t22c "Cancel this repair? This can't be undone." with "Yes, cancel repair" and "Keep repair"; t22d plain columns "Contractor" and "Last updated" with "Not yet assigned"; t22e "Your photo couldn't be uploaded. Please try again." and "Your photo didn't upload. Please try again, or submit without a photo.". Scores are below 0.8 only because `skill-fired` fails. These four cases show the failure to load the skill and nothing else. They are not evidence that rules answer a copy failure. The cases were not changed (no without arm scored 0.8 or more); the controller decides whether to tighten or relabel them GUARD before Task 2.
+t22b, t22c, t22d, t22e: every merit grader passes 3/3 in the without arm. Strings the without arm wrote: t22b "You have no repairs. When you report one, it will appear here."; t22c "Cancel this repair? This can't be undone." with "Yes, cancel repair" and "Keep repair"; t22d plain columns "Contractor" and "Last updated" with "Not yet assigned"; t22e "Your photo couldn't be uploaded. Please try again." and "Your photo didn't upload. Please try again, or submit without a photo.". Scores are below 0.8 only because `skill-fired` fails. These four cases show the failure to load the skill and nothing else. They are not evidence that rules answer a copy failure. No without arm scored 0.8 or more, so no case was changed at first; the controller decided whether to tighten or relabel them GUARD before Task 2. Several were changed afterwards: see Changes after first run.
 
 ## Skills fired
 
