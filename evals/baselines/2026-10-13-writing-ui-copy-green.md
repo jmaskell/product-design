@@ -4,7 +4,7 @@ Date: 2026-10-13. Claude Code 2.1.287. Judge: sonnet. 5 runs per arm. t22i is ex
 
 Command per behavioural case: `claude plugin eval . --trust-plugin --no-publish --scaffold --allow-tools Bash Write Edit --model claude-sonnet-5-5 --judge-model sonnet --case <case> --runs 5 -j 6 --keep-temp --json evals/results/<wave>/<case>-green.json`. t22g runs the same command without `--scaffold --allow-tools Bash Write Edit`.
 
-Text the numbers came from: `skills/writing-ui-copy/SKILL.md` blob `d67f3ae280b19d5222250bc66e73d8cf55b72539`. It was committed in "fix: writing-ui-copy review round 1", the commit that updates this record. Every case below ran on that exact text (wave 8), so no case is stale.
+Text the numbers came from: `skills/writing-ui-copy/SKILL.md` blob `d67f3ae280b19d5222250bc66e73d8cf55b72539`. It was committed in "fix: writing-ui-copy review round 1", the commit that updates this record. Every case below ran on that exact text (wave 8; t22g re-run in wave 9 on the same text after its grader change), so no case is stale.
 
 ## Scores (wave 8, final text)
 
@@ -16,7 +16,7 @@ Text the numbers came from: `skills/writing-ui-copy/SKILL.md` blob `d67f3ae280b1
 | t22d-pill-creep | 1.00 | 0.75 | 5 | none | no-badge 5/5; no-explainer 5/5; no-provenance 5/5; skill-fired 5/0 | GREEN (selection only) |
 | t22e-bugfix | 1.00 | 0.67 | 5 | none | no-generic-errors 5/5; skill-fired 5/0; upload-error 5/5 | GREEN (selection only) |
 | t22f-guard-rename | 1.00 | 1.00 | 5 | none | renamed 5/5; renamed-api 5/5; skill-not-fired 5/5 | GUARD holds |
-| t22g-compliance | 0.75 | 0.65 | 5 | no-extra-elements (5 of 5) | buttons 5/5; empty-and-confirm 5/0; error-shape 5/5; no-extra-elements 0/3 | BELOW BAR (see Open) |
+| t22g-compliance | 1.00 | 0.67 | 5 | none | buttons 5/5; empty-and-confirm 5/0; error-shape 5/5 | GREEN (wave 9, after no-extra-elements was deleted; same skill text) |
 | t22h-project-rule | 1.00 | 0.00 | 5 | none | project-term 5/0; skill-fired 5/0 | GREEN |
 | t22j-plain-prompt | 1.00 | 0.00 | 5 | none | sending-label 5/0; skill-fired 5/0 | GREEN (new during GREEN, see New cases) |
 | t22k-guard-styling | 1.00 | 1.00 | 5 | none | skill-not-fired 5/5 | GUARD holds (new during GREEN) |
@@ -42,9 +42,10 @@ With / without per wave. Blob = SKILL.md blob prefix.
 | 5 | f751b63 | 1.00 / 0.33 | 1.00 / 0.70 | 1.00 / 0.67 | 1.00 / 0.75 | 1.00 / 0.67 | 1.00 / 1.00 | 0.75 / 0.55 | 1.00 / 0.00 | n/a | n/a |
 | 6 (review round 1) | b14b104 | 0.93 / 0.33 | 1.00 / 0.75 | 1.00 / 0.67 | 0.55 / 0.75 | 1.00 / 0.67 | 1.00 / 1.00 | 0.75 / 0.55 | 0.70 / 0.00 | 0.70 / 0.00 | 1.00 / 1.00 |
 | 7 | 50953c6 | 1.00 / 0.33 | 1.00 / 0.75 | 1.00 / 0.67 | 1.00 / 0.75 | 1.00 / 0.67 | 1.00 / 1.00 | 0.85 / 0.70 | 0.60 / 0.00 | 1.00 / 0.00 | 1.00 / 1.00 |
-| 8 (final) | d67f3ae | 1.00 / 0.33 | 1.00 / 0.75 | 1.00 / 0.67 | 1.00 / 0.75 | 1.00 / 0.67 | 1.00 / 1.00 | 0.75 / 0.65 | 1.00 / 0.00 | 1.00 / 0.00 | 1.00 / 1.00 |
+| 8 | d67f3ae | 1.00 / 0.33 | 1.00 / 0.75 | 1.00 / 0.67 | 1.00 / 0.75 | 1.00 / 0.67 | 1.00 / 1.00 | 0.75 / 0.65 | 1.00 / 0.00 | 1.00 / 0.00 | 1.00 / 1.00 |
+| 9 (t22g only, grader deleted) | d67f3ae | not run | not run | not run | not run | not run | not run | 1.00 / 0.67 | not run | not run | not run |
 
-The t22g scores from wave 6 on use the changed `no-extra-elements` grader (see Grader changes).
+The t22g scores in waves 6 to 8 use the changed `no-extra-elements` grader. Wave 9 has no `no-extra-elements` grader (see Grader changes).
 
 Skill fired in the with arm (of 5), waves 1 to 8:
 
@@ -61,7 +62,7 @@ t22b and t22e fired 5 of 5 in every wave they ran.
 ## Rules pruned (Step 2)
 
 None. Each harness-tested rule had at least one failing grader in a RED run:
-- Rule 2: no-explainer (t22d Sonnet with arm, 1 of 3) and no-extra-elements (t22g, every model and arm).
+- Rule 2: no-explainer (t22d Sonnet with arm, 1 of 3) and no-extra-elements (t22g, every model and arm; that grader was deleted during GREEN, see Grader changes). Rule 2 stays covered by t22b (no-restated-heading, no-badge) and t22d (no-badge, no-explainer).
 - Rule 3: no-provenance (t22d Sonnet with arm, 1 of 3).
 - Rule 5: buttons (t22g; see rule 8).
 - Rule 6: errors-actionable (t22, failing in 5 of 6 runs).
@@ -92,11 +93,12 @@ None. Each harness-tested rule had at least one failing grader in a RED run:
   - Changing only the heading to "Repair details" failed 6 of 6, and changing only the status to "In progress" failed 4 of 6.
   - Telling the grader that placeholders and notes are not elements changed nothing (12 of 12 FAIL).
   - A local re-judge with the same prompt (`claude -p`, sonnet 5.5 and 4.6) passed the replies the harness failed.
+- Fix round 2, `t22g-compliance/graders/no-extra-elements.md` deleted (controller ruling). Reason: across waves 6 to 8 the judge failed lists holding exactly the seven elements plus the two confirmation buttons, so the grader measured judge noise, not the skill. Rule 2 stays covered by t22b (no-restated-heading, no-badge) and t22d (no-badge, no-explainer). Re-run (wave 9, same skill text d67f3ae): with 1.00, without 0.67.
 - No other case or grader was changed. The temporary `zz-probe-*` cases used for the judge probes were deleted after each probe.
 
-## Open: t22g no-extra-elements
+## Resolved: t22g no-extra-elements
 
-t22g is still below the bar after the grader change: with 0.75, without 0.65 in wave 8. With the changed grader, no-extra-elements passed 2 of 5 (wave 6), 2 of 5 (wave 7) and 0 of 5 (wave 8). Every wave-8 with-arm list gives strings for the seven elements, plus at most the confirmation's two buttons. Some lists put both buttons on one line, and some give example status values after the status placeholder. Here is a wave-8 list that failed 3 of 3 votes:
+The grader was deleted in fix round 2 (see Grader changes). Before that, with the list-scoped grader, no-extra-elements passed 2 of 5 (wave 6), 2 of 5 (wave 7) and 0 of 5 (wave 8). Every one of those with-arm lists gave strings for the seven elements plus at most the confirmation's two buttons. This wave-8 list failed 3 of 3 votes:
 
 ```
 - Page heading: {title}
@@ -110,7 +112,7 @@ t22g is still below the bar after the grader change: with 0.75, without 0.65 in 
 - No updates message: No updates yet
 ```
 
-Unverified: which line the harness judge treats as an extra element, because the harness records votes only. The skill was not changed for this grader: no reply adds an element outside the spec, so a rule 2 change would answer no observed failure.
+The harness records only the votes, so it is Unverified which line the judge counted as extra. t22g no longer has a grader that checks scope.
 
 ## Untested lines
 
