@@ -5,7 +5,7 @@ max_turns: 6
 plugins: ["../../.."]
 ---
 
-Use the writing-ui-copy skill. Write the strings for this screen in a lettings app, and reply with them as a list of `element: string`. Add any other element you think the screen needs.
+Use the writing-ui-copy skill. Write the strings for this screen in a lettings app, and reply with them as a list of `element: string`.
 
 Screen: a tenant's repair detail page.
 - Page heading
