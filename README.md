@@ -37,7 +37,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 - Medium and Large work offers a review page at each gate, so your team can comment.
 - Before each gate, the router checks where each new value comes from. If another person must enter it, the router raises the size. It never lowers the size, and says so each time. G1 carries the offer to save a newly mapped journey.
 - The router offers `modelling-products` when `PRODUCT.md` or `docs/product/actors.md` does not exist. It offers `auditing-product-models` when git log shows a commit on a canonical journey's `Code:` paths after its `audited:` date.
-- After G2, engineering edits the product code. The skills do not, except `writing-ui-copy`, which loads whenever a change adds user-facing text.
+- After G2, engineering edits the product code. The skills do not, except `writing-ui-copy`, which is written to load whenever a change adds user-facing text.
 
 ## The skills
 
@@ -54,7 +54,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 | `auditing-product-models` | The product docs may no longer match the code, or you ask to audit or refresh them. It reports drift and gaps with evidence, patches the docs where the code is right, and lists an issue where the code is wrong. It judges code against the owner's recorded interpretation of a rule, checks Terms, Signals and README or site claims, and runs one lens from `references/lenses.md` on request ("audit for privacy"). It never edits product code. |
 | `writing-ui-copy` | Code or a design adds or changes a string a person will see: UI text, buttons, errors, empty states, emails, notifications. That includes copy written while building a feature or fixing a bug. It reads the project's copy rules and `Copy examples:` file first. |
 
-Haiku does not call plugin skills on its own. For Haiku sessions, add this line to the project's instructions file: "Before adding or changing user-facing strings, use product-design:writing-ui-copy."
+Haiku does not call plugin skills on its own. For Haiku sessions, add this line to the project's CLAUDE.md: "Before adding or changing user-facing strings, use product-design:writing-ui-copy." (t22l: Haiku loaded the skill in 5 of 5 runs with it.)
 
 Every claim about people carries an evidence label: `KNOWN (source)`, `INFERRED (from what)`, `ASSUMED` or `UNKNOWN`. Every finding has a severity: CRITICAL, SIGNIFICANT, MINOR or UNKNOWN.
 
@@ -76,6 +76,7 @@ The skills work with nothing set up: they frame from the code and your answers, 
 - Component source: none        # a gallery route, a registry URL, or none
 - Tier triggers: payment or health data → Large
 - Domain rules: docs/domain-rules.md
+- Copy examples: docs/copy-examples.md
 - Review space: notion <database URL>     # or: notion <page URL>, or: artifact
 ```
 
@@ -86,6 +87,7 @@ The skills work with nothing set up: they frame from the code and your answers, 
 | `Component source` | designing-interactions: what the mocks are built from. |
 | `Tier triggers` | designing-products: extra predicates that raise the size. |
 | `Domain rules` | reviewing-product-design: the file the compliance and privacy reviewers check against. |
+| `Copy examples` | writing-ui-copy: before→after pairs and project copy rules; a project rule wins. |
 | `Review space` | sharing-designs: where the review page goes — a Notion database, a Notion page (gets a new database), or a Claude artifact; unset uses an artifact if available, else a local review.html. |
 
 **Product files:**

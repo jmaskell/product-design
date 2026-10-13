@@ -17,11 +17,11 @@ Text the numbers came from: `skills/writing-ui-copy/SKILL.md` blob `d67f3ae280b1
 | t22e-bugfix | 1.00 | 0.67 | 5 | none | no-generic-errors 5/5; skill-fired 5/0; upload-error 5/5 | GREEN (selection only) |
 | t22f-guard-rename | 1.00 | 1.00 | 5 | none | renamed 5/5; renamed-api 5/5; skill-not-fired 5/5 | GUARD holds |
 | t22g-compliance | 1.00 | 0.67 | 5 | none | buttons 5/5; empty-and-confirm 5/0; error-shape 5/5 | GREEN (wave 9, after no-extra-elements was deleted; same skill text) |
-| t22h-project-rule | 1.00 | 0.00 | 5 | none | project-term 5/0; skill-fired 5/0 | GREEN |
+| t22h-project-rule | 1.00 | 0.00 | 5 | none | project-term 5/0; skill-fired 5/0 | GREEN. Its fixture keeps the rule in AGENTS.md (not auto-loaded by Claude Code) plus a linked file, so projects with copy rules inline in CLAUDE.md may see a smaller gain. |
 | t22j-plain-prompt | 1.00 | 0.00 | 5 | none | sending-label 5/0; skill-fired 5/0 | GREEN (new during GREEN, see New cases) |
 | t22k-guard-styling | 1.00 | 1.00 | 5 | none | skill-not-fired 5/5 | GUARD holds (new during GREEN) |
 
-Skill load, from the traces: `writing-ui-copy` fired in 40 of 40 with-arm runs across the 8 build cases (t22, t22b, t22c, t22d, t22e, t22h, t22j and t22g). It fired in 0 of 10 with-arm runs of the two GUARD cases. The t22g count was checked in the traces with `grep '"skill"\s*:\s*"product-design:writing-ui-copy"'`, since t22g has no skill-fired grader. t22g loaded the skill in 5 of 5 with-arm runs in every wave (1 to 8), and in wave 9 (checked in the kept wave-9 traces: 5 of 5, each returning "Launching skill", not "Unknown skill"). Its without arm also calls `writing-ui-copy`, which returns "Unknown skill".
+Skill load, from the traces: `writing-ui-copy` fired in 40 of 40 with-arm runs across the 8 build cases (t22, t22b, t22c, t22d, t22e, t22h, t22j and t22g). It fired in 0 of 10 with-arm runs of the two GUARD cases. The t22g count was checked in the traces with `grep '"skill"\s*:\s*"product-design:writing-ui-copy"'`, since t22g has no skill-fired grader. t22g loaded the skill in 5 of 5 with-arm runs in every wave it ran, and in wave 9 (checked in the kept wave-9 traces: 5 of 5, each returning "Launching skill", not "Unknown skill"). Its without arm also calls `writing-ui-copy`, which returns "Unknown skill".
 
 ## New cases added during GREEN
 
@@ -62,7 +62,7 @@ t22b and t22e fired 5 of 5 in every wave they ran.
 ## Rules pruned (Step 2)
 
 None. Each harness-tested rule had at least one failing grader in a RED run:
-- Rule 2: no-explainer (t22d Sonnet with arm, 1 of 3) and no-extra-elements (t22g, every model and arm; that grader was deleted during GREEN, see Grader changes). Rule 2 stays covered by t22b (no-restated-heading, no-badge) and t22d (no-badge, no-explainer).
+- Rule 2: no-explainer (t22d Sonnet with arm, 1 of 3). The t22g no-extra-elements grader was deleted during GREEN (see Grader changes) and is not live evidence. Rule 2 is covered by t22b (no-restated-heading, no-badge) and t22d (no-badge, no-explainer). Rules 2 and 3 show no with-versus-without gain on Sonnet and stay because of owner decision 3 (spec "Owner decisions").
 - Rule 3: no-provenance (t22d Sonnet with arm, 1 of 3).
 - Rule 5: buttons (t22g; see rule 8).
 - Rule 6: errors-actionable (t22, failing in 5 of 6 runs).
@@ -118,6 +118,7 @@ The harness records only the votes, so it is Unverified which line the judge cou
 
 - Rule 1 (name the thing, give the action, stop), rule 4 (no hedging or disclaimers) and rule 9 (conventions): no grader tests them alone.
 - The "After writing" self-check: no grader isolates it.
+- Rules 3 and 9 have no before→after example (the spec asks for one per rule). Deliberate: it keeps the body under 500 words and the tested blob unchanged.
 - Icon-only buttons and links get an accessible name (rule 5, second sentence): no case has an icon-only control.
 
 ## Design handoff (Task 3)
@@ -128,7 +129,7 @@ t22i-design-handoff (single `skill-fired` grader for writing-ui-copy), Sonnet 5.
 |---|---|---|---|
 | unchanged | 0.40 (2 of 5 fired) | 0 | $4.56 |
 | plus a separate line "Write every string in a mock with `writing-ui-copy`." | 0.40 (2 of 5 fired) | 0 | $4.74 |
-| "Load `writing-ui-copy` first, then build each option as a mock ..." (kept) | 1.00 (5 of 5) | 0 | not recorded |
+| "Load `writing-ui-copy` first, then build each option as a mock ..." (kept) | 1.00 (5 of 5) | 0 | $4.77 |
 
 Trace finding (controller, attempt 2): designing-interactions loaded in 5 of 5 runs and the mocks were written by Bash heredocs in its step 3. The router was not the cause. The separate line came too late to be followed; the instruction placed first in step 3 is.
 
@@ -204,6 +205,8 @@ With arm only, `--model claude-haiku-5-5 --ablation none --keep-temp`. Every JSO
 
 Cost: $4.05 for the 16 Haiku runs.
 
+Instructions-file line (final review, fix 3). Case `t22l-haiku-instructions-line`: t22h's prompt and graders, with a scaffold that runs the t22h fixture and then writes a `CLAUDE.md` holding "# Lettings portal" and the line "Before adding or changing user-facing strings, use product-design:writing-ui-copy." Haiku 5.5, with arm only, 5 runs, `evals/results/final-t22l.json` (gitignored). Score 0.90; skill loaded 5 of 5 (traces); project-term 4 of 5 (the failing run loaded the skill and still did not use "job"). t22h on the same model without the line: 0.40, skill 0 of 5. Cost $1.47. README now tells Haiku users to add the line to CLAUDE.md.
+
 Finding: Haiku calls a skill the prompt names (t22g, 5 of 5, the same 5 of 5 as Sonnet's wave 9) and calls none it is not told about (0 of 11 runs across the seven other cases; no `Skill` call of any kind in the t22h and t22 traces).
 
 SPEC GAP (Review Focus 5): the spec target of Haiku t22h >= 0.8 is missed (0.40) because Haiku did not load the skill, not because the skill text failed: with the skill absent, project-term still passed in 4 of 5 runs (Haiku reads AGENTS.md and docs/copy-examples.md itself, as in RED). The skill was not changed and no hook was added. t22g meets the target (1.00). The README tells Haiku users to name the skill in their instructions file.
@@ -211,3 +214,22 @@ SPEC GAP (Review Focus 5): the spec target of Haiku t22h >= 0.8 is missed (0.40)
 ## Not re-run after the last skill text change
 
 None. Every number above ran on SKILL.md blob d67f3ae (the Opus and Haiku runs in Task 4; wave 8 and 9 for Sonnet). The designing-interactions step 3 text (Design handoff) is also the final text for the Opus t22i run.
+
+## Router regression (final review)
+
+Question: does the new skill pull work away from the design flow? Sonnet 5.5, `--model claude-sonnet-5-5 --ablation none`, with arm, 3 runs per case, skill text blob d67f3ae and the designing-interactions text of 52d3cec. `modelOverride` in each JSON is `claude-sonnet-5-5`. Sweep = `2026-10-12-sonnet-sweep.md`. Skills fired counted with `grep -ohE '"skill"\s*:\s*"[^"]*"' <trace> | sort | uniq -c`.
+
+| Case | Sweep | Now | Failing graders (per run) | Skills fired per run | Cost |
+|---|---|---|---|---|---|
+| t1-repeat-action | 0.33 | 0.83 | why-and-journey in 1 of 3 | framing-problems in 3 of 3; writing-ui-copy 0 of 3 | $0.54 |
+| t2-displaced-work | 0.67 | 1.00 | none | mapping-journeys in 2 of 3, none in 1; writing-ui-copy 0 of 3 | $0.37 |
+| t6-trivial | 1.00 | 0.83 (3 runs), 1.00 (5-run re-run) | one-short-pass in 1 of 3; none in 5 | designing-products in 8 of 8; writing-ui-copy in 6 of 8; designing-interactions in 2 of 8 | $0.38 + $0.57 |
+
+- t1 and t2 did not drop. They sit above the sweep (the sweep itself was below 0.8 for both on Sonnet).
+- t6 dropped 0.17 at 3 runs, above the 0.1 bar, so it got the 5-run re-run: 1.00, no drop. The one failing 3-run run loaded designing-products and writing-ui-copy and failed one-short-pass.
+- writing-ui-copy fires on t6 (6 of 8 runs) because the task renames a button label, which is a user-facing string. In every one of those runs designing-products loaded as well (framing and the G2 question are in the design flow), so the copy skill loaded beside the design flow, not in place of it. No skill change.
+- Total cost $1.29 (all four runs).
+
+## t22k did-style grader (final review, fix 4a)
+
+`t22k-guard-styling/graders/did-style.md`: regex on `src/components/RepairsList.tsx`, `match: contains`, `textAlign|text-align|nth-child|% ?2`. A run that edits nothing cannot pass. Sonnet 5.5, both arms, 5 runs, `evals/results/final-t22k.json`: with 1.00, without 1.00; did-style and skill-not-fired passed in all 10 runs; writing-ui-copy fired in 0 of 5 with-arm runs. Cost $0.57. The GUARD still holds.
