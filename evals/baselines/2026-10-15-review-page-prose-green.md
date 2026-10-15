@@ -78,6 +78,24 @@ Cheaper option, so these were not re-run: t14b, t14d, t15, t22b, t22e, t23e, t5.
 - Older mocks without `data-annotation`, listed for the owner.
 - The `site` target when the publish command fails.
 
+## Final review fixes (fresh reviewer, Opus)
+
+- Branch check (Critical): the `--all --source` command named a ref that HEAD already had: main, a remote or the stash. It stopped the share on an ordinary feature branch. It now runs `git log --branches --not HEAD --source -1` and compares dates. Repro on a cloned scaffold: the old command printed `refs/remotes/origin/build/contractor-date` on a plain feature branch, and the new one prints nothing. In the true case (t24d scaffold) the new one still prints `build/contractor-date`.
+- mocks.md: a design note is its own element, never the designed region. Hiding the region would hide the new pattern under review.
+- plain-prose.md rule 6: decisions.md is append-only.
+- t24h: new grader notes-kept (llm), which the without arm can pass on its merits.
+
+Re-run after the fixes (3 runs per arm, 74204e4):
+
+| Case | With | Without | Failing (with) | Status |
+|---|---|---|---|---|
+| t24i-branch-guard (new) | 0.67 | 0.00 | no-false-stop 2/3 | GUARD, HARNESS-LIMITED: every run wrote the page and none stopped on a branch. The 2 failures are runs that told the owner git failed in the sandbox and asked them to run the check. |
+| t24h-mock-links | 0.92 | 0.08 | notes-kept 1/3 | GREEN |
+
+Not re-run after 74204e4: t24, t24b, t24c (sharing SKILL.md lost its evidence-label bullet, which the template still states; t14's labels-kept passed at 1.00 before the change), t24d (sandbox git), t24f, t24e (plain-prose rule 6 changed).
+
+Known gap, not fixed (out of scope): the router edits plan files inline on small revisions without reading plain-prose.md (t24e).
+
 ## Cost
 
-$45.68 API-equivalent (subscription billing): RED $16.30, GREEN $23.47, regression $3.09, Opus $2.83.
+$49.92 API-equivalent (subscription billing): RED $16.30, GREEN $23.47, regression $3.09, Opus $2.83, final-review re-runs $4.24.
