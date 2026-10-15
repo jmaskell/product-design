@@ -6,7 +6,7 @@ A builder, a reviewer or the owner reads these files. Each scans for what they m
 
 ## Rules
 1. Open each section with what the reader needs at that moment: the decision, the ask or the change.
-2. Use a list for anything a reader scans: changes, rules, questions, states, notes.
+2. Use a list for anything a reader scans: changes, rules, questions, states, notes. Notes under a heading or a string are a list, even when older entries are not.
 3. One fact per sentence. 20 words or fewer.
 4. Active voice. Name who does it.
 5. One word per meaning. Role words come from docs/product/actors.md. Keep a term once chosen.
