@@ -30,9 +30,9 @@ When the router started this triage at the start of a design run, stop after sec
 ## 3. Compose
 
 Read templates/review-page.md, two levels above this skill's directory. Fill it from the plan files (issue.md, journey.md, design.md, decisions.md) and mocks/. Keep its headings in order. Write for people outside design work.
-- Leave out Screens when design.md does not exist.
 - Keep every evidence label as written.
-- Each question names who answers it and when: "before we design screens" or "before we build".
+- Each question names who answers it and when: "before we design screens", "before we build" or "before release".
+- Name people by their words in docs/product/actors.md.
 - Never write G1, G2, tier, lens, CRITICAL, SIGNIFICANT or MINOR.
 - Add nothing the files do not say.
 
