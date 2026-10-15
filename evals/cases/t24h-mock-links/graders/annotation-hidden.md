@@ -1,7 +1,8 @@
 ---
-type: llm
-focus:
+type: regex
+target:
   source: file
   path: docs/plans/visit-booking/mocks/chosen-check.html
+match: contains
 ---
-PASS when the focus-order marks carry data-annotation and are hidden by default (a rule sets them to display none unless notes are turned on). FAIL when they show on load.
+\[data-annotation\]\s*\{\s*display:\s*none

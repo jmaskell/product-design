@@ -5,4 +5,4 @@ target:
   path: docs/plans/visit-booking/mocks/chosen-check.html
 match: contains
 ---
-href="[^"]*chosen-result\.html"
+(?:href|action)="[^"]*chosen-result\.html[^"]*"

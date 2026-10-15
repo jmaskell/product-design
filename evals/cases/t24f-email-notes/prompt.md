@@ -1,4 +1,4 @@
-Add copy-deck entries 4 and 5 to docs/plans/visit-booking/copy.md, in the same format: the "visit cancelled by the agent" email and the "contractor couldn't get in" email.
+Add copy-deck entries 4 and 5 to docs/plans/visit-booking/copy.md: the "visit cancelled by the agent" email and the "contractor couldn't get in" email.
 
 The owner is not available during this run. Answers you may need:
 - Decision 3: every cancel by the agent sends the email, whatever the tenant's settings.

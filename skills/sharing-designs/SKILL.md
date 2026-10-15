@@ -15,9 +15,9 @@ Read `Review space` in the project metadata.
 
 | Value | Target |
 |---|---|
-| `notion <url>` | A new row in that Notion database, or in a new database in that page (notion.md) |
+| `notion <url>` | A new row in that Notion database, or a new database in that page (notion.md) |
 | `artifact` | A private Claude artifact (artifact.md) |
-| `site <command> <base url>` | The owner's site: write the page as a file, run the command (artifact.md) |
+| `site <command> <base url>` | The owner's site: a file, then their command (artifact.md) |
 | unset | An artifact if the Artifact tool exists, else `<plan folder>/review.html` (artifact.md) |
 
 The owner's request wins. If the target needs a tool this session lacks, say so, ask the owner how to go on, and stop. Write no page or draft, in any format, and publish nowhere else.
@@ -30,7 +30,7 @@ When the router started this triage at the start of a design run, stop after sec
 
 ## 3. Compose
 
-First compare `git log -1 --format=%cI -- <plan folder>` with the same plus `--all`. If another branch is newer, name it, ask which to publish, and stop. Skip this outside a git repo.
+First run `git log --all --source -1 --format='%cI %S' -- <plan folder>`. If it names a branch other than the current one, ask which to publish, write no page, and stop. Skip this outside a git repo.
 
 Read templates/review-page.md, two levels above this skill's directory. Fill it from the plan files (issue.md, journey.md, design.md, decisions.md) and mocks/. Keep its headings in order. Write for people outside design work.
 - Keep every evidence label as written.

@@ -29,7 +29,7 @@ Read the project's copy rules in its instructions files (CLAUDE.md or similar), 
    "Nothing here yet! 🎉" → "No invoices yet" + "Create invoice"
 8. **Destructive confirms name the specific thing (its name or title, not just its type) and the consequence.** The confirm button repeats the verb. The dismiss button says what it keeps, never a bare "Cancel".
    "Are you sure?" OK / Cancel → "Delete invoice {number}? You can't undo this." Delete invoice / Keep invoice
-9. **Conventions:** sentence case, one term per concept (references/plain-prose.md; project terms win), the project's locale. In a copy deck, list each string's notes, one fact per item.
+9. **Conventions:** sentence case, one term per concept (references/plain-prose.md; project terms win), the project's locale. Copy-deck notes are `- ` bullets, one fact each.
 
 ## After writing
 
