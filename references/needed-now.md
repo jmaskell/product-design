@@ -7,10 +7,10 @@ For every line on a screen, check step, result or email: "If this line were gone
 
 ## Rules
 1. Don't describe a limit the control already enforces. If the UI stops it (a disabled day, a missing option, a capped stepper), don't explain it, and don't write an error for a choice the person can't make.
-2. A check step doesn't repeat the summary above it. Show the summary and the button once.
+2. A check step shows the summary and the button, once. It doesn't repeat the summary, and it doesn't list what follows (emails, reminders, who gets told).
 3. Explain once, at first use. A page people come back to carries no onboarding line.
 4. Don't show a count that the same row, a header, a badge or the next screen already shows.
-5. A result says what happened. It doesn't list the side effects again: the check step already did.
+5. A result says what happened. It doesn't list the side effects (emails sent, reminders set, who was told).
 6. Keep a helper line only if it stops a likely mistake. Name the mistake. If you can't, cut the line.
 7. A check step's heading says the action isn't done yet: "Confirm your booking", not "Check your booking" or "Your booking", which read as if it's already booked.
 
