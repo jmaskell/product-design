@@ -18,6 +18,14 @@ Read comments with `ArtifactComments` `read` and the URL. Reply and resolve work
 
 `Unverified:` whether an invited person without a claude.ai account can comment.
 
+## Site
+
+`Review space: site <publish command> <base url>`.
+1. Write the page and the mocks as for the file target, at `<plan folder>/review.html`, with the mocks by relative path.
+2. Run the publish command from the repo root. If it fails, show the owner its output and stop.
+3. The URL is `<base url>` plus the page path the command prints, else the base URL.
+4. Tell the owner: reviewers reply by email or chat; paste the replies here for triage.
+
 ## File
 
 Use this when the session has no Artifact tool.
