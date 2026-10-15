@@ -1,4 +1,5 @@
 # <id> — <title>
+Write every section by references/plain-prose.md (two levels above the skills).
 
 **Phases:** <Small | Medium | Large> — <one-line reason>
 **Jobs:** <job IDs from docs/product/actors.md, with a clause each>

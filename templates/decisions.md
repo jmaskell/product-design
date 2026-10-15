@@ -1,4 +1,5 @@
 # Decision record: <id>
+Write every section by references/plain-prose.md (two levels above the skills).
 
 ## <n>. <decision title>
 - **Decision:** …

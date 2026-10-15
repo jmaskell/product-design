@@ -1,4 +1,5 @@
 # <title>
+Write every section by references/plain-prose.md (two levels above the skills).
 <date> · revision <n> · Size: <Small | Medium | Large>
 
 ## Summary
