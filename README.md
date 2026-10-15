@@ -46,7 +46,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 | `designing-products` | You ask to design, define, shape, scope or revise a feature. This is the router. |
 | `framing-problems` | A request arrives as a solution ("add a button"), or the user outcome is unstated. |
 | `mapping-journeys` | A change touches more than one actor or a hand-off, or risks moving work from one person to another. |
-| `designing-interactions` | The problem and task flow are agreed, and the screens, states or mocks are next. |
+| `designing-interactions` | The problem and task flow are agreed, and the screens, states or mocks are next. Before the mocks, it writes per screen what the person needs to know at that moment (design.md `## Needed now`). |
 | `reviewing-product-design` | A design is drafted. Fresh agents critique it, one lens each (task walkthrough, service, usability, accessibility, cognitive load, compliance, privacy, marketing). The size and the risk pick the lenses. Compliance runs when the work touches a rule that PRODUCT.md or the `Domain rules` file records, or a sensitive domain, privacy when the code stores personal data, and marketing when the issue's launch tier is 2 or 3. These three share the by-risk slots; the review names any lens it skips. Each compliance or privacy finding gives a fix or the case for the current design, never a verdict. |
 | `sharing-designs` | You ask to share a design or check its comments, or you accept the offer to share at a gate. It never designs: a request to revise goes to the router. |
 | `filing-issues` | An approved design must go to the tracker or a plan folder, work must split into several issues, or a bug skips design. |

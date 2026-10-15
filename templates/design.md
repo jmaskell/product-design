@@ -10,6 +10,9 @@
 | Screen | State | What the person sees | How they got here |
 |---|---|---|---|
 
+## Needed now
+<screen>: <what the person needs to know at that moment, and nothing else>
+
 ## Accessibility decisions
 <focus destinations, announcements, not-by-colour-alone calls>
 
