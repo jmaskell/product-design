@@ -13,6 +13,8 @@ Recommendation: <optional>
 
 Compliance and Privacy: each finding gives a fix, or the case for the current design, against the owner's recorded interpretation. When a rule has no recorded interpretation (`Interpretation: UNKNOWN`, or no `Interpretation:` line), report its readings (lens file, `## Readings of a rule`) under UNKNOWN: a question for the owner, not a defect. Never give a verdict. Never send the owner to anyone else for approval.
 
+Needed now: read every line in each mock. Report each line that fails the line test as its own finding: quote the line, name the rule and the screen. Severity MINOR, or SIGNIFICANT when the line shows on every visit or every row. A line that stops a named mistake, or is the only place a fact shows, is not a finding (`## Not a cut`). List each line you keep for that reason with the mistake it stops or the fact only it shows.
+
 An owner pick recorded as KNOWN (issue.md `Rules for the owner`, or a PRODUCT.md row) is settled. Do not report a finding or a stricter reading against it.
 
 Severity: CRITICAL (likely prevents task completion or causes harm), SIGNIFICANT (meaningful friction or risk), MINOR (useful optimisation), UNKNOWN (cannot assess without evidence; write the question).
