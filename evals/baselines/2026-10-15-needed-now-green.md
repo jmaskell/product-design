@@ -65,10 +65,20 @@ t23 1.00 ($0.31), t23c 1.00 ($0.15), t23d 1.00 ($0.12), t23e 1.00 ($2.42), t23f 
 
 ## Untested spec lines
 
+- The Needed now lens lists each line it keeps with the mistake it stops (reviewer-prompt.md, added after the final review). t23f re-ran at 0.89 with it, but no grader checks the list.
+
 - "Explain once, at first use": t23c covers a return page, but no case shows the first-use version of the line.
 - "A read-only row nobody can act on", and "the same fact on the page, in the email preview and in the email body" (needs a multi-surface case).
 - Lens severity split (MINOR, or SIGNIFICANT on every visit or row): no grader checks severity.
 
+## Final review fixes (fresh reviewer, Opus)
+
+- reviewer-prompt.md: the lens lists each line it keeps, with the mistake it stops (a spec line that was missing).
+- designing-interactions step 3: "doesn't list the side effects again" became "doesn't list the side effects". "Again" is the wording behind t23e's mock-check-once 3/5.
+- README: the lens runs on Medium or Large designs with mocks, not on every design.
+
+Re-run with the arm only, 3 runs, on the final text: t23e 1.00 ($2.16), t23f 0.89 (finds-p1 1/3, finds-p4 1/3; $2.21).
+
 ## Cost
 
-$63.90 API-equivalent in total: RED $10.17, GREEN $33.83, regression $14.68, Opus $5.22.
+$68.24 API-equivalent in total: RED $10.17, GREEN $33.83, regression $14.65, Opus $5.22, final review re-runs $4.37.
