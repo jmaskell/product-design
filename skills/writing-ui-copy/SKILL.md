@@ -16,7 +16,7 @@ Read the project's copy rules in its instructions files (CLAUDE.md or similar), 
 
 1. **Name the thing, give the action, stop.** Cut clauses that explain why a state exists.
    "Synced so everything stays up to date" → "Synced"
-2. **Every line must be needed now.** Before shortening, read `references/needed-now.md` (two levels up) and apply its line test and rules to each line and email row. Write no text or error for a limit the control already enforces. Cut by default: a status pill nobody asked for, a subtitle that restates the heading, helper text a field's label already says. Keep a line that stops a named mistake or is the only place a fact shows.
+2. **Every line must be needed now.** Before shortening, read `references/needed-now.md` (two levels up) and apply it to each line and email row. Write no text or error for a limit the control already enforces. Cut by default: a status pill nobody asked for, a subtitle that restates the heading, helper text a field's label already says. Keep a line that stops a named mistake or is the only place a fact shows.
    Heading "Invoices" with subtitle "View and manage your invoices" → heading only
 3. **No provenance or audience captions** ("Auto-generated", "Admin only", "Set by your manager", "Imported from…"), unless a project rule requires one on that surface.
 4. **No hedging or disclaimers.** No stacked softeners, no boilerplate deferrals.
@@ -29,7 +29,7 @@ Read the project's copy rules in its instructions files (CLAUDE.md or similar), 
    "Nothing here yet! 🎉" → "No invoices yet" + "Create invoice"
 8. **Destructive confirms name the specific thing (its name or title, not just its type) and the consequence.** The confirm button repeats the verb. The dismiss button says what it keeps, never a bare "Cancel".
    "Are you sure?" OK / Cancel → "Delete invoice {number}? You can't undo this." Delete invoice / Keep invoice
-9. **Conventions:** sentence case, one term per concept (references/plain-prose.md; project terms win), the project's locale. Notes around strings in a copy deck follow plain-prose.md.
+9. **Conventions:** sentence case, one term per concept (references/plain-prose.md; project terms win), the project's locale. In a copy deck, list each string's notes, one fact per item.
 
 ## After writing
 
