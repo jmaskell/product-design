@@ -15,9 +15,9 @@ The project metadata line `Component source:` names a gallery route, a registry 
 - Real content from the product's domain. No lorem ipsum.
 - A narrow-width view when the product's users use phones.
 - Chosen mocks link to each other in Interface flow order: the primary action is a link to the next chosen mock's file.
-- A design note (a focus marker, an outline, a label for the builder) carries `data-annotation`. Each mock hides them unless its root has the class `show-notes`:
+- A design note (a focus marker, an outline, a label for the builder) is its own element, never the designed region itself, and carries `data-annotation`. Each mock hides them unless its root has the class `show-notes`:
   `<style>[data-annotation]{display:none} html.show-notes [data-annotation]{display:revert}</style>`
 - When copy in a plan file changes, change each mock that shows it in the same commit.
 
 ## New patterns
-A region that no existing component covers is a new pattern. Mark it in the mock with an outline that carries `data-annotation`, and list it under "New patterns" in design.md.
+A region that no existing component covers is a new pattern. Mark it in the mock with an outline element over it that carries `data-annotation`, and list it under "New patterns" in design.md.

@@ -30,10 +30,9 @@ When the router started this triage at the start of a design run, stop after sec
 
 ## 3. Compose
 
-First run `git log --all --source -1 --format='%cI %S' -- <plan folder>`. If it names a branch other than the current one, ask which to publish, write no page, and stop. Skip this outside a git repo.
+First run `git log --branches --not HEAD --source -1 --format='%cI %S' -- <plan folder>`. If its date is later than this branch's last commit to the plan folder, name that branch, ask which to use, write no page, and stop. Skip this outside a git repo.
 
 Read templates/review-page.md, two levels above this skill's directory. Fill it from the plan files (issue.md, journey.md, design.md, decisions.md) and mocks/. Keep its headings in order. Write for people outside design work.
-- Keep every evidence label as written.
 - Each question names who answers it and when: "before we design screens", "before we build" or "before release".
 - Name people by their words in docs/product/actors.md.
 - Never write G1, G2, tier, lens, CRITICAL, SIGNIFICANT or MINOR.

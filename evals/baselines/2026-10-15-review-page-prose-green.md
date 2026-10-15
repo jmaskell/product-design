@@ -22,7 +22,7 @@ Final skill text (blob @ last commit that changed it):
 
 | Case | With | Without | Failing graders (with) | Text the number came from | Status |
 |---|---|---|---|---|---|
-| t24-review-page-r2 | 0.83 (`g2`) | 0.17 | summary-one-fact 3/3, stages-as-rows 1/3 | 80b04be | GREEN, see note |
+| t24-review-page-r2 | 0.83 (`g2`) | 0.17 | summary-one-fact 3/3, stages-as-rows 1/3 | 80b04be | GREEN on score; summary-one-fact unproven in the harness |
 | t24b-review-play | 0.92 (`green`) | 0.00 | screens-laid-out 1/3 | 3d4abb7 (sharing SKILL.md changed after: branch check, wording) | GREEN |
 | t24c-site-target | 1.00 (`green`) | 0.11 | none | 3d4abb7 | GREEN |
 | t24d-branch-check | 0.50 (`g2`) | 0.00 | names-branch 2/3, no-page 1/3 | 80b04be | HARNESS-LIMITED |
