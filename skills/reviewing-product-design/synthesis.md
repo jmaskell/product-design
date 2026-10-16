@@ -1,6 +1,7 @@
 # Synthesis
 
 1. Collect all findings. Group duplicates; keep the highest severity.
+   Check every word for a person or role in the plan files and mocks against docs/product/actors.md. Report each word that is not an actor there as its own SIGNIFICANT finding: the word, where it shows, and the actor it likely means, or "add it to actors.md". A reader can't tell who does what when one role has two names.
 2. Dismiss a finding only with a one-line reason. A CRITICAL finding needs evidence to dismiss. List every dismissal for G2.
    A finding that conflicts with a KNOWN owner interpretation in PRODUCT.md is a dismissal: cite the row. It is not a tension, an option or a question for the owner. Do not offer to reopen the reading.
 3. Find tensions: two findings that recommend opposite changes, or a fix for one that worsens another lens. Name the trade-off: novice vs expert, visibility vs overload, control vs prevention, flexibility vs consistency, disclosure vs discoverability, speed vs accuracy.

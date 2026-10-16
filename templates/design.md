@@ -1,4 +1,5 @@
 # Design: <id>
+Write every section by references/plain-prose.md (two levels above the skills).
 
 ## Interface flow
 <entry → steps → exit, one line per step, linking each mock>
@@ -12,6 +13,9 @@
 
 ## Needed now
 <screen>: <what the person needs to know at that moment, and nothing else>
+
+## Copy
+<screen>: <each string the screen shows now, one per line>
 
 ## Accessibility decisions
 <focus destinations, announcements, not-by-colour-alone calls>
