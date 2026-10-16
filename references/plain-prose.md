@@ -10,7 +10,7 @@ A builder, a reviewer or the owner reads these files. Each scans for what they m
 3. One fact per sentence. 20 words or fewer.
 4. Active voice. Name who does it.
 5. One word per meaning. Role words come from docs/product/actors.md. Keep a term once chosen.
-6. State what is true now. The reason goes in decisions.md. Old wording stays in git. Never write a log of edits. decisions.md is the one record: add entries, never rewrite old ones.
+6. State what is true now. The reason goes in decisions.md. Old wording stays in git. Never write or keep a log of edits, not even as history: when a file you edit has one, replace it with the current state. decisions.md is the one record: add entries, never rewrite old ones.
 7. Cite a decision, mock or frame once per item, at its end.
 8. Apply the line test in references/needed-now.md to each sentence. Read it for the builder or reviewer.
 
