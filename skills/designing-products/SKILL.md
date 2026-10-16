@@ -22,7 +22,7 @@ In doubt, take the heavier tier. Before each gate, check where each new value co
 
 If decisions.md has a `Review page:` line, run product-design:sharing-designs triage first.
 
-Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourself.
+Load and follow each named skill (REQUIRED SUB-SKILL). Do not do its work yourself. Before editing a plan file, read references/plain-prose.md (two levels up).
 
 | Tier | Phases |
 |---|---|
@@ -44,7 +44,5 @@ With no model, frame from code and owner answers; offer to save the mapped journ
 ## 5. Handoff
 
 After G2: REQUIRED SUB-SKILL product-design:filing-issues. Do not edit product code.
-
-Edit plan files by references/plain-prose.md (two levels up).
 
 Project rules win over this skill.

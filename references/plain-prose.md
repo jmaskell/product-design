@@ -14,7 +14,7 @@ A builder, a reviewer or the owner reads these files. Each scans for what they m
 7. Cite a decision, mock or frame once per item, at its end.
 8. Apply the line test in references/needed-now.md to each sentence. Read it for the builder or reviewer.
 
-When you change a section, bring the whole section to these rules.
+When you change a section, bring the whole section to these rules. A section that logs edits (old → new) becomes the current state when you touch it: list what is true now, and drop the log.
 When copy in a plan file changes, change each mock that shows it in the same commit.
 
 ## Before and after
