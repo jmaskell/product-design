@@ -43,7 +43,7 @@ Ask Claude to design, define, shape or scope a feature, or say "design this prop
 
 | Skill | Starts when |
 |---|---|
-| `designing-products` | You ask to design, define, shape, scope or revise a feature. This is the router. |
+| `designing-products` | You ask to design, define, shape, scope or revise a feature. This is the router. When it edits plan files itself, as on a small revision, it writes them by `references/plain-prose.md`. |
 | `framing-problems` | A request arrives as a solution ("add a button"), or the user outcome is unstated. |
 | `mapping-journeys` | A change touches more than one actor or a hand-off, or risks moving work from one person to another. |
 | `designing-interactions` | The problem and task flow are agreed, and the screens, states or mocks are next. Before the mocks, it writes per screen what the person needs to know at that moment (design.md `## Needed now`). Chosen mocks link to each other in flow order, and design notes in them stay hidden until a reader turns them on. |

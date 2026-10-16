@@ -45,4 +45,6 @@ With no model, frame from code and owner answers; offer to save the mapped journ
 
 After G2: REQUIRED SUB-SKILL product-design:filing-issues. Do not edit product code.
 
+Edit plan files by references/plain-prose.md (two levels up).
+
 Project rules win over this skill.
