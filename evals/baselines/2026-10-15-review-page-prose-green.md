@@ -26,7 +26,7 @@ Final skill text (blob @ last commit that changed it):
 | t24b-review-play | 0.92 (`green`) | 0.00 | screens-laid-out 1/3 | 3d4abb7 (sharing SKILL.md changed after: branch check, wording) | GREEN |
 | t24c-site-target | 1.00 (`green`) | 0.11 | none | 3d4abb7 | GREEN |
 | t24d-branch-check | 0.50 (`g2`) | 0.00 | names-branch 2/3, no-page 1/3 | 80b04be | HARNESS-LIMITED |
-| t24e-copy-change | 0.40 (`g2`) | 0.40 | copy-current, no-old-copy, pattern-bullets 3/3 | 80b04be | NOT GREEN (router, out of scope) |
+| t24e-copy-change | 0.80 (`router4`, 5 runs) | 0.40 | pattern-bullets 3/5, copy-current 1/5, no-old-copy 1/5 | 718e78c | GREEN (router addendum) |
 | t24f-email-notes | 0.56 (`g2`) | 0.00 | notes-bullets 2/3, refs-once 2/3 | 80b04be | NOT GREEN |
 | t24g-role-word | 1.00 (`green`) | 0.33 | none | 25bd231 | GREEN |
 | t24h-mock-links | 0.89 (`g2`) | 0.11 | links-next 1/3 | cc06dab | GREEN |
@@ -94,8 +94,30 @@ Re-run after the fixes (3 runs per arm, 74204e4):
 
 Not re-run after 74204e4: t24, t24b, t24c (sharing SKILL.md lost its evidence-label bullet, which the template still states; t14's labels-kept passed at 1.00 before the change), t24d (sandbox git), t24f, t24e (plain-prose rule 6 changed).
 
-Known gap, not fixed (out of scope): the router edits plan files inline on small revisions without reading plain-prose.md (t24e).
+
+## Router addendum (2026-10-16, owner approved, same PR)
+
+On a small revision, designing-products edited design.md itself and never read plain-prose.md (t24e at 0.40).
+
+| Wave | Text | t24e with | Without | What the runs did |
+|---|---|---|---|---|
+| 1 | 2e925b8: line at the end of the router | 0.40 | 0.40 | 1/3 read plain-prose. All kept the copy log. |
+| 2 | 4e1b7ca: line moved into Phases ("Before editing a plan file, read …"); plain-prose: a touched log becomes the current state | 0.53 | 0.40 | 3/3 kept the log heading; 2 made the pattern a list. |
+| 3 | 39274de: plain-prose: rename the log (`## Copy`); grader pattern-bullets aligned to "one fact per sentence" (the spec rule, not "per item") | 0.80 (3 runs), 0.64 (5 with a 2-run top-up) | 0.40 | The top-up runs read plain-prose and kept the log "as history". |
+| 4 | 718e78c: plain-prose rule 6: never keep a log, not even as history | 0.80 (5 runs) | 0.40 | 4/5 replaced the log with `## Copy`. pattern-bullets fails 3/5 on lists of one-fact sentences; the entry says "week 4", not "4 weeks". |
+
+Router regression on the final router text (4e1b7ca; later commits changed plain-prose.md only), with arm, 3 runs:
+
+| Case | Earlier | Now | Note |
+|---|---|---|---|
+| t1-repeat-action | 1.00 | 1.00 | |
+| t6-trivial | 0.90 | 1.00 | |
+| t10-stops-at-g1 | 1.00 | 1.00 | |
+| t12-project-rule-wins | 1.00 | 0.78 | Both failures are in the one run that timed out at 570 s; the other 2 runs pass every grader. |
+| t7-component-reuse | 0.93 | 0.67 | options-named 3/3. **The same on main (95fa499): 0.67, options-named 3/3.** Drift that predates this branch, not a regression. |
+
+Not tested: whether the router fires on an unnamed "revise" (t24e's prompt names the skill).
 
 ## Cost
 
-$49.92 API-equivalent (subscription billing): RED $16.30, GREEN $23.47, regression $3.09, Opus $2.83, final-review re-runs $4.24.
+$64.55 API-equivalent (subscription billing): RED $16.30, GREEN $23.47, regression $3.09, Opus $2.83, final-review re-runs $4.24, router addendum $14.63 (t24e $4.87, regression $7.40 including a stopped run, t7 on main $2.36).
