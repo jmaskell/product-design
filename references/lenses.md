@@ -69,7 +69,7 @@ Code and site checks for tier 2 and up:
 |---|---|---|
 | What do staff see when this goes wrong? | Journey Backstage | Admin screens, logs and alerts |
 | What can staff fix, and how? | actors.md (internal role) jobs | Admin actions and support tools |
-| How does a user recover without help? | Journey Task flow (Failure → recovery) | Undo, retry and self-service paths |
+| How does a user recover without help? | Journey Task flow (Failure → recovery) | Undo only where it truly reverses the action, or during a hold window before an effect leaves the app (references/product-behaviour.md); otherwise a named follow-up action (withdraw, refund, send a correction); retry and self-service paths |
 | Does support need to know before release? | issue.md `**Launch:**` | Nothing: this is a launch decision |
 
 ## Compliance

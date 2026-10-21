@@ -5,11 +5,11 @@ description: Use when writing code that shows anything to a person (a screen, fo
 
 # Writing UI copy
 
-Load this before the first edit to anything a person sees, whatever the task is called. Copy written in passing during a build or a fix counts.
+Load this before the first edit to anything a person sees, whatever the task is called, including copy written in passing during a build or a fix.
 
 ## Before writing
 
-Read the project's copy rules in its instructions files (CLAUDE.md or similar), and the file the project metadata names as `Copy examples:`, if there is one. A project rule wins over a rule here. When a rule names the term to use, every string that refers to that thing uses it. Avoiding the banned word, or naming the thing some other way, does not follow the rule.
+Read the project's copy rules in its instructions files (CLAUDE.md or similar), and the file the project metadata names as `Copy examples:`, if there is one. A project rule wins over a rule here. When a rule names a term, every string about that thing uses it. Avoiding the banned word, or naming the thing another way, does not follow the rule.
    Rule 'say order, never purchase': "Your purchase shipped" → "Your order shipped", not "It shipped" or "Your parcel shipped"
 
 Then read each reference (two levels up) the change needs:
@@ -17,10 +17,12 @@ Then read each reference (two levels up) the change needs:
 | The change adds or changes… | Read |
 |---|---|
 | Any element a person sees | `references/needed-now.md` |
+| An action, result, confirm, Undo or unavailable control | `references/product-behaviour.md` |
+| A button, link, dialog, or where a control sits | `references/controls-and-dialogs.md` |
 
 ## Rules
 
-1. **Name the thing, give the action, stop.** Cut clauses that explain why a state exists. A hint saying why a personal detail is asked stays if people would otherwise refuse or leave. When the person pays, waits or gets something, give the number.
+1. **Name the thing, give the action, stop.** Cut clauses that explain why a state exists. When the person pays, waits or gets something, give the number.
    "Synced so everything stays up to date" → "Synced"; "then the subscription" → "then £20 a month"
 2. **Every element must be needed now.** Apply `references/needed-now.md` to every element; each cut yields to its `## Not a cut`. Cut by default: a status pill nobody asked for, a subtitle that restates the heading.
    Heading "Invoices" with subtitle "View and manage your invoices" → heading only
