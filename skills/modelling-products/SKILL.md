@@ -13,11 +13,11 @@ The model: PRODUCT.md, docs/product/actors.md, docs/product/journeys/. Plugin fi
 - Application source exists: from code (section 2).
 - No application source: from the owner's answers (section 3).
 
-Write new files with the Write tool, never Bash. Never overwrite an existing PRODUCT.md, actors.md or journey; Edit only empty or missing sections.
+Write new files with the Write tool, never Bash. Never overwrite PRODUCT.md, actors.md or a journey; Edit only empty or missing sections.
 
 ## 2. From code
 
-Read the code first: routes, role checks, email or message links, scheduled jobs, rules, analytics events, comments.
+Read the code first: routes, role checks, email or message links, scheduled jobs, rules, events, comments.
 
 - Actor: each role, each person who acts through email or a link, each scheduled job (kind `system`).
 - Journey: one actor, one outcome, across routes. Note 1–4 entry-point files for its `Code:` line.
@@ -27,7 +27,7 @@ Tag code entries `INFERRED (from <path>)`.
 
 ## 3. From the owner's answers
 
-Ask in one batch: what it is, for whom; actors and jobs; what each must never do; first outcomes; scope limits. Tag the owner's intent and constraints `KNOWN (owner, <date>)`. Tag what people do `ASSUMED` unless the owner names a source.
+Ask in one batch: what it is, for whom; actors and jobs; what each must never do; first outcomes; scope. Tag the owner's intent and constraints `KNOWN (owner, <date>)`, and what people do `ASSUMED` unless the owner names a source.
 
 ## 4. Depth
 
@@ -35,16 +35,16 @@ Ask in one batch: what it is, for whom; actors and jobs; what each must never do
 - Core: Sketch + one journey per user actor's main job.
 - Full: Core + a journey per job, 7 at most.
 
-No depth given: show the inventory (actors, jobs with IDs, candidate journeys), recommend one tier, write only Sketch, ask the owner to confirm it. Otherwise write nothing past the owner's depth. A job with no journey file is not yet modelled. Name those jobs in the reply.
+No depth given: show the inventory (actors, jobs with IDs, candidate journeys), recommend one tier, write only Sketch, ask the owner to confirm it. Otherwise write nothing past the owner's depth. In the reply, name each job with no journey file (not yet modelled).
 
-Ask who reads the model. The answer picks lens questions (references/lenses.md) inside the tier; no new file. Default: PM and Designer.
+Ask who reads the model. The answer picks lens questions (references/lenses.md) inside the tier. Default: PM and Designer.
 
 ## 5. Write
 
 - PRODUCT.md sections: Platform, Users, Product Purpose, Capabilities and Constraints, Evidence on Hand, Product Principles, `## Terms` (Term | Meaning | Avoid | Code name: the identifier in code), `## Market` (alternatives with "do nothing", category, segment traits, losses). No other section. Ask whether the domain is sensitive.
 - Each rule in Capabilities and Constraints: rule + source, `Interpretation: UNKNOWN` until the owner picks a reading (references/lenses.md).
-- actors.md: Kind: exactly one of `user`, `internal role`, `external actor`, `system`. Every job has an ID (letter and number: T1, A2) and one `Signal:` with its source in the Signals block; prefer an event in code. Relationship rows use only the template's verbs.
-- Journeys: the template header, a `Code:` line naming entry-point files, 120 lines at most.
+- actors.md, per its template: Kind: exactly one of `user`, `internal role`, `external actor`, `system`. Split a role whose people do different jobs. Every job has an ID (letter and number: T1, A2) and one `Signal:` with its source in the Signals block; prefer an event in code. Relationship rows use only the template's verbs.
+- Journeys: the template header, a `Code:` line, 120 lines at most.
 
 ## 6. Ask
 

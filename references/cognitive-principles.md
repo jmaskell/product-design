@@ -9,9 +9,12 @@
 - Miller, G. A. "The Magical Number Seven, Plus or Minus Two: Some Limits on our Capacity for Processing Information". *Psychological Review* 63, 1956, pp. 81–97. Confirmed by fetching https://psychclassics.yorku.ca/Miller/ (2026-10-07).
 - Nielsen, J. "End of Web Design". Nielsen Norman Group, 22 July 2000. Confirmed by fetching https://www.nngroup.com/articles/end-of-web-design/ (2026-10-07).
 - Postel, J. RFC 761, "DoD standard Transmission Control Protocol", January 1980, section 2.10. Confirmed by fetching https://www.rfc-editor.org/rfc/rfc761 (2026-10-07).
+- Cowan, N., Chen, Z. and Rouder, J. N. "Constant capacity in an immediate serial-recall task". *Psychological Science* 15, 2004. Abstract confirmed (2026-10-21).
+- Broadbent, D. E. "The magic number seven after fifteen years". In *Studies in Long-Term Memory*. Wiley, 1975.
+- Johnson, J. *Designing with the Mind in Mind*, 3rd ed., 2020.
 - Yablonski, J. *Laws of UX*. O'Reilly, 2020; lawsofux.com. Confirmed by fetching the lawsofux.com pages for each principle below (2026-10-07).
 
-Unverified: I did not open the papers by Fitts, Hick, Hyman, Kahneman et al., or Doherty and Thadani. Their titles, journals and pages come from secondary sources. Ebbinghaus (serial position) and von Restorff (1933) are named by lawsofux.com only.
+Unverified: I did not open the papers by Fitts, Hick, Hyman, Kahneman et al., Doherty and Thadani, or Broadbent; their details come from secondary sources. Only lawsofux.com names Ebbinghaus (serial position) and von Restorff (1933).
 
 ## Original
 Primary words, where I opened the source:
@@ -20,7 +23,7 @@ Primary words, where I opened the source:
 - Nielsen (Jakob's law): "Users spend most of their time on *other* sites."
 - Postel: "be conservative in what you do, be liberal in what you accept from others."
 
-Yablonski's one-line forms (lawsofux.com), word for word. These are Yablonski's words, not the originators':
+Yablonski's one-line forms (lawsofux.com), word for word; his words, not the originators':
 - Fitts's law: "The time to acquire a target is a function of the distance to and size of the target."
 - Hick's law: "The time it takes to make a decision increases with the number and complexity of choices."
 - Serial position effect: "Users have a propensity to best remember the first and last items in a series."
@@ -43,13 +46,15 @@ Our summary, by grade. "Holds when" is the condition of the original study, as w
 | Jakob's law | Maxim | A person brings conventions from other products | Proof; cite as a maxim only |
 | Tesler's law | Maxim | Some complexity stays; the design picks who carries it | Proof; cite as a maxim only |
 | Postel's law | Maxim | Input that the system can accept in more than one form | Proof; cite as a maxim only |
-| Miller's 7±2 | Not used | Span of absolute judgement and immediate memory | Never for menu or item counts. A visible menu needs no recall. |
+| About 4 items | Narrow | Items carried in the head between steps (Cowan et al.; Broadbent; Johnson ch. 7), or counted at a glance (Johnson ch. 14) | Items visible on screen; menu or list length |
+| Miller's 7±2 | Not used | Span of absolute judgement and immediate memory | Menu or item counts: a visible menu needs no recall |
 
 ## Our operationalisation
 - Cite a principle only when a named decision depends on it.
 - Solid principles can support a finding alone. Narrow principles need their condition met in the artifact. Say how it is met.
 - Cite a maxim as a maxim, never as proof. A maxim alone never sets a severity above MINOR.
-- Never cite Miller's 7±2 for menu or item counts.
+- Never cite Miller's 7±2 for menu or item counts. Keep what a person carries between steps to about 4 items, or show it on the next screen.
+- Peak-end: the page that ends a journey (references/needed-now.md rule 5).
 - Dimensions this lens covers: cognitive load, task efficiency.
 
 Cite the principle by name and number. State the evidence in the artifact. A principle with no bearing on a named decision is not cited.
