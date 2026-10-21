@@ -12,24 +12,32 @@ Load this before the first edit to anything a person sees, whatever the task is 
 Read the project's copy rules in its instructions files (CLAUDE.md or similar), and the file the project metadata names as `Copy examples:`, if there is one. A project rule wins over a rule here. When a rule names the term to use, every string that refers to that thing uses it. Avoiding the banned word, or naming the thing some other way, does not follow the rule.
    Rule 'say order, never purchase': "Your purchase shipped" → "Your order shipped", not "It shipped" or "Your parcel shipped"
 
+Then read each reference (two levels up) the change needs:
+
+| The change adds or changes… | Read |
+|---|---|
+| Any element a person sees | `references/needed-now.md` |
+
 ## Rules
 
-1. **Name the thing, give the action, stop.** Cut clauses that explain why a state exists.
-   "Synced so everything stays up to date" → "Synced"
-2. **Every line must be needed now.** Before shortening, read `references/needed-now.md` (two levels up) and apply it to each line and email row. Write no text or error for a limit the control already enforces. Cut by default: a status pill nobody asked for, a subtitle that restates the heading, helper text a field's label already says. Keep a line that stops a named mistake or is the only place a fact shows.
+1. **Name the thing, give the action, stop.** Cut clauses that explain why a state exists. A hint saying why a personal detail is asked stays if people would otherwise refuse or leave. When the person pays, waits or gets something, give the number.
+   "Synced so everything stays up to date" → "Synced"; "then the subscription" → "then £20 a month"
+2. **Every element must be needed now.** Apply `references/needed-now.md` to every element; each cut yields to its `## Not a cut`. Cut by default: a status pill nobody asked for, a subtitle that restates the heading.
    Heading "Invoices" with subtitle "View and manage your invoices" → heading only
 3. **No provenance or audience captions** ("Auto-generated", "Admin only", "Set by your manager", "Imported from…"), unless a project rule requires one on that surface.
 4. **No hedging or disclaimers.** No stacked softeners, no boilerplate deferrals.
    "This may possibly take a few minutes" → "Takes about 2 minutes"
-5. **Buttons say what happens: verb + object**, and so does a button's in-progress label. A check step's heading says the action isn't done yet: "Confirm your order", not "Your order". Icon-only buttons and links get an accessible name that does the same.
+5. **Buttons say what happens: verb + object**, with no "the", "a" or "your", and so does a button's in-progress label. A check step's heading says the action isn't done yet: "Confirm your order", not "Your order". Icon-only buttons and links get an accessible name that does the same.
    "OK" → "Send invoice"; "Sending…" → "Sending invoice…"; "Click here" → "Read the refund policy"
 6. **Errors say what happened, then what to do**, in the person's words. No codes, no blame, never "Something went wrong" on its own.
    "Invalid date" → "Choose a date after today"
-7. **Empty states give the reason and the one next action.** No pep talk.
+7. **Empty states are sized to their place.** An empty part of a page is one muted line. An empty page gives the reason and the one next action. No pep talk.
    "Nothing here yet! 🎉" → "No invoices yet" + "Create invoice"
-8. **Destructive confirms name the specific thing (its name or title, not just its type) and the consequence.** The confirm button repeats the verb. The dismiss button says what it keeps, never a bare "Cancel".
+8. **Destructive confirms name the specific thing (its name or title, not just its type) and the consequence.** The confirm button repeats the verb. The dismiss button says what it keeps. A plain "Cancel" is fine for closing an inline confirm that loses nothing, unless the action's verb is "cancel".
    "Are you sure?" OK / Cancel → "Delete invoice {number}? You can't undo this." Delete invoice / Keep invoice
-9. **Conventions:** sentence case, one term per concept (references/plain-prose.md; project terms win), the project's locale. Copy-deck notes are `- ` bullets, one fact each.
+9. **The person's words.** Use the product model's Terms. A thing several actors see has one name on all their screens; check the other actors' screens first. Use the reader's word, not the system's.
+   `AWAITING_SUPPLIER` shown to a customer → "Waiting for the supplier"
+10. **Conventions:** sentence case, the project's locale. Copy-deck notes follow references/plain-prose.md.
 
 ## After writing
 
