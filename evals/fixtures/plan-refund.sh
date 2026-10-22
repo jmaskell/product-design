@@ -108,8 +108,8 @@ cat > "$d/design.md" <<'EOF'
 # Design: refund-request
 
 ## Interface flow
-Order → Refund form → under £20: sent, the form shows the result; £20 or more: Check refund (src/refunds/CheckRefund.tsx, existing, unchanged)
-Recent refunds: a list on the agent's home
+Order page (src/pages/OrderPage.tsx) → Refund form, on the order page → under £20: sent, the result shows on the form; £20 or more: Check refund (src/refunds/CheckRefund.tsx, existing, unchanged)
+Agent home (src/pages/Home.tsx): Recent refunds → See all refunds goes to /refunds/all (existing page)
 
 ## States
 | Screen | State | What the person sees | How they got here |
@@ -151,11 +151,49 @@ export function CheckRefund({ amount, customer, onSend }: { amount: string; cust
 }
 EOF
 
+cat > src/routes.tsx <<'EOF'
+export const routes = [
+  { path: "/", page: "Home" },
+  { path: "/orders/:id", page: "OrderPage" },
+  { path: "/refunds/all", page: "AllRefunds" },
+];
+EOF
+mkdir -p src/pages
+cat > src/pages/AllRefunds.tsx <<'EOF'
+// Existing page: every refund this agent can open, by region.
+export function AllRefunds() { return <h1>All refunds</h1>; }
+EOF
+cat > src/pages/Home.tsx <<'EOF'
+import { OrdersList } from "../components/OrdersList";
+import type { Order } from "../types";
+
+export function Home({ orders }: { orders: Order[] }) {
+  return <OrdersList orders={orders} />;
+}
+EOF
+cat > src/pages/OrderPage.tsx <<'EOF'
+import type { Order } from "../types";
+
+export function OrderPage({ order }: { order: Order }) {
+  return <h1>Order {order.number}</h1>;
+}
+EOF
+
 # G1: a generic bug design.md says nothing about (float pence). Present in both builds.
 cat > src/money.ts <<'EOF'
 export const toPence = (amount: number) => amount * 100;
 export const formatPounds = (amount: number) => `£${amount.toFixed(2)}`;
 EOF
+
+# Commit the base (main), then the build on a branch, so the verifier can diff the build against main.
+G="git -c user.email=fixture@example.com -c user.name=Fixture"
+fresh=0
+if [ ! -d .git ]; then
+  fresh=1
+  git init -q -b main
+  $G add -A && $G commit -qm "Shop admin before the refund build"
+  git checkout -qb refund-request
+fi
 
 if [ "$stage" = "drift" ]; then
 cat > src/refunds/api.ts <<'EOF'
@@ -241,7 +279,7 @@ import { sendRefund } from "./api";
 import type { Order } from "../types";
 import { formatPounds } from "../money";
 
-export function RefundForm({ order, onSent, onCheck }: { order: Order; onSent: (msg: string) => void; onCheck: (amount: number) => void }) {
+export function RefundForm({ order, onSent, onCheck }: { order: Order; onSent: (orderId: string) => void; onCheck: (amount: number) => void }) {
   const [amount, setAmount] = useState("");
   const [message, setMessage] = useState("");
   async function send() {
@@ -277,12 +315,40 @@ if [ "$stage" = "drift" ]; then
     src/refunds/RefundForm.tsx && rm -f src/refunds/RefundForm.tsx.bak
 fi
 
-# Commit the scaffold so the verifier can diff the build against main.
-if [ ! -d .git ]; then
-  git init -q -b main
-  git -c user.email=fixture@example.com -c user.name=Fixture add AGENTS.md PRODUCT.md docs src/components src/types.ts src/money.ts src/refunds/CheckRefund.tsx
-  git -c user.email=fixture@example.com -c user.name=Fixture commit -qm "Shop admin before the refund build"
-  git checkout -qb refund-request
-  git -c user.email=fixture@example.com -c user.name=Fixture add -A
-  git -c user.email=fixture@example.com -c user.name=Fixture commit -qm "Build refund-request"
-fi
+# The build wires both new parts into the existing pages (same in both builds).
+cat > src/pages/Home.tsx <<'EOF'
+import { OrdersList } from "../components/OrdersList";
+import { RefundsList } from "../refunds/RefundsList";
+import type { Order, Refund } from "../types";
+
+export function Home({ orders, refunds }: { orders: Order[]; refunds: Refund[] }) {
+  return (
+    <>
+      <OrdersList orders={orders} />
+      <RefundsList refunds={refunds} />
+    </>
+  );
+}
+EOF
+cat > src/pages/OrderPage.tsx <<'EOF'
+import { useState } from "react";
+import { RefundForm } from "../refunds/RefundForm";
+import { CheckRefund } from "../refunds/CheckRefund";
+import { sendRefund } from "../refunds/api";
+import { formatPounds } from "../money";
+import type { Order } from "../types";
+
+export function OrderPage({ order, reload }: { order: Order; reload: () => void }) {
+  const [checking, setChecking] = useState<number | null>(null);
+  if (checking !== null)
+    return <CheckRefund amount={formatPounds(checking)} customer={order.customer} onSend={async () => { await sendRefund(order.id, checking); setChecking(null); reload(); }} />;
+  return (
+    <>
+      <h1>Order {order.number}</h1>
+      <RefundForm order={order} onSent={reload} onCheck={setChecking} />
+    </>
+  );
+}
+EOF
+
+if [ "$fresh" = 1 ]; then $G add -A && $G commit -qm "Build refund-request"; fi

@@ -1,4 +1,4 @@
 ---
 type: llm
 ---
-The change fixes a bug on an existing form and adds no screen. PASS when the reply doesn't say that no design ran and doesn't offer product-design:designing-interactions or a design step. FAIL when it does.
+The change fixes a bug on an existing form and adds no screen. FAIL when the reply offers product-design:designing-interactions or a design step, or raises the missing design as a gap or a question for the owner. A passing remark that no design was needed because no screen was added is fine. PASS otherwise.
