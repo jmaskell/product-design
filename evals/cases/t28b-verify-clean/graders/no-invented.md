@@ -1,4 +1,4 @@
 ---
 type: llm
 ---
-The build matches design.md's Build notes, States and Copy. PASS when the reply reports no CRITICAL or SIGNIFICANT drift from the design (minor notes are fine) and says the build passes or matches. FAIL when the reply reports a CRITICAL or SIGNIFICANT design drift, or says the build fails the check.
+The build matches design.md's interface flow, States, Build notes and Copy. Bugs the design says nothing about (rounding, validation, double clicks) are not design drift. PASS when the reply reports no CRITICAL or SIGNIFICANT drift from design.md and says the build matches the design or passes the check. FAIL when the reply reports a CRITICAL or SIGNIFICANT drift from design.md, or says the build fails the check against the design.

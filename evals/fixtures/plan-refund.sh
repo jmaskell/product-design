@@ -108,26 +108,27 @@ cat > "$d/design.md" <<'EOF'
 # Design: refund-request
 
 ## Interface flow
-Order → Refund form (/orders/:id/refund) → Order, with the refund shown → Recent refunds (/refunds)
+Order → Refund form → under £20: sent, the form shows the result; £20 or more: Check refund (src/refunds/CheckRefund.tsx, existing, unchanged)
+Recent refunds: a list on the agent's home
 
 ## States
 | Screen | State | What the person sees | How they got here |
 |---|---|---|---|
 | Refund form | default | Amount field, Send refund button | Opened from the order |
 | Refund form | error | "Enter an amount up to £{total}" under the field | Amount over the order total |
+| Refund form | provider error | "Refund not sent. Try again." under the field | The payment provider failed; nothing was sent |
+| Refund form | sent | "Refund of £{amount} sent to {customer}" | Sent a refund under £20 |
 | Recent refunds | empty | "No refunds yet" | No refunds this agent can open |
 | Recent refunds | See all | Link "See all refunds" under the list | more than 10 refunds this agent can open |
 
 ## Build notes
 Refund form:
-- After Send refund: the order, with the refund at the top
 - Guard: Check step (removed for refunds under £20) stopped a refund sent by pressing Enter in the amount field — keep by: only the Send refund button sends; Enter in a field does not submit
 Recent refunds:
 - Like: src/components/OrdersList.tsx
 
 ## Copy
-Refund form: Refund order {number}; Amount; Send refund
-Order, after send: Refund of £{amount} sent to {customer}
+Refund form: Refund order {number}; Amount; Send refund; Enter an amount up to £{total}; Refund not sent. Try again.; Refund of £{amount} sent to {customer}
 Recent refunds: Recent refunds; No refunds yet; See all refunds
 EOF
 
@@ -135,6 +136,19 @@ cat > src/types.ts <<'EOF'
 export type Agent = { id: string; region: string };
 export type Order = { id: string; number: string; placedOn: string; total: number; region: string; customer: string };
 export type Refund = { id: string; orderNumber: string; amount: number; customer: string; region: string; sentOn: string };
+EOF
+
+cat > src/refunds/CheckRefund.tsx <<'EOF'
+// The existing check step for refunds of £20 or more. Unchanged by this build.
+export function CheckRefund({ amount, customer, onSend }: { amount: string; customer: string; onSend: () => void }) {
+  return (
+    <section>
+      <h1>Check refund</h1>
+      <p>Refund {amount} to {customer}</p>
+      <button type="button" onClick={onSend}>Send refund</button>
+    </section>
+  );
+}
 EOF
 
 # G1: a generic bug design.md says nothing about (float pence). Present in both builds.
@@ -159,27 +173,6 @@ export async function listRecentRefunds(agent: Agent): Promise<Refund[]> {
 
 export async function sendRefund(orderId: string, amount: number) {
   return db.payments.refund({ orderId, pence: toPence(amount) });
-}
-EOF
-cat > src/refunds/RefundForm.tsx <<'EOF'
-import { useState } from "react";
-import { sendRefund } from "./api";
-import type { Order } from "../types";
-
-export function RefundForm({ order, onSent }: { order: Order; onSent: (msg: string) => void }) {
-  const [amount, setAmount] = useState("");
-  async function send(e: React.FormEvent) {
-    e.preventDefault();
-    await sendRefund(order.id, Number(amount));
-    onSent("Refund processed successfully");
-  }
-  return (
-    <form onSubmit={send}>
-      <h1>Refund order {order.number}</h1>
-      <label>Amount <input inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} /></label>
-      <button type="submit">Submit</button>
-    </form>
-  );
 }
 EOF
 cat > src/refunds/RefundsList.tsx <<'EOF'
@@ -218,28 +211,6 @@ export async function sendRefund(orderId: string, amount: number) {
   return db.payments.refund({ orderId, pence: toPence(amount) });
 }
 EOF
-cat > src/refunds/RefundForm.tsx <<'EOF'
-import { useState } from "react";
-import { sendRefund } from "./api";
-import type { Order } from "../types";
-import { formatPounds } from "../money";
-
-export function RefundForm({ order, onSent }: { order: Order; onSent: (msg: string) => void }) {
-  const [amount, setAmount] = useState("");
-  async function send() {
-    await sendRefund(order.id, Number(amount));
-    onSent(`Refund of ${formatPounds(Number(amount))} sent to ${order.customer}`);
-  }
-  // Enter in a field must not send: only the Send refund button does.
-  return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <h1>Refund order {order.number}</h1>
-      <label>Amount <input inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} /></label>
-      <button type="button" onClick={send}>Send refund</button>
-    </form>
-  );
-}
-EOF
 cat > src/refunds/RefundsList.tsx <<'EOF'
 import type { Refund } from "../types";
 import { formatPounds } from "../money";
@@ -264,10 +235,52 @@ export function RefundsList({ refunds }: { refunds: Refund[] }) {
 EOF
 fi
 
+cat > src/refunds/RefundForm.tsx <<'EOF'
+import { useState } from "react";
+import { sendRefund } from "./api";
+import type { Order } from "../types";
+import { formatPounds } from "../money";
+
+export function RefundForm({ order, onSent, onCheck }: { order: Order; onSent: (msg: string) => void; onCheck: (amount: number) => void }) {
+  const [amount, setAmount] = useState("");
+  const [message, setMessage] = useState("");
+  async function send() {
+    const value = Number(amount);
+    if (value > order.total) return setMessage(`Enter an amount up to ${formatPounds(order.total)}`);
+    if (value >= 20) return onCheck(value); // £20 or more goes to the existing check step
+    try {
+      await sendRefund(order.id, value);
+    } catch {
+      return setMessage("Refund not sent. Try again.");
+    }
+    setMessage(`Refund of ${formatPounds(value)} sent to ${order.customer}`);
+    onSent(order.id);
+  }
+  // Enter in a field must not send: only the Send refund button does.
+  return (
+    <form onSubmit={(e) => e.preventDefault()}>
+      <h1>Refund order {order.number}</h1>
+      <label>Amount <input inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} /></label>
+      {message && <p role="status">{message}</p>}
+      <button type="button" onClick={send}>Send refund</button>
+    </form>
+  );
+}
+EOF
+if [ "$stage" = "drift" ]; then
+  # D1 Enter submits; D5 copy drift (button and result).
+  sed -i.bak \
+    -e 's#<form onSubmit={(e) => e.preventDefault()}>#<form onSubmit={(e) => { e.preventDefault(); send(); }}>#' \
+    -e '/Enter in a field must not send/d' \
+    -e 's#<button type="button" onClick={send}>Send refund</button>#<button type="submit">Submit</button>#' \
+    -e 's#setMessage(`Refund of ${formatPounds(value)} sent to ${order.customer}`);#setMessage("Refund processed successfully");#' \
+    src/refunds/RefundForm.tsx && rm -f src/refunds/RefundForm.tsx.bak
+fi
+
 # Commit the scaffold so the verifier can diff the build against main.
 if [ ! -d .git ]; then
   git init -q -b main
-  git -c user.email=fixture@example.com -c user.name=Fixture add AGENTS.md PRODUCT.md docs src/components src/types.ts src/money.ts
+  git -c user.email=fixture@example.com -c user.name=Fixture add AGENTS.md PRODUCT.md docs src/components src/types.ts src/money.ts src/refunds/CheckRefund.tsx
   git -c user.email=fixture@example.com -c user.name=Fixture commit -qm "Shop admin before the refund build"
   git checkout -qb refund-request
   git -c user.email=fixture@example.com -c user.name=Fixture add -A
