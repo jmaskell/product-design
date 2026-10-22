@@ -14,6 +14,16 @@ Write every section by references/plain-prose.md (two levels above the skills).
 ## Needed now
 <screen>: <what the person needs to know at that moment, and nothing else>
 
+## Build notes
+<chosen screen>: (at most 8 bullets; leave out what doesn't apply)
+- Groups, in order: <a>; <b>; <c>
+- Page header: <actions>
+- After <action>: <where the person lands>
+- <message> goes to: <recipient>
+- From elsewhere: <value> — read-only | editable copy
+- Unavailable: <action> — <reason>
+- Like: <existing screen file or component source>
+
 ## Copy
 <screen>: <each string the screen shows now, one per line>
 
