@@ -25,7 +25,7 @@ Then read what the change needs (two levels up):
 ## Rules
 
 1. **Name the thing, give the action, stop.** Cut clauses that explain why a state exists. When the person pays, waits or gets something, give the number.
-   "Synced so everything stays up to date" → "Synced"; "then the subscription" → "then £20 a month"
+   "Synced so everything stays up to date" → "Synced"; "plus delivery" → "plus £4.99 delivery"
 2. **Every element must be needed now.** Apply `references/needed-now.md` to every element; each cut yields to its `## Not a cut`. Cut by default: a status pill nobody asked for, a subtitle that restates the heading. No text or error for a limit the control enforces. A result says what happened, not its side effects.
    Heading "Invoices" with subtitle "View and manage your invoices" → heading only
 3. **No provenance or audience captions** ("Auto-generated", "Admin only", "Imported from…"), unless a project rule requires one.
@@ -37,7 +37,7 @@ Then read what the change needs (two levels up):
    "Invalid date" → "Choose a date after today"
 7. **Empty states are sized to their place.** An empty part of a page is one muted line. An empty page gives the reason and the one next action. No pep talk.
    "Nothing here yet! 🎉" → "No invoices yet" + "Create invoice"
-8. **Destructive confirms name the specific thing (by name, not just type) and the consequence.** The confirm button repeats the verb. The dismiss button says what it keeps. A plain "Cancel" is fine for closing an inline confirm that loses nothing, unless the action's verb is "cancel".
+8. **Destructive confirms name the specific thing (by name, not just type) and the consequence.** The confirm button repeats the verb. The dismiss button says what it keeps. A plain "Cancel" is fine for closing an inline confirm of a reversible action, unless its verb is "cancel".
    "Are you sure?" OK / Cancel → "Delete invoice {number}? You can't undo this." Delete invoice / Keep invoice
 9. **The person's words.** Use the product model's Terms. A thing several actors see has one name on all their screens; check the other actors' screens first. Use the reader's word, not the system's.
 10. **Conventions:** sentence case, the project's locale. Copy-deck notes follow references/plain-prose.md.

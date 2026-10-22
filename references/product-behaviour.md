@@ -26,7 +26,7 @@ Not for: wording (product-design:writing-ui-copy), layout (references/visual-str
 - A routine action that can be reversed runs at once, with Undo in its result.
 - Offer Undo only where it truly reverses the action. An effect that has left the app (a message sent, money moved, a call to another system) can't be reversed.
 - An action that notifies someone or starts another process does one of two things:
-  - holds the effect for a short window, with Undo, and says so: "Closing #812. Ana Silva is emailed in 10 s. Undo";
+  - holds the effect for a short window, with Undo, and says so: "Closing #812. Ana Silva is emailed in 10 s. Undo". The hold survives the person leaving the page: hold it on the server, or send at once when they leave;
   - or confirms first and names who is told.
 - Keep a confirm for an action that can't be undone or has high impact. Make the safe choice the default, and name the thing and the consequence.
 - After the effect has left the app, recovery is a named follow-up action: "Withdraw invitation", "Refund", "Send correction". Never label it Undo.
@@ -50,7 +50,7 @@ List each step as goal work or tool work. Tool work serves the system, not the p
 - Name which one a screen is before choosing its density.
 
 ## Removing a step
-When you remove or merge a step, list what it was quietly guarding (Enter submitting the form, a double submit, a send to the wrong person), and keep each guard in the new design.
+When you remove or merge a step, list what it was quietly guarding (Enter submitting the form, a double submit, a send to the wrong recipient list), and keep each guard in the new design.
 
 ## Unavailable actions
 When an action can't happen yet:

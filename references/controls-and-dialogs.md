@@ -20,10 +20,10 @@ Not for: when to confirm or offer Undo (references/product-behaviour.md); wordin
 ## Link or button
 - A link goes somewhere. A button does something. Don't style one as the other.
 - A secondary action can be a small button. It is still a button if it acts.
-- Give both choices of a decision comparable weight. A faint link beside a bold button can push people into the costly one.
+- In a decision between two outcomes (accept or decline, keep or delete), give both comparable weight: a faint link beside a bold button pushes people into the costly one. This is the one exception to one primary action (references/visual-structure.md).
 
 ## Dialogs
-- Title a dialog with its verb and object ("Delete saved search?"), or with the name of the thing it shows. Never "Are you sure?" or "Confirm".
+- Title a dialog with its verb and object ("Delete draft order?"), or with the name of the thing it shows. Never "Are you sure?" or "Confirm".
 - Keep the confirm and dismiss labels fixed while the dialog is open.
 - A function people use as part of the main task goes beside the content it changes, not in a dialog.
 - Keep a blocking dialog for the risk of losing data or an action that can't be undone. Routine errors show inline.

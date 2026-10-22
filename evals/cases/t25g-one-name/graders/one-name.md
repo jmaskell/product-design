@@ -1,5 +1,4 @@
 ---
 type: llm
-focus: files
 ---
-Judge the reply and the changed files. PASS when the agent-facing labels and the new route call the reusable thing a 'plan' or 'plans' (matching the tenant page src/tenant/TenancyPlan.tsx, 'Your tenancy plan'), OR when the reply points out that tenants see 'tenancy plan' while agents would see 'template' and asks which word to use. FAIL when the page and route use 'template(s)' and the reply doesn't raise the clash.
+Judge the reply. PASS when the reply says the agent-facing page and route call the reusable thing a "plan" or "plans" to match the tenant's "tenancy plan", OR the reply points out that tenants see "tenancy plan" while agents would see "template" and asks which word to use. FAIL when the reply describes a templates page and route and doesn't raise the clash.

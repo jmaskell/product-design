@@ -20,7 +20,7 @@ Not for: wording of labels and errors (product-design:writing-ui-copy); whether 
 
 ## Asking
 - Ask only what is needed now. Drop or defer a question nothing depends on yet.
-- Don't ask for what the system knows or can work out (a county from a postcode, a total from its parts). Fill it in and show it.
+- Don't ask for what the system knows or can work out (a city from a ZIP code, a total from its parts). Fill it in and show it.
 - Mark the optional fields "(optional)". Leave required fields unmarked.
 - Put a hint above the field, never as placeholder text.
 
@@ -45,8 +45,8 @@ On a failed submit:
 Accept the forms people type: spaces and dashes in numbers ("07700 900 123"), stray spaces, upper or lower case. Normalise in code before checking. Reject only what the system can't read.
 
 ## Check answers and confirmation
-- A check answers page comes just before submitting a long or important form. It has a change link per answer, and a button that names the action ("Send application").
-- The confirmation page:
+- A check answers page comes just before submitting a long or important form, when it stops a mistake you can name (references/needed-now.md rule 9): a wrong answer that is costly to fix after sending. It has a change link per answer, and a button that names the action ("Send application").
+- The confirmation page that ends a commitment (references/needed-now.md rule 5):
   - says it's done and thanks the person;
   - shows the reference;
   - lists what happens next, and when, as numbered steps;
