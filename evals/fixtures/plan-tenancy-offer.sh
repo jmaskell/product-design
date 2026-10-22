@@ -96,3 +96,22 @@ cat > "$d/mocks/chosen-sent.html" <<'EOF'
 <div class="toast">Offer sent. <button>Undo</button></div>
 <p>Offer for 4 Mill Lane, sent 21 October.</p>
 EOF
+[ "$stage" = "g2" ] && exit 0
+# g2notes: Build notes the review must check the mocks against, and a list mock that drifts from its Like: screen.
+cat >> "$d/design.md" <<'EOF'
+
+## Build notes
+Applicant page:
+- Page header: Reassign, Close applicant
+- Groups, in order: Contact; Income and references
+Applicants list:
+- Like: src/agent/ApplicantsList.tsx
+EOF
+cat > "$d/mocks/chosen-list-v2.html" <<'EOF'
+<div style="max-width: 40rem">
+<h1>Applicants</h1>
+<div class="card"><a href="chosen-applicant.html">Priya Shah</a><p>Contacted · applied 14 Oct</p></div>
+<div class="card"><a href="#">Tom Okafor</a><p>New · applied 18 Oct</p></div>
+</div>
+EOF
+sed -i.bak 's#(mocks/chosen-list.html)#(mocks/chosen-list-v2.html)#' "$d/design.md" && rm -f "$d/design.md.bak"
