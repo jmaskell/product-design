@@ -14,8 +14,10 @@ Run the three check scripts before you commit:
 
 Every new skill, and every behaviour change to a skill, follows this process. It is test-driven: no skill text without a failing eval first. Harness facts and grader shapes are in `evals/README.md`. Run evals on Sonnet 5.5 (`--model claude-sonnet-5-5`); run the changed cases once on Opus 5.5 before a merge.
 
+**Fix at source.** For each failure or piece of feedback, find the earliest skill that could have made the decision: product model → framing → mapping → interaction design → review → build (writing-ui-copy). Fix it there by default. Then make each later skill resilient: it reads the earlier decision and follows it. When the earlier stage didn't run, it names the gap and offers that stage, rather than deciding again from general rules. A fix that lives only in a later skill needs a reason in the spec: the earlier stage can't know it, or that stage often doesn't run.
+
 1. **Decide with the owner.** Batch the open decisions into one question, recommendation first. Read the core spec and the existing skills first, so the new skill reuses the product model, templates, evidence tags and severities.
-2. **Spec.** Write `docs/superpowers/specs/<date>-<name>-design.md`: outcome, what exists, scope, owner decisions, skill shape, eval cases, open points. The owner approves it before the plan.
+2. **Spec.** Write `docs/superpowers/specs/<date>-<name>-design.md`: outcome, what exists, the source stage of each fix (Fix at source), scope, owner decisions, skill shape, eval cases, open points. The owner approves it before the plan.
 3. **Plan.** Use superpowers:writing-plans. Write `docs/superpowers/plans/<date>-<name>.md` with Global Constraints, a Review Focus list (each risk pinned to an eval case or grader), and Task 1 = the RED cases.
 
 Steps 4 to 7 run under superpowers:subagent-driven-development. Keep briefs, reports and review diffs in `.superpowers/sdd/<date>-<name>/`. Review each task, then fix in waves.
@@ -28,6 +30,7 @@ Steps 4 to 7 run under superpowers:subagent-driven-development. Keep briefs, rep
 `docs/superpowers/`, `.superpowers/` and `evals/results/` are gitignored. The baselines in `evals/baselines/` are the committed record.
 
 Lessons from earlier rounds:
+- Rules that live only in a reference barely change builds; the agent checks its work against the skill body. Put the decision at its source stage, and keep a short body check for runs where that stage didn't happen (build-principles round, 2026-10-22).
 - Pair every file grader with a check the without arm can pass or fail on its merits. A grader on a path only the skill names measures the path, not the behaviour.
 - Judge named rows or sections, phrased "PASS when …". Whole-file llm judging of long files is noisy.
 - Compare with and without inside one run. The judge varies between runs.
