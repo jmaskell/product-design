@@ -1,6 +1,6 @@
 # Needed now
 
-A true element may still not be needed now. Ask before you shorten it.
+A true element may not be needed now. Ask before you shorten it.
 
 ## The element test
 An element is a line, pill, field, column, panel, control, state or step. For every element on a screen, check step, result or email, ask: "If this were gone, would this person do something wrong, or not know what to do next?" If not, cut it.
@@ -8,7 +8,7 @@ An element is a line, pill, field, column, panel, control, state or step. For ev
 ## Rules
 Every rule below yields to `## Not a cut`.
 1. Don't describe a limit the control already enforces. If the UI stops it (a disabled day, a missing option, a capped stepper), don't explain it, and don't write an error for a choice the person can't make. An action that can't run yet still keeps its reason (references/product-behaviour.md).
-2. A check step shows the summary and the button, once. It doesn't repeat the summary, and it doesn't list what follows (emails, reminders). It does name who receives a message the action sends.
+2. A check step shows the summary and the button, once. It doesn't repeat the summary, and it doesn't list what follows (emails, reminders). It names who receives a message the action sends; the result doesn't.
 3. Explain once, at first use. A page people come back to carries no onboarding line.
 4. Don't show a count that the same row, a header, a badge or the next screen already shows.
 5. A result says what happened. It doesn't list the side effects (emails sent, reminders set, who was told).
