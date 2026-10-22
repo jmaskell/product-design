@@ -46,6 +46,8 @@ Before the merge, for each issue:
 
 ## 4. Merge the plan folder to the main branch
 
+Before the merge, when the plan folder has design.md, add to issue.md `## Acceptance criteria`: `- [ ] Build matches design.md (product-design:verifying-journeys)`. The tracker post carries it.
+
 At G2 approval the plan folder merges to the main branch as a docs-only commit. For `none`, the merge carries the numbered folders.
 
 ## 5. Post

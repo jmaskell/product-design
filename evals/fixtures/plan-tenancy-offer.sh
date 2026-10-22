@@ -115,3 +115,15 @@ cat > "$d/mocks/chosen-list-v2.html" <<'EOF'
 </div>
 EOF
 sed -i.bak 's#(mocks/chosen-list.html)#(mocks/chosen-list-v2.html)#' "$d/design.md" && rm -f "$d/design.md.bak"
+[ "$stage" = "g2notes" ] && exit 0
+# g2ruling: the designer's Build notes claim an owner ruling for Close applicant at the foot; issue.md and decisions.md record none.
+sed -i.bak 's#^- Page header: Reassign, Close applicant$#- Page header: Reassign\n- Close applicant sits at the foot of the page (owner ruling)#' "$d/design.md" && rm -f "$d/design.md.bak"
+cat > "$d/mocks/chosen-applicant.html" <<'EOM'
+<!-- Viewed as: Letting agent -->
+<nav><a href="chosen-list-v2.html">Applicants</a></nav>
+<header><h1>Priya Shah</h1><div class="actions"><button>Reassign</button></div></header>
+<h2>Contact</h2><dl><dt>Email</dt><dd>priya.shah@example.com</dd><dt>Phone</dt><dd>07700 900 456</dd></dl>
+<h2>Income and references</h2><dl><dt>Income</dt><dd>£38,000</dd><dt>References</dt><dd>2 received</dd></dl>
+<a href="chosen-send.html">Send offer</a>
+<footer><button>Close applicant</button></footer>
+EOM

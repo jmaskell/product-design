@@ -12,7 +12,7 @@ Load this before the first edit to anything a person sees, whatever the task is 
 Read the project's copy rules in its instructions files (CLAUDE.md or similar), and the file the project metadata names as `Copy examples:`, if there is one. A project rule wins over a rule here. When a rule names a term, every string about that thing uses it. Avoiding the banned word, or naming the thing another way, does not follow the rule.
    Rule 'say order, never purchase': "Your purchase shipped" → "Your order shipped", not "It shipped" or "Your parcel shipped"
 
-When the plan folder (docs/plans/<slug>/, or the project's plan directory) has a design.md with `## Build notes` for the screen, follow them: they record decisions made for this screen and win over the checklist below. When the change adds a screen and the plan folder has no design.md, build it, then end the reply: "No design ran for <screen>. Run product-design:designing-interactions for it?"
+When the plan folder (docs/plans/<slug>/, or the project's plan directory) has a design.md with `## Build notes` for the screen, follow them: they record decisions made for this screen and win over the checklist below. When the change adds a screen and no design.md covers it (no plan folder, or one without design.md), build it, then end the reply: "No design ran for <screen>. Run product-design:designing-interactions for it?" When a design.md covers the screen, new or existing, end the build reply: "Check the build against design.md? (product-design:verifying-journeys)" A change to an existing screen that no design.md covers says nothing about design or verification.
 
 Then read what the change needs (two levels up):
 

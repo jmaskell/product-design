@@ -8,6 +8,8 @@ Write every section by references/plain-prose.md (two levels above the skills).
 <file — what it shows — component source and SHA, or "hand-built: no component source">
 
 ## States
+<A state that depends on a number gives the exact comparison and what is counted, for whom.>
+
 | Screen | State | What the person sees | How they got here |
 |---|---|---|---|
 
@@ -22,6 +24,7 @@ Write every section by references/plain-prose.md (two levels above the skills).
 - <message> goes to: <recipient>
 - From elsewhere: <value> — read-only | editable copy
 - Unavailable: <action> — <reason>
+- Guard: <removed step> stopped <mistake> — keep by <how>
 - Like: <existing screen file or component source> | none (new pattern)
 
 ## Copy
