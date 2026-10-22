@@ -2,6 +2,7 @@
 # A refunds admin app with docs/plans/refund-request/.
 #   g1:    issue.md and journey.md only (G1 approved, no design yet).
 #   drift: plus design.md and a build that drifts from it in five places (D1-D5), plus one generic bug (G1).
+#   design: plus design.md and the existing pages, before any build.
 #   clean: plus design.md and a build that matches it; G1 stays (it is code review's job, not the design's).
 set -euo pipefail
 stage="${1:-drift}"
@@ -194,6 +195,8 @@ if [ ! -d .git ]; then
   $G add -A && $G commit -qm "Shop admin before the refund build"
   git checkout -qb refund-request
 fi
+# design: the plan is approved and the existing pages are in place; nothing is built yet.
+[ "$stage" = "design" ] && exit 0
 
 if [ "$stage" = "drift" ]; then
 cat > src/refunds/api.ts <<'EOF'
