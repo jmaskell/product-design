@@ -5,14 +5,15 @@ For plan files (issue.md, journey.md, design.md, decisions.md, copy decks) and t
 A builder, a reviewer or the owner reads these files. Each scans for what they must act on.
 
 ## Rules
-1. Open each section with what the reader needs at that moment: the decision, the ask or the change.
-2. Use a list for anything a reader scans: changes, rules, questions, states, notes. Notes under a heading or a string are a list, even when older entries are not.
-3. One fact per sentence. 20 words or fewer.
-4. Active voice. Name who does it.
-5. One word per meaning. Role words come from docs/product/actors.md. Keep a term once chosen.
-6. State what is true now. The reason goes in decisions.md. Old wording stays in git. Never write or keep a log of edits, not even as history: when a file you edit has one, replace it with the current state. decisions.md is the one record: add entries, never rewrite old ones.
-7. Cite a decision, mock or frame once per item, at its end.
-8. Apply the line test in references/needed-now.md to each sentence. Read it for the builder or reviewer.
+1. Open each section with what the reader needs at that moment: the decision, the ask or the change. Put the deciding word first in each heading and list item ("Refunds: staff approve over £50", not "Staff approval is needed for refunds over £50").
+2. Write the headings before the text. The headings alone tell the file's story (Richards, *Content Design*, 2nd ed., ch. 8).
+3. Use a list for anything a reader scans: changes, rules, questions, states, notes. Notes under a heading or a string are a list, even when older entries are not.
+4. One fact per sentence. 20 words or fewer.
+5. Active voice. Name who does it.
+6. One word per meaning. Role words come from docs/product/actors.md. Keep a term once chosen.
+7. State what is true now. The reason goes in decisions.md. Old wording stays in git. Never write or keep a log of edits, not even as history: when a file you edit has one, replace it with the current state. decisions.md is the one record: add entries, never rewrite old ones.
+8. Cite a decision, mock or frame once per item, at its end.
+9. Apply the element test in references/needed-now.md to each sentence. Read it for the builder or reviewer.
 
 When you change a section, bring the whole section to these rules. A section that logs edits (old → new) becomes the current state when you touch it: rename it for what it holds now (in design.md, `## Copy`), list what is true now, and drop the old wording.
 When copy in a plan file changes, change each mock that shows it in the same commit.

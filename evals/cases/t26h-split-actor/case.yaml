@@ -1,0 +1,8 @@
+schema_version: "1.0"
+name: t26h-split-actor
+runs: 5
+plugins: ["../../.."]
+execution:
+  max_turns: 40
+  timeout_seconds: 600
+  allowed_tools: [Read, Write, Edit, Bash, Agent, Skill]
