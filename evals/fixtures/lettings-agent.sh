@@ -165,10 +165,24 @@ export function TenancyPlan({ listing }: { listing: Listing }) {
 }
 EOF
 
+cat > src/agent/OfferPage.tsx <<'EOF'
+// The page for one sent offer: its home, terms and status.
+export function OfferPage({ offerId }: { offerId: string }) {
+  return <section><h1>Offer {offerId}</h1></section>;
+}
+EOF
+
+cat > src/navigate.ts <<'EOF'
+export function navigate(path: string) {
+  window.history.pushState({}, "", path);
+}
+EOF
+
 cat > src/routes.ts <<'EOF'
 export const routes = {
   applicants: "/agent/applicants",
   applicant: "/agent/applicants/:id",
+  offer: "/agent/offers/:id",
   tenancyPlan: "/tenant/plan",
 };
 EOF
