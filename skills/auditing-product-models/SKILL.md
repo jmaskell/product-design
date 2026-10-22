@@ -22,7 +22,7 @@ No actors.md and no journeys? Stop and offer product-design:modelling-products.
 2. Journeys: each stage against code.
 3. actors.md: actors and relationships against role checks, emailed or messaged links, and hand-offs. A role's link to a route it can't open: Drift.
 4. PRODUCT.md Capabilities and Constraints: each capability and rule against its code, value for value. Judge by the owner's quoted interpretation, never a stricter one. A rule with no recorded interpretation (`UNKNOWN` or no line) goes under Unknowns with readings (`references/lenses.md`).
-5. Terms: code names against the Code name column in PRODUCT.md `## Terms`. Drift, MINOR unless it hides a permission.
+5. Terms: code names against the Code name column in PRODUCT.md `## Terms`. Drift, MINOR unless it hides a permission. `Seen by` against the screens each role can open; no `Seen by` column: Unknowns.
 6. Signals: a `Signal:` event with no code: Phantom, MINOR.
 7. README and site claims: no code path, Phantom; a priced feature with no entitlement check, Drift; an outcome or numeric claim with no named proof, Unknowns.
 8. Gaps: roles, routes, scheduled jobs and integrations with no actor, job or stage. A job without a journey is not a gap.
