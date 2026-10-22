@@ -41,7 +41,7 @@ Ask who reads the model. The answer picks lens questions (references/lenses.md) 
 
 ## 5. Write
 
-- PRODUCT.md sections: Platform, Users, Product Purpose, Capabilities and Constraints, Evidence on Hand, Product Principles, `## Terms` (Term | Meaning | Avoid | Code name: the identifier in code), `## Market` (alternatives with "do nothing", category, segment traits, losses). No other section. Ask whether the domain is sensitive.
+- PRODUCT.md sections: Platform, Users, Product Purpose, Capabilities and Constraints, Evidence on Hand, Product Principles, `## Terms` (Term | Meaning | Avoid | Code name: the identifier in code | Seen by: the actors who see it on their screens), `## Market` (alternatives with "do nothing", category, segment traits, losses). No other section. Ask whether the domain is sensitive.
 - Each rule in Capabilities and Constraints: rule + source, `Interpretation: UNKNOWN` until the owner picks a reading (references/lenses.md).
 - actors.md, per its template: Kind: exactly one of `user`, `internal role`, `external actor`, `system`. Split a role whose people do different jobs. Every job has an ID (letter and number: T1, A2) and one `Signal:` with its source in the Signals block; prefer an event in code. Relationship rows use only the template's verbs.
 - Journeys: the template header, a `Code:` line, 120 lines at most.
