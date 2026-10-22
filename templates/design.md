@@ -8,9 +8,10 @@ Write every section by references/plain-prose.md (two levels above the skills).
 <file — what it shows — component source and SHA, or "hand-built: no component source">
 
 ## States
+<A state that depends on a number gives the exact comparison and what is counted, for whom.>
+
 | Screen | State | What the person sees | How they got here |
 |---|---|---|---|
-(A state that depends on a number: the exact comparison and what is counted, for whom.)
 
 ## Needed now
 <screen>: <what the person needs to know at that moment, and nothing else>
