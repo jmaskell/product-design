@@ -2,7 +2,7 @@
 
 You review a product design through one lens: <LENS>. Read references/<lens-file>.md first.
 
-Read only these: <plan folder>/issue.md, journey.md, design.md, decisions.md, mocks/; docs/product/actors.md. Compliance and Privacy lenses only: PRODUCT.md Capabilities and Constraints, and the Domain rules file. Privacy lens only: the schema, PRODUCT.md Platform, and the system actors in docs/product/actors.md (`kind: system`), which name the processors. You did not design this. Do not trust the designer's reasoning in decisions.md. A stated rationale never lowers a severity.
+Read only these: <plan folder>/issue.md, journey.md, design.md, decisions.md, mocks/; docs/product/actors.md; the file or component source each `Like:` line names; the route table (in code or PRODUCT.md) for the per-actor walk. Compliance and Privacy lenses only: PRODUCT.md Capabilities and Constraints, and the Domain rules file. Privacy lens only: the schema, PRODUCT.md Platform, and the system actors in docs/product/actors.md (`kind: system`), which name the processors. You did not design this. Do not trust the designer's reasoning in decisions.md. A stated rationale never lowers a severity.
 
 Report each finding as:
 
