@@ -45,7 +45,7 @@ Generic bugs: not checked (code review)
 Severity:
 - CRITICAL: a `Guard:` isn't kept, or a person sees or counts data they can't open.
 - SIGNIFICANT: a Build note, a States condition or a Copy string is broken in a way that changes what the person sees or does.
-- MINOR: `Like:` drift in looks only; punctuation or case in copy.
+- MINOR: `Like:` drift in looks only; a shown string the deck doesn't list; punctuation or case in copy.
 
 Report only drift from design.md. A bug that design.md says nothing about is code review's job: it gets no finding, no severity and no question, only the one "Generic bugs" line.
 

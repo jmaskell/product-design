@@ -129,7 +129,7 @@ Recent refunds:
 
 ## Copy
 Refund form: Refund order {number}; Amount; Send refund; Enter an amount up to £{total}; Refund not sent. Try again.; Refund of £{amount} sent to {customer}
-Recent refunds: Recent refunds; No refunds yet; See all refunds
+Recent refunds: Recent refunds; Order {number}; £{amount}; {date}; No refunds yet; See all refunds
 EOF
 
 cat > src/types.ts <<'EOF'
@@ -218,7 +218,7 @@ import type { Refund } from "../types";
 import { formatPounds } from "../money";
 
 export function RefundsList({ refunds }: { refunds: Refund[] }) {
-  if (refunds.length === 0) return <p className="muted">No refunds yet</p>;
+  if (refunds.length === 0) return <div className="max-w-3xl"><h1>Recent refunds</h1><p className="muted">No refunds yet</p></div>;
   return (
     <section>
       <h1>Recent refunds</h1>
@@ -254,7 +254,7 @@ import type { Refund } from "../types";
 import { formatPounds } from "../money";
 
 export function RefundsList({ refunds }: { refunds: Refund[] }) {
-  if (refunds.length === 0) return <p className="muted">No refunds yet</p>;
+  if (refunds.length === 0) return <div className="max-w-3xl"><h1>Recent refunds</h1><p className="muted">No refunds yet</p></div>;
   return (
     <div className="max-w-3xl">
       <h1>Recent refunds</h1>
