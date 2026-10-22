@@ -22,7 +22,7 @@ Write every section by references/plain-prose.md (two levels above the skills).
 - <message> goes to: <recipient>
 - From elsewhere: <value> — read-only | editable copy
 - Unavailable: <action> — <reason>
-- Like: <existing screen file or component source>
+- Like: <existing screen file or component source> | none (new pattern)
 
 ## Copy
 <screen>: <each string the screen shows now, one per line>
