@@ -9,7 +9,7 @@ claude plugin marketplace add jmaskell/product-design
 claude plugin install product-design@claude-product-workflow
 ```
 
-The skills then load in every repo. To try a local checkout for one session only:
+The skills then load in every repo. To update an install: `claude plugin marketplace update claude-product-workflow`, then `claude plugin update product-design@claude-product-workflow` (add `-s project` in a project that installed it at project scope), then restart Claude Code. An update applies only when `version` in `.claude-plugin/plugin.json` has changed. To try a local checkout for one session only:
 
 ```bash
 claude --plugin-dir /path/to/product-design

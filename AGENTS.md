@@ -4,6 +4,8 @@ Skills-only Claude Code plugin. The skills are in `skills/`, shared text in `ref
 
 Every change to `skills/`, `references/`, `templates/`, `evals/` or `scripts/` updates `README.md` in the same commit when the README describes it.
 
+Bump `version` in `.claude-plugin/plugin.json` in every PR that changes `skills/`, `references/` or `templates/`. Installed copies update only when the version changes.
+
 Run the three check scripts before you commit:
 
 - `bash scripts/check-portability.sh`
