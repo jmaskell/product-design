@@ -3,7 +3,7 @@ Write every section by references/plain-prose.md (two levels above the skills).
 
 Trigger: … Outcome: … Starts: … Ends: …
 Actors: …
-verified: not verified (set by verifying-journeys after a build passes)
+verified: not verified | <YYYY-MM-DD> (<short commit>) — set by product-design:verifying-journeys when a build matches design.md
 Code: <1–4 entry-point paths> (canonical journeys only)
 audited: <date> (set by auditing-product-models)
 
