@@ -5,7 +5,7 @@ root="$(cd "$(dirname "$0")/.." && pwd)"
 fail=0
 for f in "$root"/skills/*/SKILL.md; do
   name=$(basename "$(dirname "$f")")
-  limit=500; [ "$name" = "designing-products" ] && limit=400; [ "$name" = "writing-ui-copy" ] && limit=600
+  limit=500; [ "$name" = "designing-products" ] && limit=400; [ "$name" = "writing-ui-copy" ] && limit=700
   body_words=$(awk 'BEGIN{n=0} /^---$/{n++; next} n>=2' "$f" | wc -w | tr -d ' ')
   desc=$(awk '/^description:/{sub(/^description: */,""); print; exit}' "$f")
   if [ "$body_words" -gt "$limit" ]; then echo "$f: body $body_words words > $limit"; fail=1; fi

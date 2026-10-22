@@ -17,8 +17,8 @@ Then read what the change needs (two levels up):
 | The change adds or changes… | Read |
 |---|---|
 | Any element a person sees | `references/needed-now.md` |
-| An action, result, confirm, Undo or unavailable control | `references/product-behaviour.md` |
-| A button, link, dialog, or where a control sits | `references/controls-and-dialogs.md` |
+| An action, result, confirm or Undo | `references/product-behaviour.md` |
+| A button, link, dialog or control placement | `references/controls-and-dialogs.md` |
 | A form or record people fill in | `references/forms.md` |
 | A layout, detail page or list | `references/visual-structure.md` |
 
@@ -45,4 +45,13 @@ Then read what the change needs (two levels up):
 
 ## After writing
 
-Check every string and element you added against these rules, and fix violations in place. Don't report the check unless asked.
+Check what you added against these rules and the references you read, then against this list:
+- Over 8 facts sit under sub-headings; page actions sit in the header.
+- After a create or send, the person sees the changed thing.
+- No Undo once an email, payment or other outside effect has gone.
+- List rows hold no flags.
+- A page ending a commitment says it's done, thanks them and numbers next steps.
+- A one-sitting form checks on submit, focusing one error summary; a record filled over time saves with gaps marked.
+- No field the system can work out. Links navigate; buttons act. Unavailable actions use `aria-disabled` with an announced reason.
+
+Fix each in place; don't report the check unless asked.
