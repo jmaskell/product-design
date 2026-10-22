@@ -10,6 +10,7 @@ Write every section by references/plain-prose.md (two levels above the skills).
 ## States
 | Screen | State | What the person sees | How they got here |
 |---|---|---|---|
+(A state that depends on a number: the exact comparison and what is counted, for whom.)
 
 ## Needed now
 <screen>: <what the person needs to know at that moment, and nothing else>
@@ -22,6 +23,7 @@ Write every section by references/plain-prose.md (two levels above the skills).
 - <message> goes to: <recipient>
 - From elsewhere: <value> — read-only | editable copy
 - Unavailable: <action> — <reason>
+- Guard: <removed step> stopped <mistake> — keep by <how>
 - Like: <existing screen file or component source> | none (new pattern)
 
 ## Copy
