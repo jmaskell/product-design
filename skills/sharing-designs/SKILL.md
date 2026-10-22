@@ -7,17 +7,18 @@ description: Use when asked to share a design with the team, publish it for feed
 
 Rebuild the page from the plan folder every time. Never edit it by hand.
 
-This skill shares a design and triages its comments. It never designs: it runs no review agents, makes no mock and writes no new design decision. If the owner asks to revise or design, load product-design:designing-products and follow it, unless the router loaded this skill. The router runs triage first.
+It shares a design and triages its comments. It never designs: no review agents, no mock, no new design decision. If the owner asks to revise or design, load product-design:designing-products and follow it, unless the router loaded this skill. The router runs triage first.
 
 ## 1. Choose the target
 
 Read `Review space` in the project metadata.
 
-| Value | Target | Detail |
-|---|---|---|
-| `notion <url>` | A new row in that Notion database, or in a new database in that Notion page | notion.md |
-| `artifact` | A private Claude artifact | artifact.md |
-| unset | An artifact if the Artifact tool exists, else `<plan folder>/review.html` | artifact.md |
+| Value | Target |
+|---|---|
+| `notion <url>` | A new row in that Notion database, or a new database in that page (notion.md) |
+| `artifact` | A private Claude artifact (artifact.md) |
+| `site <command> <base url>` | The owner's site: a file, then their command (artifact.md) |
+| unset | An artifact if the Artifact tool exists, else `<plan folder>/review.html` (artifact.md) |
 
 The owner's request wins. If the target needs a tool this session lacks, say so, ask the owner how to go on, and stop. Write no page or draft, in any format, and publish nowhere else.
 
@@ -29,10 +30,11 @@ When the router started this triage at the start of a design run, stop after sec
 
 ## 3. Compose
 
+First run `git log --branches --not HEAD --source -1 --format='%cI %S' -- <plan folder>`. If its date is later than this branch's last commit to the plan folder, name that branch, ask which to use, write no page, and stop. Skip this outside a git repo.
+
 Read templates/review-page.md, two levels above this skill's directory. Fill it from the plan files (issue.md, journey.md, design.md, decisions.md) and mocks/. Keep its headings in order. Write for people outside design work.
-- Leave out Screens when design.md does not exist.
-- Keep every evidence label as written.
-- Each question names who answers it and when: "before we design screens" or "before we build".
+- Each question names who answers it and when: "before we design screens", "before we build" or "before release".
+- Name people by their words in docs/product/actors.md.
 - Never write G1, G2, tier, lens, CRITICAL, SIGNIFICANT or MINOR.
 - Add nothing the files do not say.
 
@@ -42,7 +44,7 @@ Before every publish, check the page and every mock it embeds. Remove each name,
 
 ## 5. Publish and record
 
-Publish with the target file. Append to decisions.md: `Review page: <target> <url or path> · revision <n> · <date>`. `<target>` is `notion`, `artifact` or `file`. The first revision is 1, then the last `Review page:` revision plus 1. Tell the owner the link, who to send it to, and what you need from each person. Only the owner approves a gate, never a comment.
+Publish with the target file. Append to decisions.md: `Review page: <target> <url or path> · revision <n> · <date>`. `<target>` is `notion`, `artifact`, `file` or `site`. The first revision is 1, then the last `Review page:` revision plus 1. Tell the owner the link, who to send it to, and what you need from each person. Only the owner approves a gate, never a comment.
 
 ## 6. Triage comments
 
