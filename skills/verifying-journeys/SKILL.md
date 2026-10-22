@@ -19,7 +19,7 @@ Find the plan folder (the project's plan directory, default `docs/plans/<slug>/`
 
 ## 3. Check
 
-Dispatch one fresh agent with verifier-prompt.md, the plan folder and the changed files. Use the project's reviewer agent type if it defines one. It checks, against design.md:
+Dispatch one fresh agent with the Agent tool, with verifier-prompt.md, the plan folder and the changed files. Do not run the checks in this session, however small the build: you may have built it. Use the project's reviewer agent type if it defines one. It checks, against design.md:
 - each `## Build notes` bullet, including each `Guard:` and `Like:`;
 - each `## States` row: its condition and what it counts;
 - each `## Copy` string;
