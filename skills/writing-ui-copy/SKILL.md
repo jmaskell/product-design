@@ -41,7 +41,7 @@ Then read what the change needs (two levels up):
    "Nothing here yet! 🎉" → "No invoices yet" + "Create invoice"
 8. **Destructive confirms name the specific thing (by name, not just type) and the consequence.** The confirm button repeats the verb. The dismiss button says what it keeps. A plain "Cancel" is fine for closing an inline confirm of a reversible action, unless its verb is "cancel".
    "Are you sure?" OK / Cancel → "Delete invoice {number}? You can't undo this." Delete invoice / Keep invoice
-9. **The person's words.** Use the product model's Terms. A thing several actors see has one name on all their screens: before naming it, read PRODUCT.md `## Terms` (`Seen by`) and search the code for the screens other actors see that show the same thing. When the request's word differs from theirs, ask which to use. Use the reader's word, not the system's.
+9. **The person's words.** Use the product model's Terms. A thing several actors see has one name on all their screens: before naming it, read PRODUCT.md `## Terms` (`Seen by`) and search the code for the same data (its fields, not its name) on the screens other actors see. When the request's word differs from theirs, ask which to use. Use the reader's word, not the system's.
 10. **Conventions:** sentence case, the project's locale. Copy-deck notes follow references/plain-prose.md.
 
 ## After writing
