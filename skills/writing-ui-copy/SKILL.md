@@ -26,13 +26,13 @@ Then read what the change needs (two levels up):
 
 1. **Name the thing, give the action, stop.** Cut clauses that explain why a state exists. When the person pays, waits or gets something, give the number.
    "Synced so everything stays up to date" → "Synced"; "then the subscription" → "then £20 a month"
-2. **Every element must be needed now.** Apply `references/needed-now.md` to every element; each cut yields to its `## Not a cut`. Cut by default: a status pill nobody asked for, a subtitle that restates the heading.
+2. **Every element must be needed now.** Apply `references/needed-now.md` to every element; each cut yields to its `## Not a cut`. Cut by default: a status pill nobody asked for, a subtitle that restates the heading. No text or error for a limit the control enforces. A result says what happened, not its side effects.
    Heading "Invoices" with subtitle "View and manage your invoices" → heading only
-3. **No provenance or audience captions** ("Auto-generated", "Admin only", "Set by your manager", "Imported from…"), unless a project rule requires one.
+3. **No provenance or audience captions** ("Auto-generated", "Admin only", "Imported from…"), unless a project rule requires one.
 4. **No hedging or disclaimers.**
    "This may possibly take a few minutes" → "Takes about 2 minutes"
 5. **Buttons say what happens: verb + object**, with no "the", "a" or "your", and so does a button's in-progress label. A check step's heading says the action isn't done yet: "Confirm your order", not "Your order". Icon-only buttons and links get an accessible name that does the same.
-   "OK" → "Send invoice"; "Sending…" → "Sending invoice…"; "Click here" → "Read the refund policy"
+   "OK" → "Send invoice"; "Sending…" → "Sending invoice…"
 6. **Errors say what happened, then what to do.** No codes, no blame, never "Something went wrong" on its own.
    "Invalid date" → "Choose a date after today"
 7. **Empty states are sized to their place.** An empty part of a page is one muted line. An empty page gives the reason and the one next action. No pep talk.
@@ -40,17 +40,16 @@ Then read what the change needs (two levels up):
 8. **Destructive confirms name the specific thing (by name, not just type) and the consequence.** The confirm button repeats the verb. The dismiss button says what it keeps. A plain "Cancel" is fine for closing an inline confirm that loses nothing, unless the action's verb is "cancel".
    "Are you sure?" OK / Cancel → "Delete invoice {number}? You can't undo this." Delete invoice / Keep invoice
 9. **The person's words.** Use the product model's Terms. A thing several actors see has one name on all their screens; check the other actors' screens first. Use the reader's word, not the system's.
-   `AWAITING_SUPPLIER` shown to a customer → "Waiting for the supplier"
 10. **Conventions:** sentence case, the project's locale. Copy-deck notes follow references/plain-prose.md.
 
 ## After writing
 
-Check what you added against these rules and the references you read, then against this list:
+Check your work against these rules, the references you read and this list:
 - Over 8 facts sit under sub-headings; page actions sit in the header.
 - After a create or send, the person sees the changed thing.
 - No Undo once an email, payment or other outside effect has gone.
 - List rows hold no flags.
-- A page ending a commitment says it's done, thanks them and numbers next steps.
+- After a payment, sign-up or application, the page thanks them and numbers next steps.
 - A one-sitting form checks on submit, focusing one error summary; a record filled over time saves with gaps marked.
 - No field the system can work out. Links navigate; buttons act. Unavailable actions use `aria-disabled` with an announced reason.
 
